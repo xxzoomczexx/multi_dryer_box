@@ -1,19 +1,19 @@
 # 📦 Multi-Box Filament Dryer System
 
-Profesionální, plně škálovatelný IoT systém pro monitorování a řízení více filamentových sušiček současně. Nabízí real-time přehled o stavu materiálu (váha, teplota, vlhkost) v přehledném dashboardu s možností přímé integrace do systémů chytré domácnosti a 3D tiskových serverů.
+Škálovatelný IoT systém pro monitorování a řízení více filamentových sušiček současně. Nabízí real-time přehled o stavu materiálu (váha, teplota, vlhkost) v přehledném dashboardu s možností přímé integrace do systémů chytré domácnosti a 3D tiskových serverů.
 
 ---
 
-## 🌐 Live Demo
+##  Live Demo
 
 **Prohlédněte si běžící webový dashboard zde:**  
-👉 **[https://xxzoomczexx.github.io/multi_dryer_box/](https://xxzoomczexx.github.io/multi_dryer_box/)**
+ **[https://xxzoomczexx.github.io/multi_dryer_box/](https://xxzoomczexx.github.io/multi_dryer_box/)**
 
 *(Dashboard funguje jako statická vizualizace MQTT dat. Pro ukázku zobrazení je naplněn simulovanými testovacími daty do chvíle, než začne naslouchat reálnému hardwaru).*
 
 ---
 
-## 🏗️ Architektura Systému (Data Flow)
+##  Architektura Systému (Data Flow)
 
 Systém je navržen s důrazem na modularitu a stabilitu komunikace. Skládá se z několika vrstev:
 
@@ -26,16 +26,16 @@ Systém je navržen s důrazem na modularitu a stabilitu komunikace. Skládá se
 
 ---
 
-## ✨ Klíčové Vlastnosti (Key Features)
+##  Klíčové Vlastnosti (Key Features)
 
-- 🌍 **Globální přístup odkudkoliv:** Systém využívá MQTT a nevyžaduje žádný složitý port-forwarding na routeru ani pevnou veřejnou IP adresu.
-- 🧩 **Modulární design:** Automatická detekce připojených boxů. Pokud připojíte další Sensor Node na RS-485 sběrnici, webový dashboard si pro něj automaticky vygeneruje novou dlaždici.
-- 🔒 **Vysoká bezpečnost:** Veškerá cloudová komunikace probíhá přes zabezpečený TLS kanál pomocí robustního síťového stacku Mongoose.
-- ⚙️ **Integrace a API:** Architektura otevírá jednoduché cesty pro integrace do systémů **Home Assistant** a API endpointů tiskových platforem, jako je **Prusa Connect**.
+-  **Globální přístup odkudkoliv:** Systém využívá MQTT a nevyžaduje žádný složitý port-forwarding na routeru ani pevnou veřejnou IP adresu.
+-  **Modulární design:** Automatická detekce připojených boxů. Pokud připojíte další Sensor Node na RS-485 sběrnici, webový dashboard si pro něj automaticky vygeneruje novou dlaždici.
+-  **Vysoká bezpečnost:** Veškerá cloudová komunikace probíhá přes zabezpečený TLS kanál pomocí robustního síťového stacku Mongoose.
+-  **Integrace a API:** Architektura otevírá jednoduché cesty pro integrace do systémů **Home Assistant** a API endpointů tiskových platforem, jako je **Prusa Connect**.
 
 ---
 
-## 🛠️ Hardware Details
+##  Hardware Details
 
 - **Raspberry Pi RP2350:** Superrychlý mikrokontrolér pro Master Node zajišťující orchestraci dat a cloudové spojení.
 - **RM2 Wi-Fi Modul:** Zajišťuje bezdrátovou konektivitu pro Master Node.
@@ -46,7 +46,7 @@ Systém je navržen s důrazem na modularitu a stabilitu komunikace. Skládá se
 
 ---
 
-## 💻 Software Stack
+##  Software Stack
 
 | Vrstva | Použitá Technologie | Popis |
 | :--- | :--- | :--- |
@@ -59,7 +59,7 @@ Systém je navržen s důrazem na modularitu a stabilitu komunikace. Skládá se
 
 ---
 
-## 🚀 Instalace a Nasazení
+##  Instalace a Nasazení
 
 ### 1. Kompilace Firmware (Master Node & Sensor Nodes)
 1. Ujistěte se, že máte nainstalované a nakonfigurované **Raspberry Pi Pico SDK 2.0**.
