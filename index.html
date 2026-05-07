@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="cs" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filament Drybox Dashboard</title>
+    
+    <!-- Tailwind CSS přes CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        darkBg: '#0f172a', /* slate-900 */
+                        cardBg: '#1e293b', /* slate-800 */
+                        accent: '#3b82f6'  /* blue-500 */
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Knihovny pro MQTT a Grafy -->
+    <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <style>
+        body {
+            background-color: #0f172a;
+            color: #f8fafc;
+        }
+        /* Vlastní scrollbar pro lepší vzhled v tmavém režimu */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f172a; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #475569; 
+        }
+    </style>
+</head>
+<body class="min-h-screen font-sans antialiased p-4 sm:p-8">
+
+    <!-- Horní lišta -->
+    <header class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center mb-8 bg-cardBg p-4 sm:px-6 rounded-2xl shadow-lg border border-slate-700">
+        <div class="flex items-center gap-3 mb-4 sm:mb-0">
+            <div class="p-2 bg-blue-500/10 rounded-lg">
+                <svg class="w-8 h-8 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+            </div>
+            <h1 class="text-2xl font-bold text-white tracking-tight">Drybox Dashboard</h1>
+        </div>
+        
+        <div class="flex items-center gap-4 w-full sm:w-auto justify-between sm:justify-end">
+            <!-- Indikátor stavu připojení -->
+            <div id="connectionStatus" class="flex items-center gap-2 px-4 py-2 rounded-full bg-red-500/10 text-red-400 border border-red-500/20 text-sm font-semibold shadow-sm transition-colors">
+                <div class="w-2.5 h-2.5 rounded-full bg-red-500 animate-pulse"></div>
+                Odpojeno
+            </div>
+            
+            <!-- Tlačítko pro nastavení -->
+            <button onclick="toggleSettings()" class="p-2.5 rounded-xl bg-slate-700 hover:bg-slate-600 transition-all border border-slate-600 shadow-sm hover:shadow group">
+                <svg class="w-5 h-5 text-slate-300 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- Modální okno pro nastavení -->
+    <div id="settingsModal" class="hidden fixed inset-0 bg-slate-900/80 backdrop-blur-sm z-50 flex justify-center items-center p-4 transition-opacity">
+        <div class="bg-cardBg p-6 sm:p-8 rounded-2xl w-full max-w-md shadow-2xl border border-slate-700 transform transition-all">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-xl font-bold text-white">MQTT Konfigurace</h2>
+                <button onclick="toggleSettings()" class="text-slate-400 hover:text-white transition-colors">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+            
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium text-slate-300 mb-1.5">Broker URL (Secure WebSocket)</label>
+                    <input type="text" id="mqttBroker" placeholder="wss://broker.hivemq.com:8884/mqtt" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all">
+                    <p class="text-xs text-slate-500 mt-1">Musí začínat na wss:// pro bezpečné spojení</p>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-slate-300 mb-1.5">Topic k odběru dat</label>
+                    <input type="text" id="mqttTopic" placeholder="drybox/status/#" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-slate-300 mb-1.5">Topic pro příkazy (Commands)</label>
+                    <input type="text" id="mqttCmdTopic" placeholder="drybox/commands" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all">
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-slate-300 mb-1.5">Username (volitelné)</label>
+                        <input type="text" id="mqttUser" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-slate-300 mb-1.5">Password (volitelné)</label>
+                        <input type="password" id="mqttPass" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all">
+                    </div>
+                </div>
+                
+                <div class="pt-6">
+                    <button onclick="saveSettings()" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-semibold py-3 rounded-xl transition-colors shadow-lg shadow-blue-500/30">
+                        Uložit a Připojit
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mřížka pro dynamicky generované karty boxů -->
+    <div id="dryboxGrid" class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Karty se automaticky přidají sem -->
+    </div>
+
+    <!-- Šablona pro Drybox Kartu (Zůstává skrytá v DOMu, slouží jen pro klonování) -->
+    <template id="dryboxTemplate">
+        <div class="drybox-card bg-cardBg rounded-2xl p-5 sm:p-6 shadow-xl border border-slate-700 flex flex-col gap-5 relative overflow-hidden transition-all hover:border-slate-600">
+            <!-- Odlesk / Gradient efekt na pozadí karty -->
+            <div class="absolute -top-24 -right-24 w-48 h-48 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+            <!-- Hlavička karty s ID, statusem a typem materiálu -->
+            <div class="flex justify-between items-start z-10">
+                <div>
+                    <h3 class="text-xl font-bold text-white flex items-center gap-2">
+                        Box <span class="box-id text-blue-400 bg-blue-500/10 px-2 py-0.5 rounded-md border border-blue-500/20">?</span>
+                    </h3>
+                    <div class="text-sm font-medium text-slate-400 flex items-center gap-2 mt-2">
+                        <span class="w-2.5 h-2.5 rounded-full bg-slate-500 box-status-dot"></span>
+                        <span class="box-status capitalize">Čeká na data</span>
+                    </div>
+                </div>
+                <div class="bg-slate-900 px-3 py-1.5 rounded-lg border border-slate-700 text-sm font-bold tracking-wide text-slate-300 box-type shadow-inner">
+                    ---
+                </div>
+            </div>
+
+            <!-- Hlavní sekce metrik (Váha velkým, Teplota a Vlhkost vedle) -->
+            <div class="grid grid-cols-2 gap-4 z-10">
+                <!-- Váha -->
+                <div class="bg-slate-900 p-4 rounded-xl border border-slate-700/50 shadow-inner flex flex-col justify-center">
+                    <div class="text-xs text-slate-500 uppercase font-bold tracking-wider mb-1">Váha</div>
+                    <div class="text-3xl font-black text-white flex items-baseline gap-1">
+                        <span class="box-weight tracking-tight">0.0</span> <span class="text-sm text-slate-500 font-bold">g</span>
+                    </div>
+                </div>
+                
+                <!-- Teplota a Vlhkost -->
+                <div class="bg-slate-900 p-4 rounded-xl border border-slate-700/50 shadow-inner flex flex-col justify-between gap-3">
+                    <div class="flex justify-between items-end">
+                        <div class="text-xs text-slate-500 uppercase font-bold tracking-wider">Teplota</div>
+                        <div class="text-xl font-bold text-orange-400 drop-shadow-sm"><span class="box-temp">0.0</span><span class="text-sm text-orange-500/70">°C</span></div>
+                    </div>
+                    <div class="w-full h-px bg-slate-800"></div>
+                    <div class="flex justify-between items-end">
+                        <div class="text-xs text-slate-500 uppercase font-bold tracking-wider">Vlhkost</div>
+                        <div class="text-xl font-bold text-cyan-400 drop-shadow-sm"><span class="box-hum">0.0</span><span class="text-sm text-cyan-500/70">%</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Graf historie váhy -->
+            <div class="h-36 w-full mt-2 relative z-10 bg-slate-900/50 rounded-xl p-2 border border-slate-800">
+                <canvas class="box-chart"></canvas>
+            </div>
+
+            <!-- Ovládací tlačítko -->
+            <button class="stop-btn mt-1 w-full bg-red-500/10 hover:bg-red-500/20 text-red-400 hover:text-red-300 border border-red-500/30 font-bold py-3 rounded-xl transition-all duration-200 flex items-center justify-center gap-2 z-10">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 10a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1v-4z"></path></svg>
+                Zastavit sušení
+            </button>
+        </div>
+    </template>
+
+    <!-- Hlavní aplikační logika -->
+    <script>
+        // Globální instance MQTT klienta a stav boxů
+        let mqttClient = null;
+        const activeBoxes = {}; // Formát: { id: { dataHistory: [], chart: Chart, elements: DOM } }
+
+        // Inicializace při načtení stránky
+        function initApp() {
+            loadSettings();
+            connectMQTT();
+            
+            // --- DEMO DATA PRO PREVIEW (Můžeš později smazat) ---
+            setTimeout(() => {
+                try {
+                    if (Object.keys(activeBoxes).length === 0) {
+                        processTelemetry({ id: 1, weight: 450.5, temp: 45.2, hum: 15.8, type: "PLA", status: "drying" });
+                        processTelemetry({ id: 2, weight: 820.0, temp: 40.1, hum: 22.5, type: "PETG", status: "idle" });
+                        
+                        // Simulace pohybu váhy pro graf (aktualizace každé 3 vteřiny)
+                        setInterval(() => {
+                            if(activeBoxes[1]) {
+                                const w = parseFloat(activeBoxes[1].elements.weight.innerText);
+                                processTelemetry({ id: 1, weight: w - (Math.random() * 0.5), temp: 45.2 + (Math.random()*0.2 - 0.1), hum: 15.8, type: "PLA", status: "drying" });
+                            }
+                        }, 3000);
+                    }
+                } catch (e) {
+                    const errEl = document.createElement('div');
+                    errEl.style.color = 'red';
+                    errEl.style.padding = '20px';
+                    errEl.innerText = 'Chyba při vykreslování: ' + e.message + '\n' + e.stack;
+                    document.body.prepend(errEl);
+                }
+            }, 800);
+            // ----------------------------------------------------
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initApp);
+        } else {
+            initApp();
+        }
+
+        // ==========================================
+        // 1. Správa nastavení a UI (Modal)
+        // ==========================================
+        
+        function toggleSettings() {
+            const modal = document.getElementById('settingsModal');
+            modal.classList.toggle('hidden');
+        }
+
+        function loadSettings() {
+            // Načtení z localStorage nebo výchozí hodnoty
+            document.getElementById('mqttBroker').value = localStorage.getItem('mqttBroker') || 'wss://broker.hivemq.com:8884/mqtt';
+            document.getElementById('mqttTopic').value = localStorage.getItem('mqttTopic') || 'drybox/status/#';
+            document.getElementById('mqttCmdTopic').value = localStorage.getItem('mqttCmdTopic') || 'drybox/commands';
+            document.getElementById('mqttUser').value = localStorage.getItem('mqttUser') || '';
+            document.getElementById('mqttPass').value = localStorage.getItem('mqttPass') || '';
+        }
+
+        function saveSettings() {
+            // Uložení do localStorage
+            localStorage.setItem('mqttBroker', document.getElementById('mqttBroker').value);
+            localStorage.setItem('mqttTopic', document.getElementById('mqttTopic').value);
+            localStorage.setItem('mqttCmdTopic', document.getElementById('mqttCmdTopic').value);
+            localStorage.setItem('mqttUser', document.getElementById('mqttUser').value);
+            localStorage.setItem('mqttPass', document.getElementById('mqttPass').value);
+            
+            toggleSettings();
+            connectMQTT(); // Re-konekt s novými parametry
+        }
+
+        function updateConnectionStatus(isConnected) {
+            const statusEl = document.getElementById('connectionStatus');
+            if (isConnected) {
+                statusEl.className = 'flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/10 text-green-400 border border-green-500/20 text-sm font-semibold shadow-sm transition-colors';
+                statusEl.innerHTML = '<div class="w-2.5 h-2.5 rounded-full bg-green-500 animate-pulse"></div>Připojeno';
+            } else {
+                statusEl.className = 'flex items-center gap-2 px-4 py-2 rounded-full bg-red-500/10 text-red-400 border border-red-500/20 text-sm font-semibold shadow-sm transition-colors';
+                statusEl.innerHTML = '<div class="w-2.5 h-2.5 rounded-full bg-red-500 animate-pulse"></div>Odpojeno';
+            }
+        }
+
+        // ==========================================
+        // 2. MQTT Komunikace
+        // ==========================================
+
+        function connectMQTT() {
+            // Bezpečně ukončit stávající připojení
+            if (mqttClient) {
+                mqttClient.end(true);
+            }
+
+            const brokerUrl = document.getElementById('mqttBroker').value;
+            const topic = document.getElementById('mqttTopic').value;
+            const user = document.getElementById('mqttUser').value;
+            const pass = document.getElementById('mqttPass').value;
+
+            if (!brokerUrl) return;
+
+            // Konfigurace MQTT
+            const options = {
+                clean: true,
+                connectTimeout: 5000,
+                clientId: 'drybox_web_' + Math.random().toString(16).substring(2, 10),
+            };
+
+            if (user) options.username = user;
+            if (pass) options.password = pass;
+
+            updateConnectionStatus(false);
+            console.log(`Připojování k ${brokerUrl}...`);
+
+            try {
+                mqttClient = mqtt.connect(brokerUrl, options);
+
+                mqttClient.on('connect', () => {
+                    console.log('Úspěšně připojeno k MQTT brokeru');
+                    updateConnectionStatus(true);
+                    
+                    // Přihlášení k odběru telemetrie
+                    mqttClient.subscribe(topic, (err) => {
+                        if (err) {
+                            console.error('Chyba při přihlašování k topicu:', err);
+                        } else {
+                            console.log(`Odběr aktivní pro: ${topic}`);
+                        }
+                    });
+                });
+
+                mqttClient.on('reconnect', () => {
+                    console.log('Pokus o znovupřipojení...');
+                    updateConnectionStatus(false);
+                });
+
+                mqttClient.on('error', (err) => {
+                    console.error('MQTT Chyba:', err);
+                    updateConnectionStatus(false);
+                });
+
+                // Zpracování příchozí zprávy
+                mqttClient.on('message', (msgTopic, message) => {
+                    try {
+                        const payload = JSON.parse(message.toString());
+                        // Očekávaný formát: { id: 1, weight: 450.5, temp: 45.2, hum: 15.8, type: "PLA", status: "drying" }
+                        if (payload && payload.id !== undefined) {
+                            processTelemetry(payload);
+                        }
+                    } catch (e) {
+                        console.error('Ignoruji neplatnou zprávu (není to JSON):', message.toString());
+                    }
+                });
+
+            } catch (error) {
+                console.error("Kritická chyba při inicializaci klienta", error);
+            }
+        }
+
+        function sendStopCommand(boxId) {
+            if (!mqttClient || !mqttClient.connected) {
+                alert("Příkaz nelze odeslat, broker je odpojen.");
+                return;
+            }
+            
+            const cmdTopic = document.getElementById('mqttCmdTopic').value || 'drybox/commands';
+            const payload = JSON.stringify({ cmd: "stop", id: boxId });
+            
+            mqttClient.publish(cmdTopic, payload);
+            console.log(`Příkaz odeslán -> Topic: ${cmdTopic}, Data: ${payload}`);
+        }
+
+        // ==========================================
+        // 3. Dynamické Vykreslování a Logika Dat
+        // ==========================================
+
+        function processTelemetry(data) {
+            const id = data.id;
+            
+            // Pokud přijde nové ID, vygenerujeme pro něj novou kartu
+            if (!activeBoxes[id]) {
+                createNewBoxCard(id);
+            }
+
+            const box = activeBoxes[id];
+            const ui = box.elements;
+
+            // 1. Aktualizace textových metrik s fallbacky
+            ui.weight.innerText = typeof data.weight === 'number' ? data.weight.toFixed(1) : (data.weight || '0.0');
+            ui.temp.innerText = typeof data.temp === 'number' ? data.temp.toFixed(1) : (data.temp || '0.0');
+            ui.hum.innerText = typeof data.hum === 'number' ? data.hum.toFixed(1) : (data.hum || '0.0');
+            ui.type.innerText = data.type || 'N/A';
+            
+            // 2. Aktualizace vizuálního stavu (status)
+            const statusText = data.status || 'unknown';
+            const isDrying = statusText.toLowerCase() === 'drying';
+            
+            ui.status.innerText = statusText;
+            // Změna barvy tečky podle toho, zda se suší
+            ui.statusDot.className = `w-2.5 h-2.5 rounded-full ${isDrying ? 'bg-orange-500 animate-pulse shadow-[0_0_8px_rgba(249,115,22,0.6)]' : 'bg-slate-500'}`;
+
+            // 3. Aktualizace historie grafu (posledních 5 minut)
+            const currentTime = Date.now();
+            const fiveMinutesAgo = currentTime - (5 * 60 * 1000);
+
+            // Přidáme nový bod (váha v daném čase)
+            box.dataHistory.push({ time: currentTime, weight: typeof data.weight === 'number' ? data.weight : 0 });
+
+            // Odfiltrujeme body starší než 5 minut
+            box.dataHistory = box.dataHistory.filter(item => item.time >= fiveMinutesAgo);
+
+            // 4. Překreslení grafu
+            updateChart(box.chart, box.dataHistory);
+        }
+
+        function createNewBoxCard(id) {
+            const template = document.getElementById('dryboxTemplate');
+            const grid = document.getElementById('dryboxGrid');
+            
+            // Klonujeme šablonu
+            const clone = template.content.cloneNode(true);
+            const cardRoot = clone.querySelector('.drybox-card');
+            cardRoot.id = `box-${id}`;
+
+            // Cacheování DOM elementů
+            const elements = {
+                id: clone.querySelector('.box-id'),
+                status: clone.querySelector('.box-status'),
+                statusDot: clone.querySelector('.box-status-dot'),
+                type: clone.querySelector('.box-type'),
+                weight: clone.querySelector('.box-weight'),
+                temp: clone.querySelector('.box-temp'),
+                hum: clone.querySelector('.box-hum'),
+                stopBtn: clone.querySelector('.stop-btn'),
+                canvas: clone.querySelector('.box-chart')
+            };
+
+            // Nastavení ID
+            elements.id.innerText = id;
+
+            // Bindování tlačítka pro tento konkrétní box
+            elements.stopBtn.addEventListener('click', () => {
+                sendStopCommand(id);
+            });
+
+            // DŮLEŽITÉ: Vložení do stránky (DOMu) musí proběhnout PŘED inicializací Chart.js!
+            // Jinak Chart.js nemůže změřit rozměry Canvasu a vyhodí chybu "Cannot read properties of null (reading 'getComputedStyle')"
+            grid.appendChild(clone);
+            console.log(`Vytvořena nová karta pro Box ID: ${id}`);
+
+            // Inicializace Chart.js pro tento box
+            const ctx = elements.canvas.getContext('2d');
+            
+            // Vytvoření jemného gradientu pod křivkou
+            const gradient = ctx.createLinearGradient(0, 0, 0, 150);
+            gradient.addColorStop(0, 'rgba(56, 189, 248, 0.4)'); // sky-400
+            gradient.addColorStop(1, 'rgba(56, 189, 248, 0.0)');
+
+            Chart.defaults.color = '#64748b'; // slate-500
+            Chart.defaults.font.family = 'ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif';
+
+            const chart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: [],
+                    datasets: [{
+                        label: 'Váha (g)',
+                        data: [],
+                        borderColor: '#38bdf8', // sky-400
+                        backgroundColor: gradient,
+                        borderWidth: 2,
+                        pointRadius: 0,           // Skrytí bodů pro čistší linii
+                        pointHitRadius: 10,       // Interakce myši je stále možná
+                        fill: true,
+                        tension: 0.4              // Hladká křivka
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    animation: false, // Vypnuto pro plynulý real-time update
+                    interaction: {
+                        mode: 'index',
+                        intersect: false,
+                    },
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            backgroundColor: 'rgba(15, 23, 42, 0.9)', // slate-900
+                            titleColor: '#f8fafc',
+                            bodyColor: '#cbd5e1',
+                            borderColor: '#334155',
+                            borderWidth: 1,
+                            displayColors: false
+                        }
+                    },
+                    scales: {
+                        x: {
+                            display: false, // Skryjeme časovou osu pro čistý design
+                        },
+                        y: {
+                            display: true,
+                            position: 'right',
+                            grid: { 
+                                color: 'rgba(51, 65, 85, 0.5)', // slate-700
+                                drawBorder: false
+                            },
+                            ticks: { 
+                                maxTicksLimit: 4,
+                                font: { size: 10 }
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Uložení stavu nového boxu
+            activeBoxes[id] = {
+                dataHistory: [],
+                chart: chart,
+                elements: elements
+            };
+        }
+
+        function updateChart(chartInstance, historyArray) {
+            // Mapujeme naši historii do formátu, který vyžaduje Chart.js
+            chartInstance.data.labels = historyArray.map(item => {
+                const d = new Date(item.time);
+                return d.toLocaleTimeString('cs-CZ', { hour: '2-digit', minute:'2-digit', second:'2-digit' });
+            });
+            chartInstance.data.datasets[0].data = historyArray.map(item => item.weight);
+            
+            // update() s modifikátorem 'none' zabrání zbytečným animacím, které by při častém volání způsobily trhání
+            chartInstance.update('none');
+        }
+    </script>
+</body>
+</html>
