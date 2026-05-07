@@ -1,6 +1,6 @@
 # 📦 Multi-Box Filament Dryer System
 
-Škálovatelný IoT systém pro monitorování a řízení více filamentových sušiček současně. Nabízí real-time přehled o stavu materiálu (váha, teplota, vlhkost) v přehledném dashboardu s možností přímé integrace do systémů chytré domácnosti a 3D tiskových serverů.
+Škálovatelný IoT systém pro monitorování a řízení více filamentových sušiček současně. Real-time přehled o stavu materiálu (váha, teplota, vlhkost) v dashboardu s možností přímé integrace do systémů chytré domácnosti a 3D tiskových serverů.
 
 ---
 
@@ -15,7 +15,7 @@
 
 ##  Architektura Systému (Data Flow)
 
-Systém je navržen s důrazem na modularitu a stabilitu komunikace. Skládá se z několika vrstev:
+Systém je navržen pro modularitu a stabilitu komunikace. Skládá se z několika vrstev:
 
 1. **Sensor Nodes (RP2040):** Každý sušicí box obsahuje vlastní mikrokontrolér, který sbírá data z lokálních senzorů a stará se o topná tělesa.
 2. **RS-485 Sběrnice:** Spolehlivá industriální drátová komunikace propojuje všechny Sensor Nody do topologie daisy-chain.
@@ -28,7 +28,7 @@ Systém je navržen s důrazem na modularitu a stabilitu komunikace. Skládá se
 
 ##  Klíčové Vlastnosti (Key Features)
 
--  **Globální přístup odkudkoliv:** Systém využívá MQTT a nevyžaduje žádný složitý port-forwarding na routeru ani pevnou veřejnou IP adresu.
+-  **Přístup odkudkoliv:** Systém využívá MQTT a nevyžaduje žádný složitý port-forwarding na routeru ani pevnou veřejnou IP adresu.
 -  **Modulární design:** Automatická detekce připojených boxů. Pokud připojíte další Sensor Node na RS-485 sběrnici, webový dashboard si pro něj automaticky vygeneruje novou dlaždici.
 -  **Vysoká bezpečnost:** Veškerá cloudová komunikace probíhá přes zabezpečený TLS kanál pomocí robustního síťového stacku Mongoose.
 -  **Integrace a API:** Architektura otevírá jednoduché cesty pro integrace do systémů **Home Assistant** a API endpointů tiskových platforem, jako je **Prusa Connect**.
