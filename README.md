@@ -18,7 +18,7 @@ IoT systém pro monitorování a řízení více filamentových sušiček souča
 Systém je navržen pro modularitu a stabilitu komunikace. Skládá se z několika vrstev:
 
 1. **Sensor Nodes (RP2040):** Každý sušicí box obsahuje vlastní mikrokontrolér, který sbírá data z lokálních senzorů a stará se o topná tělesa.
-2. **RS-485 Sběrnice:** Industriální drátová komunikace propojuje všechny Sensor Nody do topologie daisy-chain.
+2. **CAN Sběrnice:** Industriální drátová komunikace propojuje všechny Sensor Nody.
 3. **Master Node (RP2350):** Centrální mozek systému. Přijímá data přes RS-485 od jednotlivých boxů.
 4. **Mongoose MQTT (TLS):** Master Node využívá knihovnu Mongoose pro bezpečné odeslání agregovaných dat přes internet k MQTT brokeru za použití TLS šifrování.
 5. **Cloud Broker:** Zprostředkovatel zpráv (např. HiveMQ Cloud nebo lokální Mosquitto).
@@ -42,7 +42,7 @@ Systém je navržen pro modularitu a stabilitu komunikace. Skládá se z několi
 - **Raspberry Pi RP2040:** Cenově dostupné a spolehlivé mikrokontroléry pro jednotlivé podřízené uzly (Sensor Nodes).
 - **SHT4x:** Digitální senzory pro měření teploty a relativní vlhkosti uvnitř filamentových boxů.
 - **HX711:** 24bitový A/D převodník a tenzometry pro přesné měření hmotnosti a úbytku filamentu.
-- **RS-485 Transceivery:** Čipy pro obousměrnou komunikaci bez ohledu na rušení a vzdálenost vodičů.
+- **CAN-BUS Transceivery:** Čipy pro obousměrnou komunikaci bez ohledu na rušení a vzdálenost vodičů.
 
 ---
 
