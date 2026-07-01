@@ -19,7 +19,7 @@ Systém je navržen pro modularitu a stabilitu komunikace. Skládá se z několi
 
 1. **Sensor Nodes (RP2040):** Každý sušicí box obsahuje vlastní mikrokontrolér, který sbírá data z lokálních senzorů a stará se o topná tělesa.
 2. **CAN Sběrnice:** Industriální drátová komunikace propojuje všechny Sensor Nody.
-3. **Master Node (RP2350):** Centrální mozek systému. Přijímá data přes RS-485 od jednotlivých boxů.
+3. **Master Node (RP2350):** Centrální mozek systému. Přijímá data přes CAN od jednotlivých boxů.
 4. **Mongoose MQTT (TLS):** Master Node využívá knihovnu Mongoose pro bezpečné odeslání agregovaných dat přes internet k MQTT brokeru za použití TLS šifrování.
 5. **Cloud Broker:** Zprostředkovatel zpráv (např. HiveMQ Cloud nebo lokální Mosquitto).
 6. **Frontend (GitHub Pages):** Koncový klient přistupující k datům přes Secure WebSockets (wss) a vizualizující je v reálném čase.
