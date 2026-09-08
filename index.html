@@ -123,12 +123,14 @@
 
     <!-- Šablona pro Drybox Kartu (Zůstává skrytá v DOMu, slouží jen pro klonování) -->
     <template id="dryboxTemplate">
-        <div class="drybox-card bg-cardBg rounded-2xl p-5 sm:p-6 shadow-xl border border-slate-700 flex flex-col gap-5 relative overflow-hidden transition-all hover:border-slate-600">
+        <div class="drybox-card bg-cardBg rounded-2xl p-5 sm:p-6 shadow-xl border border-slate-700 flex flex-col gap-5 relative transition-all hover:border-slate-600">
             <!-- Odlesk / Gradient efekt na pozadí karty -->
-            <div class="absolute -top-24 -right-24 w-48 h-48 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute inset-0 rounded-2xl overflow-hidden pointer-events-none">
+                <div class="absolute -top-24 -right-24 w-48 h-48 bg-blue-500/10 rounded-full blur-3xl"></div>
+            </div>
 
             <!-- Hlavička karty s ID, statusem a typem materiálu -->
-            <div class="flex justify-between items-start z-10">
+            <div class="flex justify-between items-start relative z-30">
                 <div>
                     <h3 class="text-xl font-bold text-white flex items-center gap-2">
                         Box <span class="box-id text-blue-400 bg-blue-500/10 px-2 py-0.5 rounded-md border border-blue-500/20">?</span>
@@ -139,7 +141,7 @@
                     </div>
                 </div>
                 <!-- Výběr materiálu s dropdown menu -->
-                <div class="relative z-30">
+                <div class="relative z-40">
                     <button type="button" class="box-type-btn bg-slate-900 hover:bg-slate-800 px-3 py-1.5 rounded-lg border border-slate-700 hover:border-slate-500 text-sm font-bold tracking-wide text-slate-300 hover:text-white shadow-inner flex items-center gap-1.5 transition-all cursor-pointer group" title="Změnit typ materiálu">
                         <span class="box-type">---</span>
                         <svg class="w-3.5 h-3.5 text-slate-500 group-hover:text-slate-300 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -147,7 +149,7 @@
                         </svg>
                     </button>
                     <!-- Dropdown nabídka materiálů -->
-                    <div class="material-dropdown hidden absolute right-0 mt-2 w-36 bg-slate-900/95 backdrop-blur-md border border-slate-700 rounded-xl shadow-2xl py-1 z-50 overflow-hidden">
+                    <div class="material-dropdown hidden absolute right-0 mt-2 w-36 bg-slate-900 border border-slate-700 rounded-xl shadow-2xl py-1 z-50 overflow-hidden">
                         <div class="text-[10px] uppercase font-bold text-slate-500 px-3 py-1 border-b border-slate-800 tracking-wider">Materiál</div>
                         <div class="max-h-48 overflow-y-auto py-1">
                             <button type="button" class="mat-opt w-full text-left px-3 py-1.5 text-xs font-semibold text-slate-300 hover:text-white hover:bg-blue-600/20 flex items-center justify-between transition-colors cursor-pointer" data-mat="PLA">PLA</button>
@@ -165,7 +167,7 @@
             </div>
 
             <!-- Hlavní sekce metrik (Váha velkým, Teplota a Vlhkost vedle) -->
-            <div class="grid grid-cols-2 gap-4 z-10">
+            <div class="grid grid-cols-2 gap-4 relative z-10">
                 <!-- Váha -->
                 <div class="bg-slate-900 p-4 rounded-xl border border-slate-700/50 shadow-inner flex flex-col justify-center">
                     <div class="text-xs text-slate-500 uppercase font-bold tracking-wider mb-1">Váha</div>
