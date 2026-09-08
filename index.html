@@ -138,8 +138,24 @@
                         <span class="box-status capitalize">Čeká na data</span>
                     </div>
                 </div>
-                <div class="bg-slate-900 px-3 py-1.5 rounded-lg border border-slate-700 text-sm font-bold tracking-wide text-slate-300 box-type shadow-inner">
-                    ---
+                <!-- Výběr materiálu přes stylovaný Select -->
+                <div class="relative z-30">
+                    <select class="box-type-select bg-slate-900 hover:bg-slate-800 text-slate-200 hover:text-white font-bold tracking-wide text-xs sm:text-sm px-3 py-1.5 pr-7 rounded-lg border border-slate-700 hover:border-slate-500 appearance-none cursor-pointer focus:outline-none focus:ring-1 focus:ring-blue-500 shadow-inner transition-all" title="Změnit typ materiálu">
+                        <option value="PLA" class="bg-slate-900 text-slate-200">PLA</option>
+                        <option value="PETG" class="bg-slate-900 text-slate-200">PETG</option>
+                        <option value="ABS" class="bg-slate-900 text-slate-200">ABS</option>
+                        <option value="ASA" class="bg-slate-900 text-slate-200">ASA</option>
+                        <option value="TPU" class="bg-slate-900 text-slate-200">TPU</option>
+                        <option value="PA (Nylon)" class="bg-slate-900 text-slate-200">PA (Nylon)</option>
+                        <option value="PC" class="bg-slate-900 text-slate-200">PC</option>
+                        <option value="PVA" class="bg-slate-900 text-slate-200">PVA</option>
+                        <option value="HIPS" class="bg-slate-900 text-slate-200">HIPS</option>
+                    </select>
+                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2 text-slate-400">
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </div>
                 </div>
             </div>
 
@@ -352,6 +368,23 @@
             console.log(`Příkaz odeslán -> Topic: ${cmdTopic}, Data: ${payload}`);
         }
 
+        function sendSetMaterialCommand(boxId, material) {
+            if (activeBoxes[boxId] && activeBoxes[boxId].elements.typeSelect) {
+                activeBoxes[boxId].elements.typeSelect.value = material;
+            }
+
+            if (!mqttClient || !mqttClient.connected) {
+                console.warn("MQTT je odpojeno, typ materiálu změněn pouze lokálně.");
+                return;
+            }
+            
+            const cmdTopic = document.getElementById('mqttCmdTopic').value || 'drybox/commands';
+            const payload = JSON.stringify({ cmd: "set_material", id: boxId, type: material });
+            
+            mqttClient.publish(cmdTopic, payload);
+            console.log(`Příkaz změny materiálu odeslán -> Topic: ${cmdTopic}, Data: ${payload}`);
+        }
+
         // ==========================================
         // 3. Dynamické Vykreslování a Logika Dat
         // ==========================================
@@ -371,7 +404,20 @@
             ui.weight.innerText = typeof data.weight === 'number' ? data.weight.toFixed(1) : (data.weight || '0.0');
             ui.temp.innerText = typeof data.temp === 'number' ? data.temp.toFixed(1) : (data.temp || '0.0');
             ui.hum.innerText = typeof data.hum === 'number' ? data.hum.toFixed(1) : (data.hum || '0.0');
-            ui.type.innerText = data.type || 'N/A';
+            
+            // Aktualizace výběru materiálu
+            if (ui.typeSelect && data.type) {
+                const targetType = data.type.trim();
+                let exists = Array.from(ui.typeSelect.options).some(opt => opt.value.toLowerCase() === targetType.toLowerCase());
+                if (!exists) {
+                    const opt = document.createElement('option');
+                    opt.value = targetType;
+                    opt.innerText = targetType;
+                    opt.className = 'bg-slate-900 text-slate-200';
+                    ui.typeSelect.appendChild(opt);
+                }
+                ui.typeSelect.value = targetType;
+            }
             
             // 2. Aktualizace vizuálního stavu (status)
             const statusText = data.status || 'unknown';
@@ -426,7 +472,7 @@
                 id: clone.querySelector('.box-id'),
                 status: clone.querySelector('.box-status'),
                 statusDot: clone.querySelector('.box-status-dot'),
-                type: clone.querySelector('.box-type'),
+                typeSelect: clone.querySelector('.box-type-select'),
                 weight: clone.querySelector('.box-weight'),
                 temp: clone.querySelector('.box-temp'),
                 hum: clone.querySelector('.box-hum'),
@@ -436,6 +482,14 @@
 
             // Nastavení ID
             elements.id.innerText = id;
+
+            // Změna materiálu uživatelem přes select
+            if (elements.typeSelect) {
+                elements.typeSelect.addEventListener('change', (e) => {
+                    const newMaterial = e.target.value;
+                    sendSetMaterialCommand(id, newMaterial);
+                });
+            }
 
             // Bindování tlačítka pro tento konkrétní box
             elements.stopBtn.addEventListener('click', () => {
