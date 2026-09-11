@@ -8867,6 +8867,127 @@
 			)
 		)
 	)
+	(symbol
+		(lib_id "Connector_Generic:Conn_01x04")
+		(at 180.34 165.1 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "a1b2c3d4-e5f6-4789-a001-000000000005")
+		(property "Reference" "J5"
+			(at 180.34 158.75 0)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Value" "SHT40_I2C"
+			(at 180.34 161.29 0)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical"
+			(at 180.34 165.1 0)
+			(effects (font (size 1.27 1.27)) (hide yes))
+		)
+		(pin "1" (uuid "a1b2c3d4-e5f6-4789-a001-000000000051"))
+		(pin "2" (uuid "a1b2c3d4-e5f6-4789-a001-000000000052"))
+		(pin "3" (uuid "a1b2c3d4-e5f6-4789-a001-000000000053"))
+		(pin "4" (uuid "a1b2c3d4-e5f6-4789-a001-000000000054"))
+		(instances
+			(project "susicka_filamentu"
+				(path "/202a5452-a4a8-46b1-91e1-aa7f241e9adc" (page "1"))
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector_Generic:Conn_01x04")
+		(at 210.82 165.1 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "a1b2c3d4-e5f6-4789-a002-000000000006")
+		(property "Reference" "J6"
+			(at 210.82 158.75 0)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Value" "HX711_Weight"
+			(at 210.82 161.29 0)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical"
+			(at 210.82 165.1 0)
+			(effects (font (size 1.27 1.27)) (hide yes))
+		)
+		(pin "1" (uuid "a1b2c3d4-e5f6-4789-a002-000000000061"))
+		(pin "2" (uuid "a1b2c3d4-e5f6-4789-a002-000000000062"))
+		(pin "3" (uuid "a1b2c3d4-e5f6-4789-a002-000000000063"))
+		(pin "4" (uuid "a1b2c3d4-e5f6-4789-a002-000000000064"))
+		(instances
+			(project "susicka_filamentu"
+				(path "/202a5452-a4a8-46b1-91e1-aa7f241e9adc" (page "1"))
+			)
+		)
+	)
+	(symbol
+		(lib_id "Transistor_FET:Q_NMOS_GSD")
+		(at 245.11 165.1 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "a1b2c3d4-e5f6-4789-a003-000000000001")
+		(property "Reference" "Q1"
+			(at 245.11 158.75 0)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Value" "AO3400A"
+			(at 245.11 161.29 0)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+			(at 245.11 165.1 0)
+			(effects (font (size 1.27 1.27)) (hide yes))
+		)
+		(pin "1" (uuid "a1b2c3d4-e5f6-4789-a003-000000000011"))
+		(pin "2" (uuid "a1b2c3d4-e5f6-4789-a003-000000000012"))
+		(pin "3" (uuid "a1b2c3d4-e5f6-4789-a003-000000000013"))
+		(instances
+			(project "susicka_filamentu"
+				(path "/202a5452-a4a8-46b1-91e1-aa7f241e9adc" (page "1"))
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector_Generic:Conn_01x02")
+		(at 275.6 165.1 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "a1b2c3d4-e5f6-4789-a004-000000000007")
+		(property "Reference" "J7"
+			(at 275.6 158.75 0)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Value" "Heater_Output"
+			(at 275.6 161.29 0)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Footprint" "TerminalBlock_Phoenix:TerminalBlock_Phoenix_MKDS-1,5-2_1x02_P5.00mm_Horizontal"
+			(at 275.6 165.1 0)
+			(effects (font (size 1.27 1.27)) (hide yes))
+		)
+		(pin "1" (uuid "a1b2c3d4-e5f6-4789-a004-000000000071"))
+		(pin "2" (uuid "a1b2c3d4-e5f6-4789-a004-000000000072"))
+		(instances
+			(project "susicka_filamentu"
+				(path "/202a5452-a4a8-46b1-91e1-aa7f241e9adc" (page "1"))
+			)
+		)
+	)
 	(sheet_instances
 		(path "/"
 			(page "1")
