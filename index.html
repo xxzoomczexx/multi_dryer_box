@@ -85,7 +85,7 @@
             <div class="space-y-4">
                 <div>
                     <label class="block text-sm font-medium text-slate-300 mb-1.5">Broker URL (Secure WebSocket)</label>
-                    <input type="text" id="mqttBroker" placeholder="wss://broker.hivemq.com:8884/mqtt" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all">
+                    <input type="text" id="mqttBroker" placeholder="wss://test.mosquitto.org:8081/mqtt" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all">
                     <p class="text-xs text-slate-500 mt-1">Musí začínat na wss:// pro bezpečné spojení</p>
                 </div>
                 <div>
@@ -257,7 +257,7 @@
 
         function loadSettings() {
             // Načtení z localStorage nebo výchozí hodnoty
-            document.getElementById('mqttBroker').value = localStorage.getItem('mqttBroker') || 'wss://broker.hivemq.com:8884/mqtt';
+            document.getElementById('mqttBroker').value = localStorage.getItem('mqttBroker') || 'wss://test.mosquitto.org:8081/mqtt';
             document.getElementById('mqttTopic').value = localStorage.getItem('mqttTopic') || 'drybox/status/#';
             document.getElementById('mqttCmdTopic').value = localStorage.getItem('mqttCmdTopic') || 'drybox/commands';
             document.getElementById('mqttUser').value = localStorage.getItem('mqttUser') || '';
