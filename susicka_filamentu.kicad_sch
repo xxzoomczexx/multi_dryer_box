@@ -9041,5 +9041,5 @@
 			(page "1")
 		)
 	)
-	embedded_fonts no
+	(embedded_fonts no)
 )
