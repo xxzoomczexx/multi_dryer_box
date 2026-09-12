@@ -1,0 +1,610 @@
+** Drc report for susicka_filamentu.kicad_pcb **
+** Created on 2026-09-12T02:53:29+0200 **
+
+** Found 14 DRC violations **
+[clearance]: Izolační mezera porušení (netclass 'Default' izolační mezera 0,1270 mm; aktuální 0,0800 mm)
+    Pravidlo: netclass 'Default'; error
+    @(119,0000 mm, 37,6200 mm): PTH ploška 4 [Net-(J3-Pin_4)] na J3
+    @(119,0000 mm, 39,0500 mm): Ploška 2 [GND] z C8 na F.Cu
+[courtyards_overlap]: Překrytí blízkého okolí
+    Pravidlo: board setup constraints courtyard; error
+    @(119,0000 mm, 30,0000 mm): Pouzdro J3
+    @(119,0000 mm, 40,0000 mm): Pouzdro C8
+[drill_out_of_range]: Hole size out of range (omezení nastavení desky min hole 0,3000 mm; actual 0,2125 mm)
+    Pravidlo: board setup constraints; error
+    @(94,1500 mm, 19,1500 mm): PTH ploška 61 [GND] na U1
+[drill_out_of_range]: Hole size out of range (omezení nastavení desky min hole 0,3000 mm; actual 0,2125 mm)
+    Pravidlo: board setup constraints; error
+    @(94,1500 mm, 20,0000 mm): PTH ploška 61 [GND] na U1
+[drill_out_of_range]: Hole size out of range (omezení nastavení desky min hole 0,3000 mm; actual 0,2125 mm)
+    Pravidlo: board setup constraints; error
+    @(94,1500 mm, 20,8500 mm): PTH ploška 61 [GND] na U1
+[drill_out_of_range]: Hole size out of range (omezení nastavení desky min hole 0,3000 mm; actual 0,2125 mm)
+    Pravidlo: board setup constraints; error
+    @(95,0000 mm, 19,1500 mm): PTH ploška 61 [GND] na U1
+[drill_out_of_range]: Hole size out of range (omezení nastavení desky min hole 0,3000 mm; actual 0,2125 mm)
+    Pravidlo: board setup constraints; error
+    @(95,0000 mm, 20,0000 mm): PTH ploška 61 [GND] na U1
+[drill_out_of_range]: Hole size out of range (omezení nastavení desky min hole 0,3000 mm; actual 0,2125 mm)
+    Pravidlo: board setup constraints; error
+    @(95,0000 mm, 20,8500 mm): PTH ploška 61 [GND] na U1
+[drill_out_of_range]: Hole size out of range (omezení nastavení desky min hole 0,3000 mm; actual 0,2125 mm)
+    Pravidlo: board setup constraints; error
+    @(95,8500 mm, 19,1500 mm): PTH ploška 61 [GND] na U1
+[drill_out_of_range]: Hole size out of range (omezení nastavení desky min hole 0,3000 mm; actual 0,2125 mm)
+    Pravidlo: board setup constraints; error
+    @(95,8500 mm, 20,0000 mm): PTH ploška 61 [GND] na U1
+[drill_out_of_range]: Hole size out of range (omezení nastavení desky min hole 0,3000 mm; actual 0,2125 mm)
+    Pravidlo: board setup constraints; error
+    @(95,8500 mm, 20,8500 mm): PTH ploška 61 [GND] na U1
+[isolated_copper]: Izolovaná měděná výplň
+    Místní přepsání; warning
+    @(0,0000 mm, 0,0000 mm): Zone [GND] na In1.Cu, priority 0
+[isolated_copper]: Izolovaná měděná výplň
+    Místní přepsání; warning
+    @(0,0000 mm, 0,0000 mm): Zone [+3V3] na In2.Cu, priority 0
+[silk_over_copper]: Potisk oříznutý pájecí maskou
+    Místní přepsání; warning
+    @(117,6200 mm, 39,0000 mm): Segment of J3 on F.Silkscreen
+
+** Found 139 unconnected pads **
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(94,0500 mm, 10,0000 mm): Ploška 1 [+1V1] z C16 na F.Cu
+    @(96,2000 mm, 16,5625 mm): Ploška 50 [+1V1] z U1 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(94,0500 mm, 70,0000 mm): Ploška 1 [+1V1] z C5 na F.Cu
+    @(95,0000 mm, 61,0625 mm): Ploška 1 [+1V1] z L1 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(95,0000 mm, 23,4375 mm): Ploška 23 [+1V1] z U1 na F.Cu
+    @(98,4375 mm, 19,6000 mm): Ploška 39 [+1V1] z U1 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(95,0000 mm, 23,4375 mm): Ploška 23 [+1V1] z U1 na F.Cu
+    @(95,0000 mm, 61,0625 mm): Ploška 1 [+1V1] z L1 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(96,2000 mm, 16,5625 mm): Ploška 50 [+1V1] z U1 na F.Cu
+    @(91,5625 mm, 19,2000 mm): Ploška 6 [+1V1] z U1 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(98,4375 mm, 19,6000 mm): Ploška 39 [+1V1] z U1 na F.Cu
+    @(96,2000 mm, 16,5625 mm): Ploška 50 [+1V1] z U1 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(98,4375 mm, 19,6000 mm): Ploška 39 [+1V1] z U1 na F.Cu
+    @(143,0000 mm, 20,9500 mm): Ploška 1 [+1V1] z C15 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(178,0500 mm, 60,0000 mm): Ploška 1 [+1V1] z C17 na F.Cu
+    @(143,0000 mm, 20,9500 mm): Ploška 1 [+1V1] z C15 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(91,5625 mm, 17,2000 mm): Ploška 1 [+3V3] z U1 na F.Cu
+    @(94,6000 mm, 16,5625 mm): Ploška 54 [+3V3] z U1 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(91,5625 mm, 21,2000 mm): Ploška 11 [+3V3] z U1 na F.Cu
+    @(93,8000 mm, 23,4375 mm): Ploška 20 [+3V3] z U1 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(93,8000 mm, 23,4375 mm): Ploška 20 [+3V3] z U1 na F.Cu
+    @(94,0500 mm, 30,0000 mm): Ploška 1 [+3V3] z C13 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(94,0500 mm, 30,0000 mm): Ploška 1 [+3V3] z C13 na F.Cu
+    @(93,0950 mm, 36,4125 mm): Ploška 8 [+3V3] z U3 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(94,0500 mm, 50,0000 mm): Ploška 1 [+3V3] z C6 na F.Cu
+    @(107,0000 mm, 50,9500 mm): Ploška 1 [+3V3] z C23 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(95,0000 mm, 16,5625 mm): Ploška 53 [+3V3] z U1 na F.Cu
+    @(94,6000 mm, 16,5625 mm): Ploška 54 [+3V3] z U1 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(96,6000 mm, 16,5625 mm): Ploška 49 [+3V3] z U1 na F.Cu
+    @(95,0000 mm, 16,5625 mm): Ploška 53 [+3V3] z U1 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(97,8000 mm, 23,4375 mm): Ploška 30 [+3V3] z U1 na F.Cu
+    @(98,4375 mm, 20,0000 mm): Ploška 38 [+3V3] z U1 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(97,8000 mm, 23,4375 mm): Ploška 30 [+3V3] z U1 na F.Cu
+    @(93,8000 mm, 23,4375 mm): Ploška 20 [+3V3] z U1 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(97,8000 mm, 23,4375 mm): Ploška 30 [+3V3] z U1 na F.Cu
+    @(106,0500 mm, 30,0000 mm): Ploška 1 [+3V3] z C20 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(98,4375 mm, 17,2000 mm): Ploška 45 [+3V3] z U1 na F.Cu
+    @(96,6000 mm, 16,5625 mm): Ploška 49 [+3V3] z U1 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(98,4375 mm, 17,6000 mm): Ploška 44 [+3V3] z U1 na F.Cu
+    @(98,4375 mm, 17,2000 mm): Ploška 45 [+3V3] z U1 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(98,4375 mm, 20,0000 mm): Ploška 38 [+3V3] z U1 na F.Cu
+    @(98,4375 mm, 17,6000 mm): Ploška 44 [+3V3] z U1 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(106,0500 mm, 30,0000 mm): Ploška 1 [+3V3] z C20 na F.Cu
+    @(111,5000 mm, 27,7500 mm): Ploška 14 [+3V3] z U2 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(107,0000 mm, 40,9500 mm): Ploška 1 [+3V3] z C19 na F.Cu
+    @(107,0000 mm, 50,9500 mm): Ploška 1 [+3V3] z C23 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(107,0000 mm, 40,9500 mm): Ploška 1 [+3V3] z C19 na F.Cu
+    @(106,0500 mm, 30,0000 mm): Ploška 1 [+3V3] z C20 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(111,5000 mm, 27,7500 mm): Ploška 14 [+3V3] z U2 na F.Cu
+    @(113,7500 mm, 24,9500 mm): Ploška 16 [+3V3] z U2 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(119,0000 mm, 40,9500 mm): Ploška 1 [+3V3] z C8 na F.Cu
+    @(119,0000 mm, 50,0000 mm): PTH ploška 1 [+3V3] na J6
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(119,0000 mm, 40,9500 mm): Ploška 1 [+3V3] z C8 na F.Cu
+    @(107,0000 mm, 40,9500 mm): Ploška 1 [+3V3] z C19 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(120,0625 mm, 10,0000 mm): Ploška 2 [+3V3] z L2 na F.Cu
+    @(113,7500 mm, 24,9500 mm): Ploška 16 [+3V3] z U2 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(129,8625 mm, 19,0500 mm): Ploška 1 [+3V3] z U4 na F.Cu
+    @(120,0625 mm, 10,0000 mm): Ploška 2 [+3V3] z L2 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(131,0000 mm, 50,9500 mm): Ploška 1 [+3V3] z C18 na F.Cu
+    @(143,0000 mm, 50,9500 mm): Ploška 1 [+3V3] z C9 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(131,0000 mm, 50,9500 mm): Ploška 1 [+3V3] z C18 na F.Cu
+    @(119,0000 mm, 50,0000 mm): PTH ploška 1 [+3V3] na J6
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(142,0500 mm, 60,0000 mm): Ploška 1 [+3V3] z C12 na F.Cu
+    @(155,0000 mm, 70,9500 mm): Ploška 1 [+3V3] z C11 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(143,0000 mm, 50,9500 mm): Ploška 1 [+3V3] z C9 na F.Cu
+    @(142,0500 mm, 60,0000 mm): Ploška 1 [+3V3] z C12 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(155,0000 mm, 30,9500 mm): Ploška 1 [+3V3] z C10 na F.Cu
+    @(143,0000 mm, 50,9500 mm): Ploška 1 [+3V3] z C9 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(178,0875 mm, 30,0000 mm): Ploška 1 [+3V3] z R7 na F.Cu
+    @(179,0000 mm, 10,9500 mm): Ploška 1 [+3V3] z C24 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(178,0875 mm, 30,0000 mm): Ploška 1 [+3V3] z R7 na F.Cu
+    @(178,0500 mm, 50,0000 mm): Ploška 1 [+3V3] z C14 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(178,0875 mm, 30,0000 mm): Ploška 1 [+3V3] z R7 na F.Cu
+    @(155,0000 mm, 30,9500 mm): Ploška 1 [+3V3] z C10 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(179,0000 mm, 10,9500 mm): Ploška 1 [+3V3] z C24 na F.Cu
+    @(167,9125 mm, 10,0000 mm): Ploška 2 [+3V3] z R10 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(93,0000 mm, 23,4375 mm): Ploška 18 [/GPIO14] z U1 na F.Cu
+    @(131,0000 mm, 30,9125 mm): Ploška 1 [/GPIO14] z R15 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(131,0000 mm, 30,9125 mm): Ploška 1 [/GPIO14] z R15 na F.Cu
+    @(142,0625 mm, 29,0500 mm): Ploška 1 [/GPIO14] z Q1 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(98,4375 mm, 21,2000 mm): Ploška 35 [/RM2/RM2_BT_ON] z U1 na F.Cu
+    @(108,5000 mm, 27,7500 mm): Ploška 12 [/RM2/RM2_BT_ON] z U2 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(108,5000 mm, 27,7500 mm): Ploška 12 [/RM2/RM2_BT_ON] z U2 na F.Cu
+    @(110,0000 mm, 27,7500 mm): Ploška 13 [/RM2/RM2_BT_ON] z U2 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(108,5000 mm, 27,7500 mm): Ploška 12 [/RM2/RM2_BT_ON] z U2 na F.Cu
+    @(106,0875 mm, 70,0000 mm): Ploška 1 [/RM2/RM2_BT_ON] z R11 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(110,0000 mm, 27,7500 mm): Ploška 13 [/RM2/RM2_BT_ON] z U2 na F.Cu
+    @(130,0875 mm, 10,0000 mm): Ploška 1 [/RM2/RM2_BT_ON] z R12 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(98,4375 mm, 20,4000 mm): Ploška 37 [/RM2/RM2_CS] z U1 na F.Cu
+    @(104,0000 mm, 27,7500 mm): Ploška 9 [/RM2/RM2_CS] z U2 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(98,4375 mm, 20,8000 mm): Ploška 36 [/RM2/RM2_DI] z U1 na F.Cu
+    @(100,2500 mm, 23,4500 mm): Ploška 5 [/RM2/RM2_DI] z U2 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(142,0875 mm, 70,0000 mm): Ploška 1 [/RM2/RM2_DI] z R14 na F.Cu
+    @(154,0875 mm, 50,0000 mm): Ploška 1 [/RM2/RM2_DI] z R13 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(154,0875 mm, 50,0000 mm): Ploška 1 [/RM2/RM2_DI] z R13 na F.Cu
+    @(100,2500 mm, 23,4500 mm): Ploška 5 [/RM2/RM2_DI] z U2 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(98,4375 mm, 18,0000 mm): Ploška 43 [/RM2/RM2_SCLK] z U1 na F.Cu
+    @(100,2500 mm, 20,4500 mm): Ploška 3 [/RM2/RM2_SCLK] z U2 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(93,8000 mm, 16,5625 mm): Ploška 56 [/flash/QSPI_SCLK] z U1 na F.Cu
+    @(95,6350 mm, 36,4125 mm): Ploška 6 [/flash/QSPI_SCLK] z U3 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(93,4000 mm, 16,5625 mm): Ploška 57 [/flash/QSPI_SD0] z U1 na F.Cu
+    @(96,9050 mm, 36,4125 mm): Ploška 5 [/flash/QSPI_SD0] z U3 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(92,6000 mm, 16,5625 mm): Ploška 59 [/flash/QSPI_SD1] z U1 na F.Cu
+    @(94,3650 mm, 43,5875 mm): Ploška 2 [/flash/QSPI_SD1] z U3 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(93,0000 mm, 16,5625 mm): Ploška 58 [/flash/QSPI_SD2] z U1 na F.Cu
+    @(95,6350 mm, 43,5875 mm): Ploška 3 [/flash/QSPI_SD2] z U3 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(94,2000 mm, 16,5625 mm): Ploška 55 [/flash/QSPI_SD3] z U1 na F.Cu
+    @(94,3650 mm, 36,4125 mm): Ploška 7 [/flash/QSPI_SD3] z U3 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(92,2000 mm, 16,5625 mm): Ploška 60 [/flash/QSPI_SS] z U1 na F.Cu
+    @(93,0950 mm, 43,5875 mm): Ploška 1 [/flash/QSPI_SS] z U3 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(94,2000 mm, 23,4375 mm): Ploška 21 [/oscillator/XIN] z U1 na F.Cu
+    @(119,0000 mm, 69,0500 mm): Ploška 2 [/oscillator/XIN] z C1 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(119,0000 mm, 69,0500 mm): Ploška 2 [/oscillator/XIN] z C1 na F.Cu
+    @(168,1000 mm, 19,1500 mm): Ploška 3 [/oscillator/XIN] z Y1 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(94,6000 mm, 23,4375 mm): Ploška 22 [/oscillator/XOUT] z U1 na F.Cu
+    @(119,9125 mm, 60,0000 mm): Ploška 2 [/oscillator/XOUT] z R1 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(107,0000 mm, 60,0000 mm): PTH ploška 1 [24V] na J5
+    @(143,0000 mm, 40,9500 mm): Ploška 1 [24V] z C21 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(129,8625 mm, 20,0000 mm): Ploška 2 [24V] z U4 na F.Cu
+    @(129,8625 mm, 20,9500 mm): Ploška 3 [24V] z U4 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(129,8625 mm, 20,9500 mm): Ploška 3 [24V] z U4 na F.Cu
+    @(143,0000 mm, 40,9500 mm): Ploška 1 [24V] z C21 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(143,0000 mm, 40,9500 mm): Ploška 1 [24V] z C21 na F.Cu
+    @(159,3000 mm, 43,0000 mm): PTH ploška 1 [24V] na J4
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(159,3000 mm, 43,0000 mm): PTH ploška 1 [24V] na J4
+    @(167,0000 mm, 32,0000 mm): Ploška 1 [24V] z D2 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(143,9125 mm, 10,0000 mm): Ploška 2 [DM] z R5 na F.Cu
+    @(179,9500 mm, 38,8500 mm): Ploška 4 [DM] z D1 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(107,9125 mm, 10,0000 mm): Ploška 2 [DP] z R4 na F.Cu
+    @(178,0500 mm, 38,8500 mm): Ploška 6 [DP] z D1 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(95,8500 mm, 19,1500 mm): PTH ploška 61 [GND] na U1
+    @(97,4000 mm, 16,5625 mm): Ploška 47 [GND] z U1 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(95,9500 mm, 10,0000 mm): Ploška 2 [GND] z C16 na F.Cu
+    @(97,4000 mm, 16,5625 mm): Ploška 47 [GND] z U1 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(95,9500 mm, 30,0000 mm): Ploška 2 [GND] z C13 na F.Cu
+    @(100,2500 mm, 26,4500 mm): Ploška 7 [GND] z U2 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(95,9500 mm, 70,0000 mm): Ploška 2 [GND] z C5 na F.Cu
+    @(107,9125 mm, 70,0000 mm): Ploška 2 [GND] z R11 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(96,9050 mm, 43,5875 mm): Ploška 4 [GND] z U3 na F.Cu
+    @(95,9500 mm, 50,0000 mm): Ploška 2 [GND] z C6 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(96,9050 mm, 43,5875 mm): Ploška 4 [GND] z U3 na F.Cu
+    @(107,0000 mm, 39,0500 mm): Ploška 2 [GND] z C19 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(97,4000 mm, 16,5625 mm): Ploška 47 [GND] z U1 na F.Cu
+    @(100,2500 mm, 17,4500 mm): Ploška 1 [GND] z U2 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(100,2500 mm, 17,4500 mm): Ploška 1 [GND] z U2 na F.Cu
+    @(100,2500 mm, 21,9500 mm): Ploška 4 [GND] z U2 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(100,2500 mm, 26,4500 mm): Ploška 7 [GND] z U2 na F.Cu
+    @(100,2500 mm, 21,9500 mm): Ploška 4 [GND] z U2 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(107,0000 mm, 27,7500 mm): Ploška 11 [GND] z U2 na F.Cu
+    @(100,2500 mm, 26,4500 mm): Ploška 7 [GND] z U2 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(107,0000 mm, 39,0500 mm): Ploška 2 [GND] z C19 na F.Cu
+    @(107,9500 mm, 30,0000 mm): Ploška 2 [GND] z C20 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(107,0000 mm, 49,0500 mm): Ploška 2 [GND] z C23 na F.Cu
+    @(116,4600 mm, 50,0000 mm): PTH ploška 2 [GND] na J6
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(107,0000 mm, 49,0500 mm): Ploška 2 [GND] z C23 na F.Cu
+    @(107,0000 mm, 39,0500 mm): Ploška 2 [GND] z C19 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(107,9500 mm, 30,0000 mm): Ploška 2 [GND] z C20 na F.Cu
+    @(107,0000 mm, 27,7500 mm): Ploška 11 [GND] z U2 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(107,9500 mm, 30,0000 mm): Ploška 2 [GND] z C20 na F.Cu
+    @(113,7500 mm, 26,4500 mm): Ploška 15 [GND] z U2 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(113,7500 mm, 26,4500 mm): Ploška 15 [GND] z U2 na F.Cu
+    @(113,7500 mm, 17,4500 mm): Ploška 21 [GND] z U2 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(113,7500 mm, 26,4500 mm): Ploška 15 [GND] z U2 na F.Cu
+    @(119,0000 mm, 35,0800 mm): PTH ploška 3 [GND] na J3
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(119,0000 mm, 35,0800 mm): PTH ploška 3 [GND] na J3
+    @(119,0000 mm, 39,0500 mm): Ploška 2 [GND] z C8 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(119,0000 mm, 70,9500 mm): Ploška 1 [GND] z C1 na F.Cu
+    @(107,9125 mm, 70,0000 mm): Ploška 2 [GND] z R11 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(119,0000 mm, 70,9500 mm): Ploška 1 [GND] z C1 na F.Cu
+    @(131,0000 mm, 69,0875 mm): Ploška 2 [GND] z R2 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(131,0000 mm, 29,0875 mm): Ploška 2 [GND] z R15 na F.Cu
+    @(132,1375 mm, 20,9500 mm): Ploška 4 [GND] z U4 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(131,0000 mm, 29,0875 mm): Ploška 2 [GND] z R15 na F.Cu
+    @(131,0000 mm, 40,9500 mm): Ploška 1 [GND] z C2 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(131,0000 mm, 40,9500 mm): Ploška 1 [GND] z C2 na F.Cu
+    @(119,0000 mm, 39,0500 mm): Ploška 2 [GND] z C8 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(131,0000 mm, 49,0500 mm): Ploška 2 [GND] z C18 na F.Cu
+    @(131,0000 mm, 40,9500 mm): Ploška 1 [GND] z C2 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(131,9125 mm, 10,0000 mm): Ploška 2 [GND] z R12 na F.Cu
+    @(132,1375 mm, 20,9500 mm): Ploška 4 [GND] z U4 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(132,1375 mm, 20,9500 mm): Ploška 4 [GND] z U4 na F.Cu
+    @(143,0000 mm, 19,0500 mm): Ploška 2 [GND] z C15 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(136,0800 mm, 60,0000 mm): PTH ploška 3 [GND] na J2
+    @(143,9500 mm, 60,0000 mm): Ploška 2 [GND] z C12 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(136,0800 mm, 60,0000 mm): PTH ploška 3 [GND] na J2
+    @(131,0000 mm, 69,0875 mm): Ploška 2 [GND] z R2 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(142,0625 mm, 30,9500 mm): Ploška 2 [GND] z Q1 na F.Cu
+    @(143,0000 mm, 39,0500 mm): Ploška 2 [GND] z C21 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(142,0625 mm, 30,9500 mm): Ploška 2 [GND] z Q1 na F.Cu
+    @(131,0000 mm, 29,0875 mm): Ploška 2 [GND] z R15 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(143,0000 mm, 39,0500 mm): Ploška 2 [GND] z C21 na F.Cu
+    @(154,6000 mm, 40,0000 mm): PTH ploška 3 [GND] na J4
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(143,0000 mm, 49,0500 mm): Ploška 2 [GND] z C9 na F.Cu
+    @(143,0000 mm, 39,0500 mm): Ploška 2 [GND] z C21 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(143,0000 mm, 49,0500 mm): Ploška 2 [GND] z C9 na F.Cu
+    @(143,9500 mm, 60,0000 mm): Ploška 2 [GND] z C12 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(155,0000 mm, 29,0500 mm): Ploška 2 [GND] z C10 na F.Cu
+    @(155,0000 mm, 20,0000 mm): PTH ploška 1 [GND] na J7
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(155,0000 mm, 69,0500 mm): Ploška 2 [GND] z C11 na F.Cu
+    @(155,9125 mm, 60,0000 mm): Ploška 2 [GND] z R6 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(155,9125 mm, 60,0000 mm): Ploška 2 [GND] z R6 na F.Cu
+    @(143,9500 mm, 60,0000 mm): Ploška 2 [GND] z C12 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(159,3000 mm, 37,0000 mm): PTH ploška 2 [GND] na J4
+    @(154,6000 mm, 40,0000 mm): PTH ploška 3 [GND] na J4
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(159,3000 mm, 37,0000 mm): PTH ploška 2 [GND] na J4
+    @(155,0000 mm, 29,0500 mm): Ploška 2 [GND] z C10 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(165,9000 mm, 19,1500 mm): Ploška 4 [GND] z Y1 na F.Cu
+    @(168,1000 mm, 20,8500 mm): Ploška 2 [GND] z Y1 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(165,9000 mm, 19,1500 mm): Ploška 4 [GND] z Y1 na F.Cu
+    @(155,0000 mm, 20,0000 mm): PTH ploška 1 [GND] na J7
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(167,0000 mm, 50,9500 mm): Ploška 1 [GND] z C7 na F.Cu
+    @(167,9500 mm, 40,0000 mm): Ploška 2 [GND] z C4 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(167,9500 mm, 40,0000 mm): Ploška 2 [GND] z C4 na F.Cu
+    @(159,3000 mm, 37,0000 mm): PTH ploška 2 [GND] na J4
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(167,9500 mm, 60,0000 mm): Ploška 2 [GND] z C3 na F.Cu
+    @(167,0000 mm, 50,9500 mm): Ploška 1 [GND] z C7 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(168,1000 mm, 20,8500 mm): Ploška 2 [GND] z Y1 na F.Cu
+    @(179,0000 mm, 19,0875 mm): Ploška 2 [GND] z R3 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(179,0000 mm, 19,0875 mm): Ploška 2 [GND] z R3 na F.Cu
+    @(179,0000 mm, 9,0500 mm): Ploška 2 [GND] z C24 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(179,0000 mm, 41,1500 mm): Ploška 2 [GND] z D1 na F.Cu
+    @(167,9500 mm, 40,0000 mm): Ploška 2 [GND] z C4 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(179,9500 mm, 50,0000 mm): Ploška 2 [GND] z C14 na F.Cu
+    @(179,0000 mm, 41,1500 mm): Ploška 2 [GND] z D1 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(179,9500 mm, 60,0000 mm): Ploška 2 [GND] z C17 na F.Cu
+    @(179,9500 mm, 50,0000 mm): Ploška 2 [GND] z C14 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(131,0000 mm, 39,0500 mm): Ploška 2 [Net-(C2-Pad2)] z C2 na F.Cu
+    @(118,0875 mm, 60,0000 mm): Ploška 1 [Net-(C2-Pad2)] z R1 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(165,9000 mm, 20,8500 mm): Ploška 1 [Net-(C2-Pad2)] z Y1 na F.Cu
+    @(131,0000 mm, 39,0500 mm): Ploška 2 [Net-(C2-Pad2)] z C2 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(154,0875 mm, 60,0000 mm): Ploška 1 [Net-(J1-SHIELD)] z R6 na F.Cu
+    @(166,0500 mm, 60,0000 mm): Ploška 1 [Net-(J1-SHIELD)] z C3 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(131,0000 mm, 60,0000 mm): PTH ploška 1 [Net-(J2-Pin_1)] na J2
+    @(167,9125 mm, 70,0000 mm): Ploška 2 [Net-(J2-Pin_1)] z R8 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(133,5400 mm, 60,0000 mm): PTH ploška 2 [Net-(J2-Pin_2)] na J2
+    @(155,9125 mm, 10,0000 mm): Ploška 2 [Net-(J2-Pin_2)] z R9 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(96,2000 mm, 23,4375 mm): Ploška 26 [Net-(J3-Pin_4)] z U1 na F.Cu
+    @(119,0000 mm, 37,6200 mm): PTH ploška 4 [Net-(J3-Pin_4)] na J3
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(119,0000 mm, 37,6200 mm): PTH ploška 4 [Net-(J3-Pin_4)] na J3
+    @(167,0000 mm, 49,0500 mm): Ploška 2 [Net-(J3-Pin_4)] z C7 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(167,0000 mm, 49,0500 mm): Ploška 2 [Net-(J3-Pin_4)] z C7 na F.Cu
+    @(166,0875 mm, 10,0000 mm): Ploška 1 [Net-(J3-Pin_4)] z R10 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(143,9375 mm, 30,0000 mm): Ploška 3 [Net-(J5-Pin_2)] z Q1 na F.Cu
+    @(107,0000 mm, 65,0000 mm): PTH ploška 2 [Net-(J5-Pin_2)] na J5
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(167,0000 mm, 28,0000 mm): Ploška 2 [Net-(J5-Pin_2)] z D2 na F.Cu
+    @(143,9375 mm, 30,0000 mm): Ploška 3 [Net-(J5-Pin_2)] z Q1 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(91,5625 mm, 18,4000 mm): Ploška 4 [Net-(J6-Pin_3)] z U1 na F.Cu
+    @(113,9200 mm, 50,0000 mm): PTH ploška 3 [Net-(J6-Pin_3)] na J6
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(91,5625 mm, 18,8000 mm): Ploška 5 [Net-(J6-Pin_4)] z U1 na F.Cu
+    @(111,3800 mm, 50,0000 mm): PTH ploška 4 [Net-(J6-Pin_4)] na J6
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(91,5625 mm, 19,6000 mm): Ploška 7 [Net-(J7-Pin_3)] z U1 na F.Cu
+    @(149,9200 mm, 20,0000 mm): PTH ploška 3 [Net-(J7-Pin_3)] na J7
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(91,5625 mm, 20,0000 mm): Ploška 8 [Net-(J7-Pin_4)] z U1 na F.Cu
+    @(147,3800 mm, 20,0000 mm): PTH ploška 4 [Net-(J7-Pin_4)] na J7
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(91,5625 mm, 17,6000 mm): Ploška 2 [Net-(U1-GPIO0)] z U1 na F.Cu
+    @(166,0875 mm, 70,0000 mm): Ploška 1 [Net-(U1-GPIO0)] z R8 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(91,5625 mm, 18,0000 mm): Ploška 3 [Net-(U1-GPIO1)] z U1 na F.Cu
+    @(154,0875 mm, 10,0000 mm): Ploška 1 [Net-(U1-GPIO1)] z R9 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(97,8000 mm, 16,5625 mm): Ploška 46 [Net-(U1-VREG_AVDD)] z U1 na F.Cu
+    @(166,0500 mm, 40,0000 mm): Ploška 1 [Net-(U1-VREG_AVDD)] z C4 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(166,0500 mm, 40,0000 mm): Ploška 1 [Net-(U1-VREG_AVDD)] z C4 na F.Cu
+    @(179,9125 mm, 30,0000 mm): Ploška 2 [Net-(U1-VREG_AVDD)] z R7 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(95,0000 mm, 58,9375 mm): Ploška 2 [Net-(U1-VREG_LX)] z L1 na F.Cu
+    @(97,0000 mm, 16,5625 mm): Ploška 48 [Net-(U1-VREG_LX)] z U1 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(100,2500 mm, 24,9500 mm): Ploška 6 [Net-(U2-DO)] z U2 na F.Cu
+    @(143,9125 mm, 70,0000 mm): Ploška 2 [Net-(U2-DO)] z R14 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(105,5000 mm, 27,7500 mm): Ploška 10 [Net-(U2-nIRQ)] z U2 na F.Cu
+    @(155,9125 mm, 50,0000 mm): Ploška 2 [Net-(U2-nIRQ)] z R13 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(119,9500 mm, 20,0000 mm): Ploška 2 [Net-(U4-BST)] z C22 na F.Cu
+    @(132,1375 mm, 19,0500 mm): Ploška 6 [Net-(U4-BST)] z U4 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(117,9375 mm, 10,0000 mm): Ploška 1 [Net-(U4-SW)] z L2 na F.Cu
+    @(118,0500 mm, 20,0000 mm): Ploška 1 [Net-(U4-SW)] z C22 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(118,0500 mm, 20,0000 mm): Ploška 1 [Net-(U4-SW)] z C22 na F.Cu
+    @(132,1375 mm, 20,0000 mm): Ploška 5 [Net-(U4-SW)] z U4 na F.Cu
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(95,4000 mm, 23,4375 mm): Ploška 24 [SWCLK] z U1 na F.Cu
+    @(119,0000 mm, 32,5400 mm): PTH ploška 2 [SWCLK] na J3
+[unconnected_items]: Chybějící spojení mezi položkami
+    Místní přepsání; error
+    @(95,8000 mm, 23,4375 mm): Ploška 25 [SWDIO] z U1 na F.Cu
+    @(119,0000 mm, 30,0000 mm): PTH ploška 1 [SWDIO] na J3
+
+** Found 0 Footprint errors **
+
+** End of Report **
