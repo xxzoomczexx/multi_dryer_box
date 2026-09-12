@@ -3982,12 +3982,6 @@
 		(uuid "aaf81594-124d-4441-b09f-dca1dd4bb830")
 	)
 	(junction
-		(at 247.65 72.39)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "ad130dc1-6a0d-4518-b6dc-1f1989cfe83b")
-	)
-	(junction
 		(at 222.25 124.46)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -4314,16 +4308,6 @@
 			(type default)
 		)
 		(uuid "1c0d3263-8038-488e-afef-564936cf5df0")
-	)
-	(wire
-		(pts
-			(xy 247.65 72.39) (xy 247.65 71.12)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "1f91fc39-2b0b-44a9-8f4f-10a8e8396007")
 	)
 	(wire
 		(pts
@@ -5647,16 +5631,6 @@
 	)
 	(wire
 		(pts
-			(xy 247.65 74.93) (xy 247.65 72.39)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "d9968cc6-f9da-458b-ad3a-14eab751c232")
-	)
-	(wire
-		(pts
 			(xy 149.86 40.64) (xy 149.86 44.45)
 		)
 		(stroke
@@ -5925,116 +5899,7 @@
 		)
 		(uuid "ffcd08fa-d2ae-484a-b5e4-39abd120f20d")
 	)
-	(label "GPIO4"
-		(at 214.63 73.66 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "b0000001-0000-0000-0000-000000000001")
-	)
-	(label "GPIO5"
-		(at 214.63 76.2 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "b0000001-0000-0000-0000-000000000002")
-	)
-	(label "GPIO2"
-		(at 242.57 73.66 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "b0000001-0000-0000-0000-000000000003")
-	)
-	(label "GPIO3"
-		(at 242.57 76.2 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "b0000001-0000-0000-0000-000000000004")
-	)
-	(label "GPIO14"
-		(at 218.44 95.25 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "b0000001-0000-0000-0000-000000000005")
-	)
-	(label "+3V3"
-		(at 214.63 68.58 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "b0000001-0000-0000-0000-000000000006")
-	)
-	(label "+3V3"
-		(at 242.57 68.58 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "b0000001-0000-0000-0000-000000000007")
-	)
-	(label "GND"
-		(at 214.63 71.12 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "b0000001-0000-0000-0000-000000000008")
-	)
-	(label "GND"
-		(at 242.57 71.12 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "b0000001-0000-0000-0000-000000000009")
-	)
-	(label "GND"
-		(at 226.06 100.33 270)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "b0000001-0000-0000-0000-000000000010")
-	)
-	(label "12V"
-		(at 236.22 82.55 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "b0000001-0000-0000-0000-000000000011")
-	)
+	
 	(global_label "DM"
 		(shape input)
 		(at 73.66 39.37 0)
@@ -10944,7 +10809,68 @@
 			)
 		)
 	)
-	(sheet_instances
+	
+	(label "+3V3"
+		(at 214.63 68.58 180)
+		(fields_autoplaced yes)
+		(effects (font (size 1.27 1.27)) (justify right))
+		(uuid "c0000001-0000-0000-0000-000000000001")
+	)
+	(label "GND"
+		(at 214.63 71.12 180)
+		(fields_autoplaced yes)
+		(effects (font (size 1.27 1.27)) (justify right))
+		(uuid "c0000001-0000-0000-0000-000000000002")
+	)
+	(label "GPIO2"
+		(at 214.63 73.66 180)
+		(fields_autoplaced yes)
+		(effects (font (size 1.27 1.27)) (justify right))
+		(uuid "c0000001-0000-0000-0000-000000000003")
+	)
+	(label "GPIO3"
+		(at 214.63 76.20 180)
+		(fields_autoplaced yes)
+		(effects (font (size 1.27 1.27)) (justify right))
+		(uuid "c0000001-0000-0000-0000-000000000004")
+	)
+	(label "+3V3"
+		(at 250.19 71.12 180)
+		(fields_autoplaced yes)
+		(effects (font (size 1.27 1.27)) (justify right))
+		(uuid "c0000001-0000-0000-0000-000000000005")
+	)
+	(label "GND"
+		(at 250.19 73.66 180)
+		(fields_autoplaced yes)
+		(effects (font (size 1.27 1.27)) (justify right))
+		(uuid "c0000001-0000-0000-0000-000000000006")
+	)
+	(label "GPIO4"
+		(at 250.19 76.20 180)
+		(fields_autoplaced yes)
+		(effects (font (size 1.27 1.27)) (justify right))
+		(uuid "c0000001-0000-0000-0000-000000000007")
+	)
+	(label "GPIO5"
+		(at 250.19 78.74 180)
+		(fields_autoplaced yes)
+		(effects (font (size 1.27 1.27)) (justify right))
+		(uuid "c0000001-0000-0000-0000-000000000008")
+	)
+	(label "GPIO14"
+		(at 218.44 95.25 180)
+		(fields_autoplaced yes)
+		(effects (font (size 1.27 1.27)) (justify right))
+		(uuid "c0000001-0000-0000-0000-000000000009")
+	)
+	(label "GND"
+		(at 226.06 100.33 270)
+		(fields_autoplaced yes)
+		(effects (font (size 1.27 1.27)) (justify right))
+		(uuid "c0000001-0000-0000-0000-000000000010")
+	)
+(sheet_instances
 		(path "/"
 			(page "1")
 		)
