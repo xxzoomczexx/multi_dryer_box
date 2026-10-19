@@ -3,4 +3,5 @@
   (lib (name "rpi_rm2")(type "KiCad")(uri "${KIPRJMOD}/rpi_rm2.pretty")(options "")(descr ""))
   (lib (name "rp2350A_QFN60")(type "KiCad")(uri "${KIPRJMOD}/rp2350A_QFN60.pretty")(options "")(descr ""))
   (lib (name "PJ-102AH")(type "KiCad")(uri "${KIPRJMOD}/PJ-102AH.pretty")(options "")(descr ""))
+  (lib (name "susicka")(type "KiCad")(uri "${KIPRJMOD}/susicka.pretty")(options "")(descr "Vlastni footprinty projektu"))
 )

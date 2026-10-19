@@ -1323,7 +1323,7 @@
 			)
 		)
 	)
-	(global_label "24V"
+	(global_label "24V_IN"
 		(shape output)
 		(at 140.97 85.09 0)
 		(fields_autoplaced yes)
@@ -1618,7 +1618,7 @@
 				)
 			)
 		)
-		(property "Value" "3,9 uH"
+		(property "Value" "4,7uH"
 			(at 210.82 73.66 90)
 			(effects
 				(font
@@ -1626,7 +1626,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Inductor_SMD:L_0805_2012Metric"
+		(property "Footprint" "Inductor_SMD:L_Wuerth_MAPI-4020"
 			(at 210.82 76.2 0)
 			(effects
 				(font
@@ -1644,7 +1644,25 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Inductor"
+		(property "Description" "WE-MAPI 4020, 4,7 uH, Irated 2,9 A, DCR 76 mOhm – cívka AP63203 (datasheet 3,9 uH; 4,7 uH jako SparkFun BabyBuck)"
+			(at 210.82 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Würth Elektronik"
+			(at 210.82 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "74438356047"
 			(at 210.82 76.2 0)
 			(effects
 				(font
@@ -1846,7 +1864,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+		(property "Footprint" "Capacitor_SMD:C_1210_3225Metric"
 			(at 166.0652 102.87 0)
 			(effects
 				(font
@@ -1982,7 +2000,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
 			(at 228.2952 101.6 0)
 			(effects
 				(font
@@ -2051,7 +2069,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
 			(at 223.2152 101.6 0)
 			(effects
 				(font

@@ -957,12 +957,6 @@
 		(uuid "2aefea94-6e71-4b85-9af3-cc0a47c1efea")
 	)
 	(junction
-		(at 134.62 120.65)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "5d3b55c8-62b8-47c1-a9e7-0b726a6f894a")
-	)
-	(junction
 		(at 137.16 105.41)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -973,10 +967,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "f7958f39-7879-4600-9199-97360649559e")
-	)
-	(no_connect
-		(at 121.92 102.87)
-		(uuid "0e9fc4e1-4fd7-4203-a753-26610d936f23")
 	)
 	(no_connect
 		(at 148.59 83.82)
@@ -1138,16 +1128,6 @@
 	)
 	(wire
 		(pts
-			(xy 134.62 120.65) (xy 139.7 120.65)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "ae0384a9-3270-442a-a90b-4cfc4353b0b0")
-	)
-	(wire
-		(pts
 			(xy 132.08 102.87) (xy 132.08 116.84)
 		)
 		(stroke
@@ -1165,16 +1145,6 @@
 			(type default)
 		)
 		(uuid "b0a476c3-2db2-4233-b705-ffff2af4255f")
-	)
-	(wire
-		(pts
-			(xy 147.32 120.65) (xy 152.4 120.65)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "b2f78dcf-a8b7-4631-ab0f-c868078240d8")
 	)
 	(wire
 		(pts
@@ -1312,73 +1282,6 @@
 			(justify right)
 		)
 		(uuid "f567c9b9-f23d-41ab-98ca-343010056d3b")
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 152.4 120.65 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "056a2b7a-5062-4b3a-ae7f-1775305d8de6")
-		(property "Reference" "#PWR032"
-			(at 158.75 120.65 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 156.21 120.6499 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" ""
-			(at 152.4 120.65 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 152.4 120.65 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 152.4 120.65 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "cfe0691f-a524-42f3-95c0-5cb0012b157b")
-		)
-		(instances
-			(project "susicka_filamentu"
-				(path "/202a5452-a4a8-46b1-91e1-aa7f241e9adc/2d41c25d-4508-4be3-abef-357e16c44385"
-					(reference "#PWR032")
-					(unit 1)
-				)
-			)
-		)
 	)
 	(symbol
 		(lib_id "power:GND")
@@ -2174,73 +2077,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:R")
-		(at 143.51 120.65 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "85f03b9f-9fe2-4838-9135-88be3b4ca6a8")
-		(property "Reference" "R12"
-			(at 141.986 123.952 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "10k"
-			(at 141.986 125.73 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 143.51 122.428 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 143.51 120.65 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Resistor"
-			(at 143.51 120.65 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "35681be9-78ec-4924-bfd6-0b3556811917")
-		)
-		(pin "2"
-			(uuid "209610bb-b6c5-426f-8c6d-f50ed82445dd")
-		)
-		(instances
-			(project ""
-				(path "/202a5452-a4a8-46b1-91e1-aa7f241e9adc/2d41c25d-4508-4be3-abef-357e16c44385"
-					(reference "R12")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:GND")
 		(at 153.67 91.44 90)
 		(unit 1)
@@ -2398,7 +2234,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
 			(at 144.78 104.4448 0)
 			(effects
 				(font
@@ -2638,6 +2474,38 @@
 					(reference "#PWR024")
 					(unit 1)
 				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 121.92 102.87) (xy 121.92 105.41)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "612f72fe-1174-4ad7-ac68-8e009b591f03")
+	)
+	(global_label "WL_GPIO0"
+		(shape output)
+		(at 121.92 105.41 270)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "7a89ccb5-b43d-48a8-81fb-693e7aa464e9")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 121.92 105.41 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
 			)
 		)
 	)
