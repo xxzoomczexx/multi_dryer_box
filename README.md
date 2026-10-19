@@ -65,6 +65,7 @@ Oba výstupy mají stejné zapojení a stejnou svorkovnici: **pin 1 = spínaná 
 | **Tepelná pojistka topení** | `J13` svorkovnice 5 mm | 24V → J13 (TCO mimo desku, na tělese topení) → `HEAT_V` → J5 pin 2. D2 zůstává přímo přes topení. |
 | **Lišta GPIO** (list `rozsireni`) | `J12` 2×7, 2,54 mm | 1 = 3V3, 2 a 14 = GND, 3–13 = GP10, GP11, GP16–GP22, GP27, GP28 (přímo z RP2350, bez ochrany) |
 | **Testovací body** (list `rozsireni`) | `TP1`–`TP5` | TP1 24V, TP2 3V3, TP3 1V1 (ploška Ø 1,5 mm), TP4/TP5 GND (drátěné očko pro krokosvorku) |
+| **Testovací body – komunikace** (list `rozsireni`) | `TP6`–`TP19` ploška Ø 1 mm, `TP12` GND očko | TP6/7 SDA/SCL (I2C1), TP8/9 SDA0/SCL0 (I2C0), TP10/11 HX711_DT/SCK (GPIO4/5), TP13/14/15 WL_CLK/WL_CS/WL_DATA (RM2 gSPI, GPIO29/25/24), TP16/17/18 HEAT/FAN/EXH_PWM, TP19 NTC_ADC. Pro logický analyzátor a osciloskop; QSPI flash záměrně bez TP (rychlá, ladí se přes SWD). V layoutu dávat plošky přímo na cestu, bez odboček. |
 | **Montážní otvory** (list `rozsireni`) | `H1`–`H4` M3 | `MountingHole_3.2mm_M3` bez mědi (box z plastu). Pozice podle layoutu; pro uzemnění změnit na `MountingHole_3.2mm_M3_Pad_Via`. |
 | **Stavová LED** | `D6` LED 0603, `R20` 1 k | GPIO0 modulu RM2 (`WL_GPIO0`), stejně jako LED na Pico 2 W. Firmware ji ovládá přes `CYW43_WL_GPIO_LED_PIN`. |
 | **Tlačítko** | `SW1` 6 × 6 mm THT | GPIO15 (`BTN`) proti GND, interní pull-up |
