@@ -19,22 +19,7 @@ set(CMAKE_C_STANDARD 11)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-# == Integrace s Raspberry Pi Pico VS Code rozšířením ==
-if(WIN32)
-    set(USERHOME $ENV{USERPROFILE})
-else()
-    set(USERHOME $ENV{HOME})
-endif()
-set(sdkVersion 2.3.1)
-set(toolchainVersion 15_2_Rel1)
-set(picotoolVersion 2.3.1)
-set(picoVscode ${USERHOME}/.pico-sdk/cmake/pico-vscode.cmake)
-if (EXISTS ${picoVscode})
-    include(${picoVscode})
-endif()
-# ====================================================
-
-# Nastavení desky na Pico 2 W (RP2350 s Wi-Fi)
+# Cílová deska: pico_w = Pico W (RP2040), pico2_w = Pico 2 W (RP2350)
 set(PICO_BOARD pico_w CACHE STRING "Board type")
 
 # Načtení Pico SDK
