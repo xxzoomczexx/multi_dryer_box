@@ -602,6 +602,89 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "Mechanical:MountingHole"
+			(pin_names
+				(offset 1.016)
+			)
+			(exclude_from_sim no)
+			(in_bom no)
+			(on_board yes)
+			(property "Reference" "H"
+				(at 0 5.08 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "MountingHole"
+				(at 0 3.175 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Mounting Hole without connection"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "mounting hole"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "MountingHole*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "MountingHole_0_1"
+				(circle
+					(center 0 0)
+					(radius 1.27)
+					(stroke
+						(width 1.27)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "power:+1V1"
 			(power)
 			(pin_numbers
@@ -953,89 +1036,6 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "Mechanical:MountingHole"
-			(pin_names
-				(offset 1.016)
-			)
-			(exclude_from_sim no)
-			(in_bom no)
-			(on_board yes)
-			(property "Reference" "H"
-				(at 0 5.08 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "MountingHole"
-				(at 0 3.175 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "~"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" "Mounting Hole without connection"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_keywords" "mounting hole"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_fp_filters" "MountingHole*"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "MountingHole_0_1"
-				(circle
-					(center 0 0)
-					(radius 1.27)
-					(stroke
-						(width 1.27)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 	)
 	(text "Rozšiřující lišta GPIO (rezerva pro prototyp)"
 		(exclude_from_sim no)
@@ -1049,6 +1049,18 @@
 		)
 		(uuid "311c2b7c-4372-483e-9501-a15bd7dd6841")
 	)
+	(text "Testovací body"
+		(exclude_from_sim no)
+		(at 127 35.56 0)
+		(effects
+			(font
+				(size 1.8 1.8)
+				(bold yes)
+			)
+			(justify left bottom)
+		)
+		(uuid "78e11627-490d-4ac1-bfb3-9b07def86c7f")
+	)
 	(text "volné GPIO přímo z RP2350 (3,3 V logika, bez ochrany); GP27/GP28 = ADC1/ADC2"
 		(exclude_from_sim no)
 		(at 25.4 39.37 0)
@@ -1059,6 +1071,1337 @@
 			(justify left bottom)
 		)
 		(uuid "846ca206-788a-4738-bf33-4f60efb13f0d")
+	)
+	(text "očko (Loop) pro krokosvorku, ploška (Pad) pro hrot sondy"
+		(exclude_from_sim no)
+		(at 127 39.37 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "8f26fa61-0c7d-4b30-894b-b59b1f3cc495")
+	)
+	(text "plošky Ø 1 mm pro logický analyzátor / osciloskop, GND očko TP12 přímo u nich"
+		(exclude_from_sim no)
+		(at 127 78.74 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "a1f32405-8aba-47a2-b85b-4d5f6668071a")
+	)
+	(text "Testovací body – komunikace a PWM"
+		(exclude_from_sim no)
+		(at 127 74.93 0)
+		(effects
+			(font
+				(size 1.8 1.8)
+				(bold yes)
+			)
+			(justify left bottom)
+		)
+		(uuid "a4c9ea2c-12d5-4071-a410-5030b14723e9")
+	)
+	(text "Montážní otvory M3"
+		(exclude_from_sim no)
+		(at 25.4 99.06 0)
+		(effects
+			(font
+				(size 1.8 1.8)
+				(bold yes)
+			)
+			(justify left bottom)
+		)
+		(uuid "a4fc4d83-e05b-42b9-9f2e-fb329c883db0")
+	)
+	(text "4× M3 bez mědi (box z plastu); pozici volit v layoutu, případně změnit na _Pad pro uzemnění"
+		(exclude_from_sim no)
+		(at 25.4 102.87 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "fc47302d-09c1-4d35-9876-4e426d39bcad")
+	)
+	(wire
+		(pts
+			(xy 55.88 63.5) (xy 50.8 63.5)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "08d671c6-a3e2-4132-ac3f-f05ca1ab4e17")
+	)
+	(wire
+		(pts
+			(xy 134.62 55.88) (xy 134.62 60.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "104b7b70-523d-4546-ada1-00b73a45bd5d")
+	)
+	(wire
+		(pts
+			(xy 134.62 86.36) (xy 134.62 91.44)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1f20f7a6-91d3-4aac-b055-dd963e968f10")
+	)
+	(wire
+		(pts
+			(xy 226.06 86.36) (xy 226.06 91.44)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "270278cc-4227-4a72-a8a8-4ac79fe56991")
+	)
+	(wire
+		(pts
+			(xy 134.62 116.84) (xy 134.62 121.92)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "29d10d16-10f3-4b80-9e7e-24d73acdf9ce")
+	)
+	(wire
+		(pts
+			(xy 149.86 116.84) (xy 149.86 121.92)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2eaf8448-f57c-4d5a-a3fa-f158b01d653d")
+	)
+	(wire
+		(pts
+			(xy 210.82 86.36) (xy 210.82 91.44)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "318f5cb4-41c0-45dd-ab06-f94a496a270b")
+	)
+	(wire
+		(pts
+			(xy 180.34 86.36) (xy 180.34 91.44)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "32ca1816-90d7-4419-ad7b-4c378b31e765")
+	)
+	(wire
+		(pts
+			(xy 55.88 66.04) (xy 50.8 66.04)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "382d607e-2a20-43af-b639-4519f9a0e075")
+	)
+	(wire
+		(pts
+			(xy 165.1 86.36) (xy 165.1 91.44)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4051cf66-0e8c-4f63-8061-53d911b8ad3d")
+	)
+	(wire
+		(pts
+			(xy 68.58 58.42) (xy 73.66 58.42)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "523cb309-0111-4e5c-9484-541a2f482ac9")
+	)
+	(wire
+		(pts
+			(xy 68.58 68.58) (xy 73.66 68.58)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5c50d961-0de4-4bc0-9f10-90109c42cff4")
+	)
+	(wire
+		(pts
+			(xy 165.1 116.84) (xy 165.1 121.92)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5c606694-f72a-4d75-9783-d079f5439665")
+	)
+	(wire
+		(pts
+			(xy 55.88 55.88) (xy 50.8 55.88)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6349011f-ed98-4bd0-92fd-8f461d0511d8")
+	)
+	(wire
+		(pts
+			(xy 55.88 68.58) (xy 50.8 68.58)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "67bc52e4-62fb-4a39-a562-f06930ff4687")
+	)
+	(wire
+		(pts
+			(xy 68.58 55.88) (xy 73.66 55.88)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6a01f4e0-f8e3-46e3-ac82-e83bbf1a12e5")
+	)
+	(wire
+		(pts
+			(xy 55.88 58.42) (xy 50.8 58.42)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "70897779-9c01-4c6e-bb72-9c6e620bbfdd")
+	)
+	(wire
+		(pts
+			(xy 149.86 86.36) (xy 149.86 91.44)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "83d7f665-04a0-43f0-a61f-8dce83c963b9")
+	)
+	(wire
+		(pts
+			(xy 180.34 55.88) (xy 180.34 60.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "866393d4-7086-4a26-9c3a-a852df82cf57")
+	)
+	(wire
+		(pts
+			(xy 210.82 116.84) (xy 210.82 121.92)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "98827786-63c7-4192-b616-34fa2d564d83")
+	)
+	(wire
+		(pts
+			(xy 180.34 116.84) (xy 180.34 121.92)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9adcd2cd-ac07-4196-861d-c732ba9d430c")
+	)
+	(wire
+		(pts
+			(xy 55.88 71.12) (xy 50.8 71.12)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a1cd01d1-3424-4512-9fbb-f64abdcff248")
+	)
+	(wire
+		(pts
+			(xy 68.58 71.12) (xy 73.66 71.12)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a3a163ef-5074-4034-a260-3f0b792eb7b4")
+	)
+	(wire
+		(pts
+			(xy 165.1 55.88) (xy 165.1 60.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bccf0ee9-669f-439e-af17-c5b5325e47d4")
+	)
+	(wire
+		(pts
+			(xy 68.58 66.04) (xy 73.66 66.04)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "cb07f4df-e8c3-4d02-afda-dd9e45e9b8b5")
+	)
+	(wire
+		(pts
+			(xy 195.58 116.84) (xy 195.58 121.92)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "cb5691c0-59ca-46a3-b3df-23c8f1091724")
+	)
+	(wire
+		(pts
+			(xy 55.88 60.96) (xy 50.8 60.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ce485540-af9d-4357-8731-1eba0c2ee6bb")
+	)
+	(wire
+		(pts
+			(xy 149.86 55.88) (xy 149.86 60.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "cf2ee83b-8777-4c26-92b9-6d122ef2945a")
+	)
+	(wire
+		(pts
+			(xy 226.06 116.84) (xy 226.06 121.92)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d9152bd7-7088-47dd-9e4a-8b27ca942adb")
+	)
+	(wire
+		(pts
+			(xy 195.58 55.88) (xy 195.58 60.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e00049e9-c7d4-41ff-9e39-db69ab532310")
+	)
+	(wire
+		(pts
+			(xy 68.58 63.5) (xy 73.66 63.5)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e49eb5e4-eabf-4725-80cc-1877b142e627")
+	)
+	(wire
+		(pts
+			(xy 68.58 60.96) (xy 73.66 60.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f1747613-9071-455c-8fe3-c5ac39418651")
+	)
+	(wire
+		(pts
+			(xy 195.58 86.36) (xy 195.58 91.44)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f1b750dc-934b-4527-a3ae-6f117c0a5fe3")
+	)
+	(global_label "WL_CLK"
+		(shape input)
+		(at 134.62 121.92 270)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "11813541-40ab-4f03-84d9-e8e66c593313")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 134.62 121.92 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "GP19"
+		(shape bidirectional)
+		(at 73.66 63.5 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "1ae80bb4-92db-4a1a-b978-71eafe76b268")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 73.66 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "SDA0"
+		(shape bidirectional)
+		(at 165.1 91.44 270)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "1df0d0ec-4eca-49ae-9ef5-7b4bc6971ef3")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 165.1 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "SCL0"
+		(shape bidirectional)
+		(at 180.34 91.44 270)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "30c18b10-fcda-495e-8165-95703b3f57c8")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 180.34 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "GP18"
+		(shape bidirectional)
+		(at 50.8 63.5 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "51c4dd37-d9a3-49d7-b7a1-748971e746c3")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 50.8 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "SDA"
+		(shape bidirectional)
+		(at 134.62 91.44 270)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "523ae06b-82c9-427c-acef-1cdc56fc6f84")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 134.62 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "WL_DATA"
+		(shape passive)
+		(at 165.1 121.92 270)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "5b09487e-5d7d-4160-9aed-2f522b66ecf5")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 165.1 121.92 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "HX711_SCK"
+		(shape input)
+		(at 210.82 91.44 270)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "5c0e7d44-b7d7-4443-9205-0a34ebd45c27")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 210.82 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "GP21"
+		(shape bidirectional)
+		(at 73.66 66.04 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "62e3910e-5e5d-4688-bfb1-b1079c9026c3")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 73.66 66.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "NTC_ADC"
+		(shape input)
+		(at 226.06 121.92 270)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "82d36ee9-43ba-4455-85fb-0e6dfbf886bd")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 226.06 121.92 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "GP27"
+		(shape bidirectional)
+		(at 73.66 68.58 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "9383a257-579f-4d0a-9967-1fd7bcf74c48")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 73.66 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "HEAT_PWM"
+		(shape input)
+		(at 180.34 121.92 270)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "95f67b3c-19d4-4a45-bd02-7b15619cab6e")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 180.34 121.92 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "GP11"
+		(shape bidirectional)
+		(at 73.66 58.42 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "97f543ae-6b6f-4691-9098-e28f8829c726")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 73.66 58.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "HX711_DT"
+		(shape input)
+		(at 195.58 91.44 270)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "aaeefb8c-3935-4a01-b080-b9652a91d080")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 195.58 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "GP10"
+		(shape bidirectional)
+		(at 50.8 58.42 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "b1cc1f53-0754-4349-85b5-dd8b78a0b140")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 50.8 58.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "GP16"
+		(shape bidirectional)
+		(at 50.8 60.96 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "b207dc9c-244e-4a2c-be55-b501997de7ff")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 50.8 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "EXH_PWM"
+		(shape input)
+		(at 210.82 121.92 270)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "b8892751-0cc0-49ad-ae8d-d678ea0d20b0")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 210.82 121.92 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "GP28"
+		(shape bidirectional)
+		(at 50.8 71.12 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "baf63dbd-242d-488a-85e5-c03eda844380")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 50.8 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "GP20"
+		(shape bidirectional)
+		(at 50.8 66.04 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "ce2af780-43dc-450e-8f98-f51d89ffb4a0")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 50.8 66.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "FAN_PWM"
+		(shape input)
+		(at 195.58 121.92 270)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "ceda54f1-b046-4208-b35b-e40e98eed7b6")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 195.58 121.92 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "GP17"
+		(shape bidirectional)
+		(at 73.66 60.96 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "e14feafd-b196-4a47-a183-3dd3196cdf26")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 73.66 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "24V"
+		(shape input)
+		(at 134.62 60.96 270)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "f315bc87-15a9-439e-877a-3f4a913e9e93")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 134.62 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "SCL"
+		(shape bidirectional)
+		(at 149.86 91.44 270)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "f618611b-727a-41f2-a8cf-4ca0e8b096aa")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 149.86 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "GP22"
+		(shape bidirectional)
+		(at 50.8 68.58 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "f7f232d6-a11b-4dae-929b-c4f2b215eb33")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 50.8 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "WL_CS"
+		(shape input)
+		(at 149.86 121.92 270)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "fca3e27a-012f-4944-837f-3da1c0eb3e7b")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 149.86 121.92 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 165.1 86.36 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "002ace15-f673-4e7c-b200-b572a1252044")
+		(property "Reference" "TP8"
+			(at 165.1 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SDA0"
+			(at 168.91 83.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "TestPoint:TestPoint_Pad_D1.0mm"
+			(at 165.1 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 165.1 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Testovací bod – I2C0 SDA – SHT40 #2"
+			(at 165.1 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "8a7fce27-5e7c-40a9-bbec-c8590c03922b")
+		)
+		(instances
+			(project "susicka_filamentu"
+				(path "/202a5452-a4a8-46b1-91e1-aa7f241e9adc/8a55e67b-4afb-42aa-9beb-336bc9f063d1"
+					(reference "TP8")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Mechanical:MountingHole")
+		(at 78.74 114.3 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "15a88e54-5f8c-4d36-8779-b597f049169b")
+		(property "Reference" "H4"
+			(at 78.74 109.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "M3"
+			(at 78.74 119.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "MountingHole:MountingHole_3.2mm_M3"
+			(at 78.74 114.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 78.74 114.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Montážní otvor M3"
+			(at 78.74 114.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "susicka_filamentu"
+				(path "/202a5452-a4a8-46b1-91e1-aa7f241e9adc/8a55e67b-4afb-42aa-9beb-336bc9f063d1"
+					(reference "H4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 180.34 86.36 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "329e485b-bc77-411f-82b9-496518972e92")
+		(property "Reference" "TP9"
+			(at 180.34 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SCL0"
+			(at 184.15 83.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "TestPoint:TestPoint_Pad_D1.0mm"
+			(at 180.34 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 180.34 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Testovací bod – I2C0 SCL"
+			(at 180.34 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "4884c138-07c0-436a-a51d-f8bfce010fb7")
+		)
+		(instances
+			(project "susicka_filamentu"
+				(path "/202a5452-a4a8-46b1-91e1-aa7f241e9adc/8a55e67b-4afb-42aa-9beb-336bc9f063d1"
+					(reference "TP9")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 195.58 116.84 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "3e5a4f9f-a731-43b1-b68e-d71dd57945ea")
+		(property "Reference" "TP17"
+			(at 195.58 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "FAN_PWM"
+			(at 199.39 114.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "TestPoint:TestPoint_Pad_D1.0mm"
+			(at 195.58 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 195.58 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Testovací bod – PWM ventilátor (GPIO13)"
+			(at 195.58 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "92188a07-572b-4556-9dd4-72b5607c3244")
+		)
+		(instances
+			(project "susicka_filamentu"
+				(path "/202a5452-a4a8-46b1-91e1-aa7f241e9adc/8a55e67b-4afb-42aa-9beb-336bc9f063d1"
+					(reference "TP17")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+3V3")
+		(at 50.8 55.88 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "4476ad94-e708-455e-bbd1-9d18ff369304")
+		(property "Reference" "#PWR123"
+			(at 55.88 54.61 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3V3"
+			(at 44.45 55.88 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 50.8 55.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 50.8 55.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 50.8 55.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "67dd29d7-3947-4bc4-a28d-8f651ed39b09")
+		)
+		(instances
+			(project "susicka_filamentu"
+				(path "/202a5452-a4a8-46b1-91e1-aa7f241e9adc/8a55e67b-4afb-42aa-9beb-336bc9f063d1"
+					(reference "#PWR123")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 226.06 91.44 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "5224cdb5-f563-4e05-b65d-4b2cc14935ef")
+		(property "Reference" "#PWR130"
+			(at 231.14 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 231.14 92.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" ""
+			(at 226.06 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 226.06 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 226.06 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "8f24e70f-e89c-4c47-88d8-b436c8ca5b32")
+		)
+		(instances
+			(project "susicka_filamentu"
+				(path "/202a5452-a4a8-46b1-91e1-aa7f241e9adc/8a55e67b-4afb-42aa-9beb-336bc9f063d1"
+					(reference "#PWR130")
+					(unit 1)
+				)
+			)
+		)
 	)
 	(symbol
 		(lib_id "Connector_Generic:Conn_02x07_Odd_Even")
@@ -1163,37 +2506,25 @@
 			)
 		)
 	)
-	(wire
-		(pts
-			(xy 55.88 55.88) (xy 50.8 55.88)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "6349011f-ed98-4bd0-92fd-8f461d0511d8")
-	)
 	(symbol
-		(lib_id "power:+3V3")
-		(at 50.8 55.88 90)
+		(lib_id "Connector:TestPoint")
+		(at 149.86 55.88 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "4476ad94-e708-455e-bbd1-9d18ff369304")
-		(property "Reference" "#PWR123"
-			(at 55.88 54.61 90)
+		(uuid "56931e87-42d2-4d6f-96c2-62a86bc40914")
+		(property "Reference" "TP2"
+			(at 149.86 50.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
-				(hide yes)
 			)
 		)
 		(property "Value" "+3V3"
-			(at 44.45 55.88 90)
+			(at 153.67 53.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1201,8 +2532,8 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
-			(at 50.8 55.88 0)
+		(property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm"
+			(at 149.86 55.88 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1211,7 +2542,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 50.8 55.88 0)
+			(at 149.86 55.88 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1219,8 +2550,8 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
-			(at 50.8 55.88 0)
+		(property "Description" "Testovací bod"
+			(at 149.86 55.88 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1229,38 +2560,28 @@
 			)
 		)
 		(pin "1"
-			(uuid "67dd29d7-3947-4bc4-a28d-8f651ed39b09")
+			(uuid "7dcd9912-a821-4e35-862b-333bab57d53c")
 		)
 		(instances
 			(project "susicka_filamentu"
 				(path "/202a5452-a4a8-46b1-91e1-aa7f241e9adc/8a55e67b-4afb-42aa-9beb-336bc9f063d1"
-					(reference "#PWR123")
+					(reference "TP2")
 					(unit 1)
 				)
 			)
 		)
 	)
-	(wire
-		(pts
-			(xy 68.58 55.88) (xy 73.66 55.88)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "6a01f4e0-f8e3-46e3-ac82-e83bbf1a12e5")
-	)
 	(symbol
 		(lib_id "power:GND")
-		(at 73.66 55.88 90)
+		(at 195.58 60.96 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "d54911cc-8117-4b35-98a4-a58a4cce8328")
-		(property "Reference" "#PWR124"
-			(at 78.74 54.61 90)
+		(uuid "6631c494-9a8f-4bf0-a041-6bb6746d81ec")
+		(property "Reference" "#PWR129"
+			(at 200.66 59.69 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1270,7 +2591,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 78.74 57.15 90)
+			(at 200.66 62.23 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1280,7 +2601,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 73.66 55.88 0)
+			(at 195.58 60.96 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1289,7 +2610,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 73.66 55.88 0)
+			(at 195.58 60.96 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1298,7 +2619,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 73.66 55.88 0)
+			(at 195.58 60.96 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1307,26 +2628,213 @@
 			)
 		)
 		(pin "1"
-			(uuid "0dfb9b9d-bd03-408d-89e7-270b5a38c020")
+			(uuid "c3add642-6dd9-4da8-b058-5383f1b79fd9")
 		)
 		(instances
 			(project "susicka_filamentu"
 				(path "/202a5452-a4a8-46b1-91e1-aa7f241e9adc/8a55e67b-4afb-42aa-9beb-336bc9f063d1"
-					(reference "#PWR124")
+					(reference "#PWR129")
 					(unit 1)
 				)
 			)
 		)
 	)
-	(wire
-		(pts
-			(xy 68.58 71.12) (xy 73.66 71.12)
+	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 149.86 116.84 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "671be038-6b63-4489-8a31-8991967a0d5b")
+		(property "Reference" "TP14"
+			(at 149.86 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
 		)
-		(stroke
-			(width 0)
-			(type default)
+		(property "Value" "WL_CS"
+			(at 153.67 114.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
 		)
-		(uuid "a3a163ef-5074-4034-a260-3f0b792eb7b4")
+		(property "Footprint" "TestPoint:TestPoint_Pad_D1.0mm"
+			(at 149.86 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 149.86 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Testovací bod – RM2 gSPI CS (GPIO25)"
+			(at 149.86 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "20a569a4-6720-4ef0-acca-7b4c0c00046d")
+		)
+		(instances
+			(project "susicka_filamentu"
+				(path "/202a5452-a4a8-46b1-91e1-aa7f241e9adc/8a55e67b-4afb-42aa-9beb-336bc9f063d1"
+					(reference "TP14")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 180.34 116.84 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "6add9cff-7c27-4bd8-81bd-8d10bcae1f27")
+		(property "Reference" "TP16"
+			(at 180.34 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "HEAT_PWM"
+			(at 184.15 114.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "TestPoint:TestPoint_Pad_D1.0mm"
+			(at 180.34 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 180.34 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Testovací bod – PWM topení (GPIO14)"
+			(at 180.34 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "2488e777-eaef-4923-9afb-5b5221de4937")
+		)
+		(instances
+			(project "susicka_filamentu"
+				(path "/202a5452-a4a8-46b1-91e1-aa7f241e9adc/8a55e67b-4afb-42aa-9beb-336bc9f063d1"
+					(reference "TP16")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 134.62 55.88 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "7b579018-60f8-4da5-9144-e74e1d241034")
+		(property "Reference" "TP1"
+			(at 134.62 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "24V"
+			(at 138.43 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm"
+			(at 134.62 55.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 134.62 55.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Testovací bod"
+			(at 134.62 55.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "7d777e82-bd2c-4afe-8fae-81f6987f1d31")
+		)
+		(instances
+			(project "susicka_filamentu"
+				(path "/202a5452-a4a8-46b1-91e1-aa7f241e9adc/8a55e67b-4afb-42aa-9beb-336bc9f063d1"
+					(reference "TP1")
+					(unit 1)
+				)
+			)
+		)
 	)
 	(symbol
 		(lib_id "power:GND")
@@ -1396,409 +2904,35 @@
 			)
 		)
 	)
-	(wire
-		(pts
-			(xy 55.88 58.42) (xy 50.8 58.42)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "70897779-9c01-4c6e-bb72-9c6e620bbfdd")
-	)
-	(global_label "GP10"
-		(shape bidirectional)
-		(at 50.8 58.42 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "b1cc1f53-0754-4349-85b5-dd8b78a0b140")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 50.8 58.42 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-				(hide yes)
-			)
-		)
-	)
-	(wire
-		(pts
-			(xy 68.58 58.42) (xy 73.66 58.42)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "523cb309-0111-4e5c-9484-541a2f482ac9")
-	)
-	(global_label "GP11"
-		(shape bidirectional)
-		(at 73.66 58.42 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "97f543ae-6b6f-4691-9098-e28f8829c726")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 73.66 58.42 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-	)
-	(wire
-		(pts
-			(xy 55.88 60.96) (xy 50.8 60.96)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "ce485540-af9d-4357-8731-1eba0c2ee6bb")
-	)
-	(global_label "GP16"
-		(shape bidirectional)
-		(at 50.8 60.96 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "b207dc9c-244e-4a2c-be55-b501997de7ff")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 50.8 60.96 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-				(hide yes)
-			)
-		)
-	)
-	(wire
-		(pts
-			(xy 68.58 60.96) (xy 73.66 60.96)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "f1747613-9071-455c-8fe3-c5ac39418651")
-	)
-	(global_label "GP17"
-		(shape bidirectional)
-		(at 73.66 60.96 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "e14feafd-b196-4a47-a183-3dd3196cdf26")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 73.66 60.96 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-	)
-	(wire
-		(pts
-			(xy 55.88 63.5) (xy 50.8 63.5)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "08d671c6-a3e2-4132-ac3f-f05ca1ab4e17")
-	)
-	(global_label "GP18"
-		(shape bidirectional)
-		(at 50.8 63.5 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "51c4dd37-d9a3-49d7-b7a1-748971e746c3")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 50.8 63.5 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-				(hide yes)
-			)
-		)
-	)
-	(wire
-		(pts
-			(xy 68.58 63.5) (xy 73.66 63.5)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "e49eb5e4-eabf-4725-80cc-1877b142e627")
-	)
-	(global_label "GP19"
-		(shape bidirectional)
-		(at 73.66 63.5 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "1ae80bb4-92db-4a1a-b978-71eafe76b268")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 73.66 63.5 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-	)
-	(wire
-		(pts
-			(xy 55.88 66.04) (xy 50.8 66.04)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "382d607e-2a20-43af-b639-4519f9a0e075")
-	)
-	(global_label "GP20"
-		(shape bidirectional)
-		(at 50.8 66.04 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "ce2af780-43dc-450e-8f98-f51d89ffb4a0")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 50.8 66.04 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-				(hide yes)
-			)
-		)
-	)
-	(wire
-		(pts
-			(xy 68.58 66.04) (xy 73.66 66.04)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "cb07f4df-e8c3-4d02-afda-dd9e45e9b8b5")
-	)
-	(global_label "GP21"
-		(shape bidirectional)
-		(at 73.66 66.04 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "62e3910e-5e5d-4688-bfb1-b1079c9026c3")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 73.66 66.04 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-	)
-	(wire
-		(pts
-			(xy 55.88 68.58) (xy 50.8 68.58)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "67bc52e4-62fb-4a39-a562-f06930ff4687")
-	)
-	(global_label "GP22"
-		(shape bidirectional)
-		(at 50.8 68.58 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "f7f232d6-a11b-4dae-929b-c4f2b215eb33")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 50.8 68.58 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-				(hide yes)
-			)
-		)
-	)
-	(wire
-		(pts
-			(xy 68.58 68.58) (xy 73.66 68.58)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "5c50d961-0de4-4bc0-9f10-90109c42cff4")
-	)
-	(global_label "GP27"
-		(shape bidirectional)
-		(at 73.66 68.58 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "9383a257-579f-4d0a-9967-1fd7bcf74c48")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 73.66 68.58 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-	)
-	(wire
-		(pts
-			(xy 55.88 71.12) (xy 50.8 71.12)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "a1cd01d1-3424-4512-9fbb-f64abdcff248")
-	)
-	(global_label "GP28"
-		(shape bidirectional)
-		(at 50.8 71.12 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "baf63dbd-242d-488a-85e5-c03eda844380")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 50.8 71.12 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-				(hide yes)
-			)
-		)
-	)
-	(text "Testovací body"
-		(exclude_from_sim no)
-		(at 127 35.56 0)
-		(effects
-			(font
-				(size 1.8 1.8)
-				(bold yes)
-			)
-			(justify left bottom)
-		)
-		(uuid "78e11627-490d-4ac1-bfb3-9b07def86c7f")
-	)
-	(text "očko (Loop) pro krokosvorku, ploška (Pad) pro hrot sondy"
-		(exclude_from_sim no)
-		(at 127 39.37 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "8f26fa61-0c7d-4b30-894b-b59b1f3cc495")
-	)
 	(symbol
 		(lib_id "Connector:TestPoint")
-		(at 134.62 55.88 0)
+		(at 195.58 86.36 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "7b579018-60f8-4da5-9144-e74e1d241034")
-		(property "Reference" "TP1"
-			(at 134.62 50.8 0)
+		(uuid "8ee40d8d-3240-46f8-ab04-03f3270730d4")
+		(property "Reference" "TP10"
+			(at 195.58 81.28 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Value" "24V"
-			(at 138.43 53.34 0)
+		(property "Value" "HX711_DT"
+			(at 199.39 83.82 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
 			)
 		)
-		(property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm"
-			(at 134.62 55.88 0)
+		(property "Footprint" "TestPoint:TestPoint_Pad_D1.0mm"
+			(at 195.58 86.36 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1807,7 +2941,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 134.62 55.88 0)
+			(at 195.58 86.36 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1815,105 +2949,8 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Testovací bod"
-			(at 134.62 55.88 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "7d777e82-bd2c-4afe-8fae-81f6987f1d31")
-		)
-		(instances
-			(project "susicka_filamentu"
-				(path "/202a5452-a4a8-46b1-91e1-aa7f241e9adc/8a55e67b-4afb-42aa-9beb-336bc9f063d1"
-					(reference "TP1")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(wire
-		(pts
-			(xy 134.62 55.88) (xy 134.62 60.96)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "104b7b70-523d-4546-ada1-00b73a45bd5d")
-	)
-	(global_label "24V"
-		(shape input)
-		(at 134.62 60.96 270)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "f315bc87-15a9-439e-877a-3f4a913e9e93")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 134.62 60.96 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-				(hide yes)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Connector:TestPoint")
-		(at 149.86 55.88 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "56931e87-42d2-4d6f-96c2-62a86bc40914")
-		(property "Reference" "TP2"
-			(at 149.86 50.8 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "+3V3"
-			(at 153.67 53.34 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm"
-			(at 149.86 55.88 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 149.86 55.88 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Testovací bod"
-			(at 149.86 55.88 0)
+		(property "Description" "Testovací bod – HX711 DOUT (GPIO4)"
+			(at 195.58 86.36 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1922,169 +2959,16 @@
 			)
 		)
 		(pin "1"
-			(uuid "7dcd9912-a821-4e35-862b-333bab57d53c")
+			(uuid "7b72bc60-3950-439e-8f86-14a9f1ee34cd")
 		)
 		(instances
 			(project "susicka_filamentu"
 				(path "/202a5452-a4a8-46b1-91e1-aa7f241e9adc/8a55e67b-4afb-42aa-9beb-336bc9f063d1"
-					(reference "TP2")
+					(reference "TP10")
 					(unit 1)
 				)
 			)
 		)
-	)
-	(wire
-		(pts
-			(xy 149.86 55.88) (xy 149.86 60.96)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "cf2ee83b-8777-4c26-92b9-6d122ef2945a")
-	)
-	(symbol
-		(lib_id "power:+3V3")
-		(at 149.86 60.96 180)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "bc460896-f201-48f9-bc7a-9df0919c9ce5")
-		(property "Reference" "#PWR126"
-			(at 154.94 59.69 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Value" "+3V3"
-			(at 154.94 62.23 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Footprint" ""
-			(at 149.86 60.96 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 149.86 60.96 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 149.86 60.96 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "21c24b11-646e-4ea3-8c4b-9b25acb371d3")
-		)
-		(instances
-			(project "susicka_filamentu"
-				(path "/202a5452-a4a8-46b1-91e1-aa7f241e9adc/8a55e67b-4afb-42aa-9beb-336bc9f063d1"
-					(reference "#PWR126")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Connector:TestPoint")
-		(at 165.1 55.88 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "e6072c35-c8c1-4fdb-a07a-79e2e73aabc5")
-		(property "Reference" "TP3"
-			(at 165.1 50.8 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "+1V1"
-			(at 168.91 53.34 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm"
-			(at 165.1 55.88 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 165.1 55.88 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Testovací bod"
-			(at 165.1 55.88 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "152f1449-d748-4482-9f31-c14672f83b59")
-		)
-		(instances
-			(project "susicka_filamentu"
-				(path "/202a5452-a4a8-46b1-91e1-aa7f241e9adc/8a55e67b-4afb-42aa-9beb-336bc9f063d1"
-					(reference "TP3")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(wire
-		(pts
-			(xy 165.1 55.88) (xy 165.1 60.96)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "bccf0ee9-669f-439e-af17-c5b5325e47d4")
 	)
 	(symbol
 		(lib_id "power:+1V1")
@@ -2155,33 +3039,32 @@
 		)
 	)
 	(symbol
-		(lib_id "Connector:TestPoint")
-		(at 180.34 55.88 0)
+		(lib_id "Mechanical:MountingHole")
+		(at 33.02 114.3 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "ff249c07-ba9e-4361-8b14-e48b7be6d5af")
-		(property "Reference" "TP4"
-			(at 180.34 50.8 0)
+		(uuid "a34d772d-561f-486d-9a94-a21f8c71a717")
+		(property "Reference" "H1"
+			(at 33.02 109.22 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Value" "GND"
-			(at 184.15 53.34 0)
+		(property "Value" "M3"
+			(at 33.02 119.38 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
 			)
 		)
-		(property "Footprint" "TestPoint:TestPoint_Loop_D2.50mm_Drill1.0mm"
-			(at 180.34 55.88 0)
+		(property "Footprint" "MountingHole:MountingHole_3.2mm_M3"
+			(at 33.02 114.3 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2190,7 +3073,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 180.34 55.88 0)
+			(at 33.02 114.3 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2198,48 +3081,43 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Testovací bod"
-			(at 180.34 55.88 0)
+		(property "Description" "Montážní otvor M3"
+			(at 33.02 114.3 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(hide yes)
 			)
-		)
-		(pin "1"
-			(uuid "de7b4dce-272c-4e95-b22c-2e1a13391ba7")
 		)
 		(instances
 			(project "susicka_filamentu"
 				(path "/202a5452-a4a8-46b1-91e1-aa7f241e9adc/8a55e67b-4afb-42aa-9beb-336bc9f063d1"
-					(reference "TP4")
+					(reference "H1")
 					(unit 1)
 				)
 			)
 		)
 	)
-	(wire
-		(pts
-			(xy 180.34 55.88) (xy 180.34 60.96)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "866393d4-7086-4a26-9c3a-a852df82cf57")
-	)
 	(symbol
-		(lib_id "power:GND")
-		(at 180.34 60.96 0)
+		(lib_id "Connector:TestPoint")
+		(at 134.62 86.36 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "da342b4a-09c4-40ae-b918-f1d0fc0724b1")
-		(property "Reference" "#PWR128"
-			(at 185.42 59.69 0)
+		(uuid "a3e08e87-0cd1-46b2-aed9-bf1b93d5aa9b")
+		(property "Reference" "TP6"
+			(at 134.62 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SDA"
+			(at 138.43 83.82 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2248,18 +3126,8 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "GND"
-			(at 185.42 62.23 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Footprint" ""
-			(at 180.34 60.96 0)
+		(property "Footprint" "TestPoint:TestPoint_Pad_D1.0mm"
+			(at 134.62 86.36 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2268,7 +3136,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 180.34 60.96 0)
+			(at 134.62 86.36 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2276,8 +3144,8 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
-			(at 180.34 60.96 0)
+		(property "Description" "Testovací bod – I2C1 SDA – SHT40 komora"
+			(at 134.62 86.36 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2286,12 +3154,144 @@
 			)
 		)
 		(pin "1"
-			(uuid "40aaf1ad-2ec8-4b9a-a4e4-198061d27aff")
+			(uuid "46b7e81e-77ce-4dab-8bec-4ff08aa33242")
 		)
 		(instances
 			(project "susicka_filamentu"
 				(path "/202a5452-a4a8-46b1-91e1-aa7f241e9adc/8a55e67b-4afb-42aa-9beb-336bc9f063d1"
-					(reference "#PWR128")
+					(reference "TP6")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 210.82 116.84 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "a4f84518-4613-45e2-be33-6127b98386df")
+		(property "Reference" "TP18"
+			(at 210.82 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "EXH_PWM"
+			(at 214.63 114.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "TestPoint:TestPoint_Pad_D1.0mm"
+			(at 210.82 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 210.82 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Testovací bod – PWM odtah (GPIO12)"
+			(at 210.82 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "42c9e87c-f92f-4a2c-9ece-c5be22edfee3")
+		)
+		(instances
+			(project "susicka_filamentu"
+				(path "/202a5452-a4a8-46b1-91e1-aa7f241e9adc/8a55e67b-4afb-42aa-9beb-336bc9f063d1"
+					(reference "TP18")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 210.82 86.36 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "ba2d004e-e32e-49df-8871-860d537da40a")
+		(property "Reference" "TP11"
+			(at 210.82 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "HX711_SCK"
+			(at 214.63 83.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "TestPoint:TestPoint_Pad_D1.0mm"
+			(at 210.82 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 210.82 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Testovací bod – HX711 SCK (GPIO5)"
+			(at 210.82 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "d94da4f6-881e-42f6-8bd8-b7500f5b5698")
+		)
+		(instances
+			(project "susicka_filamentu"
+				(path "/202a5452-a4a8-46b1-91e1-aa7f241e9adc/8a55e67b-4afb-42aa-9beb-336bc9f063d1"
+					(reference "TP11")
 					(unit 1)
 				)
 			)
@@ -2362,27 +3362,17 @@
 			)
 		)
 	)
-	(wire
-		(pts
-			(xy 195.58 55.88) (xy 195.58 60.96)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "e00049e9-c7d4-41ff-9e39-db69ab532310")
-	)
 	(symbol
-		(lib_id "power:GND")
-		(at 195.58 60.96 0)
+		(lib_id "power:+3V3")
+		(at 149.86 60.96 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "6631c494-9a8f-4bf0-a041-6bb6746d81ec")
-		(property "Reference" "#PWR129"
-			(at 200.66 59.69 0)
+		(uuid "bc460896-f201-48f9-bc7a-9df0919c9ce5")
+		(property "Reference" "#PWR126"
+			(at 154.94 59.69 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2391,8 +3381,8 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "GND"
-			(at 200.66 62.23 0)
+		(property "Value" "+3V3"
+			(at 154.94 62.23 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2402,7 +3392,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 195.58 60.96 0)
+			(at 149.86 60.96 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2411,7 +3401,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 195.58 60.96 0)
+			(at 149.86 60.96 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2420,7 +3410,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 195.58 60.96 0)
+			(at 149.86 60.96 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2429,96 +3419,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "c3add642-6dd9-4da8-b058-5383f1b79fd9")
+			(uuid "21c24b11-646e-4ea3-8c4b-9b25acb371d3")
 		)
 		(instances
 			(project "susicka_filamentu"
 				(path "/202a5452-a4a8-46b1-91e1-aa7f241e9adc/8a55e67b-4afb-42aa-9beb-336bc9f063d1"
-					(reference "#PWR129")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(text "Montážní otvory M3"
-		(exclude_from_sim no)
-		(at 25.4 99.06 0)
-		(effects
-			(font
-				(size 1.8 1.8)
-				(bold yes)
-			)
-			(justify left bottom)
-		)
-		(uuid "a4fc4d83-e05b-42b9-9f2e-fb329c883db0")
-	)
-	(text "4× M3 bez mědi (box z plastu); pozici volit v layoutu, případně změnit na _Pad pro uzemnění"
-		(exclude_from_sim no)
-		(at 25.4 102.87 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "fc47302d-09c1-4d35-9876-4e426d39bcad")
-	)
-	(symbol
-		(lib_id "Mechanical:MountingHole")
-		(at 33.02 114.3 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "a34d772d-561f-486d-9a94-a21f8c71a717")
-		(property "Reference" "H1"
-			(at 33.02 109.22 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "M3"
-			(at 33.02 119.38 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "MountingHole:MountingHole_3.2mm_M3"
-			(at 33.02 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 33.02 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Montážní otvor M3"
-			(at 33.02 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(instances
-			(project "susicka_filamentu"
-				(path "/202a5452-a4a8-46b1-91e1-aa7f241e9adc/8a55e67b-4afb-42aa-9beb-336bc9f063d1"
-					(reference "H1")
+					(reference "#PWR126")
 					(unit 1)
 				)
 			)
@@ -2580,882 +3486,6 @@
 			(project "susicka_filamentu"
 				(path "/202a5452-a4a8-46b1-91e1-aa7f241e9adc/8a55e67b-4afb-42aa-9beb-336bc9f063d1"
 					(reference "H2")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Mechanical:MountingHole")
-		(at 63.5 114.3 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "ea2b9351-174b-4608-8154-c77d51f897dd")
-		(property "Reference" "H3"
-			(at 63.5 109.22 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "M3"
-			(at 63.5 119.38 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "MountingHole:MountingHole_3.2mm_M3"
-			(at 63.5 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 63.5 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Montážní otvor M3"
-			(at 63.5 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(instances
-			(project "susicka_filamentu"
-				(path "/202a5452-a4a8-46b1-91e1-aa7f241e9adc/8a55e67b-4afb-42aa-9beb-336bc9f063d1"
-					(reference "H3")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Mechanical:MountingHole")
-		(at 78.74 114.3 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "15a88e54-5f8c-4d36-8779-b597f049169b")
-		(property "Reference" "H4"
-			(at 78.74 109.22 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "M3"
-			(at 78.74 119.38 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "MountingHole:MountingHole_3.2mm_M3"
-			(at 78.74 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 78.74 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Montážní otvor M3"
-			(at 78.74 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(instances
-			(project "susicka_filamentu"
-				(path "/202a5452-a4a8-46b1-91e1-aa7f241e9adc/8a55e67b-4afb-42aa-9beb-336bc9f063d1"
-					(reference "H4")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(text "Testovací body – komunikace a PWM"
-		(exclude_from_sim no)
-		(at 127 74.93 0)
-		(effects
-			(font
-				(size 1.8 1.8)
-				(bold yes)
-			)
-			(justify left bottom)
-		)
-		(uuid "a4c9ea2c-12d5-4071-a410-5030b14723e9")
-	)
-	(text "plošky Ø 1 mm pro logický analyzátor / osciloskop, GND očko TP12 přímo u nich"
-		(exclude_from_sim no)
-		(at 127 78.74 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "a1f32405-8aba-47a2-b85b-4d5f6668071a")
-	)
-	(symbol
-		(lib_id "Connector:TestPoint")
-		(at 134.62 86.36 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "a3e08e87-0cd1-46b2-aed9-bf1b93d5aa9b")
-		(property "Reference" "TP6"
-			(at 134.62 81.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "SDA"
-			(at 138.43 83.82 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Footprint" "TestPoint:TestPoint_Pad_D1.0mm"
-			(at 134.62 86.36 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 134.62 86.36 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Testovací bod – I2C1 SDA – SHT40 komora"
-			(at 134.62 86.36 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "46b7e81e-77ce-4dab-8bec-4ff08aa33242")
-		)
-		(instances
-			(project "susicka_filamentu"
-				(path "/202a5452-a4a8-46b1-91e1-aa7f241e9adc/8a55e67b-4afb-42aa-9beb-336bc9f063d1"
-					(reference "TP6")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(wire
-		(pts
-			(xy 134.62 86.36) (xy 134.62 91.44)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "1f20f7a6-91d3-4aac-b055-dd963e968f10")
-	)
-	(global_label "SDA"
-		(shape bidirectional)
-		(at 134.62 91.44 270)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "523ae06b-82c9-427c-acef-1cdc56fc6f84")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 134.62 91.44 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-				(hide yes)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Connector:TestPoint")
-		(at 149.86 86.36 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "eb8e1521-c8ff-4f03-86d5-fbc771a14969")
-		(property "Reference" "TP7"
-			(at 149.86 81.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "SCL"
-			(at 153.67 83.82 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Footprint" "TestPoint:TestPoint_Pad_D1.0mm"
-			(at 149.86 86.36 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 149.86 86.36 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Testovací bod – I2C1 SCL"
-			(at 149.86 86.36 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "60972180-eb37-46b6-b3ce-e232289c4051")
-		)
-		(instances
-			(project "susicka_filamentu"
-				(path "/202a5452-a4a8-46b1-91e1-aa7f241e9adc/8a55e67b-4afb-42aa-9beb-336bc9f063d1"
-					(reference "TP7")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(wire
-		(pts
-			(xy 149.86 86.36) (xy 149.86 91.44)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "83d7f665-04a0-43f0-a61f-8dce83c963b9")
-	)
-	(global_label "SCL"
-		(shape bidirectional)
-		(at 149.86 91.44 270)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "f618611b-727a-41f2-a8cf-4ca0e8b096aa")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 149.86 91.44 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-				(hide yes)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Connector:TestPoint")
-		(at 165.1 86.36 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "002ace15-f673-4e7c-b200-b572a1252044")
-		(property "Reference" "TP8"
-			(at 165.1 81.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "SDA0"
-			(at 168.91 83.82 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Footprint" "TestPoint:TestPoint_Pad_D1.0mm"
-			(at 165.1 86.36 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 165.1 86.36 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Testovací bod – I2C0 SDA – SHT40 #2"
-			(at 165.1 86.36 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "8a7fce27-5e7c-40a9-bbec-c8590c03922b")
-		)
-		(instances
-			(project "susicka_filamentu"
-				(path "/202a5452-a4a8-46b1-91e1-aa7f241e9adc/8a55e67b-4afb-42aa-9beb-336bc9f063d1"
-					(reference "TP8")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(wire
-		(pts
-			(xy 165.1 86.36) (xy 165.1 91.44)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "4051cf66-0e8c-4f63-8061-53d911b8ad3d")
-	)
-	(global_label "SDA0"
-		(shape bidirectional)
-		(at 165.1 91.44 270)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "1df0d0ec-4eca-49ae-9ef5-7b4bc6971ef3")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 165.1 91.44 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-				(hide yes)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Connector:TestPoint")
-		(at 180.34 86.36 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "329e485b-bc77-411f-82b9-496518972e92")
-		(property "Reference" "TP9"
-			(at 180.34 81.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "SCL0"
-			(at 184.15 83.82 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Footprint" "TestPoint:TestPoint_Pad_D1.0mm"
-			(at 180.34 86.36 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 180.34 86.36 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Testovací bod – I2C0 SCL"
-			(at 180.34 86.36 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "4884c138-07c0-436a-a51d-f8bfce010fb7")
-		)
-		(instances
-			(project "susicka_filamentu"
-				(path "/202a5452-a4a8-46b1-91e1-aa7f241e9adc/8a55e67b-4afb-42aa-9beb-336bc9f063d1"
-					(reference "TP9")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(wire
-		(pts
-			(xy 180.34 86.36) (xy 180.34 91.44)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "32ca1816-90d7-4419-ad7b-4c378b31e765")
-	)
-	(global_label "SCL0"
-		(shape bidirectional)
-		(at 180.34 91.44 270)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "30c18b10-fcda-495e-8165-95703b3f57c8")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 180.34 91.44 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-				(hide yes)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Connector:TestPoint")
-		(at 195.58 86.36 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "8ee40d8d-3240-46f8-ab04-03f3270730d4")
-		(property "Reference" "TP10"
-			(at 195.58 81.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "HX711_DT"
-			(at 199.39 83.82 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Footprint" "TestPoint:TestPoint_Pad_D1.0mm"
-			(at 195.58 86.36 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 195.58 86.36 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Testovací bod – HX711 DOUT (GPIO4)"
-			(at 195.58 86.36 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "7b72bc60-3950-439e-8f86-14a9f1ee34cd")
-		)
-		(instances
-			(project "susicka_filamentu"
-				(path "/202a5452-a4a8-46b1-91e1-aa7f241e9adc/8a55e67b-4afb-42aa-9beb-336bc9f063d1"
-					(reference "TP10")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(wire
-		(pts
-			(xy 195.58 86.36) (xy 195.58 91.44)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "f1b750dc-934b-4527-a3ae-6f117c0a5fe3")
-	)
-	(global_label "HX711_DT"
-		(shape input)
-		(at 195.58 91.44 270)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "aaeefb8c-3935-4a01-b080-b9652a91d080")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 195.58 91.44 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-				(hide yes)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Connector:TestPoint")
-		(at 210.82 86.36 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "ba2d004e-e32e-49df-8871-860d537da40a")
-		(property "Reference" "TP11"
-			(at 210.82 81.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "HX711_SCK"
-			(at 214.63 83.82 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Footprint" "TestPoint:TestPoint_Pad_D1.0mm"
-			(at 210.82 86.36 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 210.82 86.36 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Testovací bod – HX711 SCK (GPIO5)"
-			(at 210.82 86.36 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "d94da4f6-881e-42f6-8bd8-b7500f5b5698")
-		)
-		(instances
-			(project "susicka_filamentu"
-				(path "/202a5452-a4a8-46b1-91e1-aa7f241e9adc/8a55e67b-4afb-42aa-9beb-336bc9f063d1"
-					(reference "TP11")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(wire
-		(pts
-			(xy 210.82 86.36) (xy 210.82 91.44)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "318f5cb4-41c0-45dd-ab06-f94a496a270b")
-	)
-	(global_label "HX711_SCK"
-		(shape input)
-		(at 210.82 91.44 270)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "5c0e7d44-b7d7-4443-9205-0a34ebd45c27")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 210.82 91.44 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-				(hide yes)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Connector:TestPoint")
-		(at 226.06 86.36 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "dd551943-33db-4e53-9104-f401e9b104de")
-		(property "Reference" "TP12"
-			(at 226.06 81.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "GND"
-			(at 229.87 83.82 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "TestPoint:TestPoint_Loop_D2.50mm_Drill1.0mm"
-			(at 226.06 86.36 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 226.06 86.36 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Testovací bod – zem pro analyzátor"
-			(at 226.06 86.36 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "7e071c86-f643-4905-93b1-e38a3c8a98e2")
-		)
-		(instances
-			(project "susicka_filamentu"
-				(path "/202a5452-a4a8-46b1-91e1-aa7f241e9adc/8a55e67b-4afb-42aa-9beb-336bc9f063d1"
-					(reference "TP12")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(wire
-		(pts
-			(xy 226.06 86.36) (xy 226.06 91.44)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "270278cc-4227-4a72-a8a8-4ac79fe56991")
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 226.06 91.44 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "5224cdb5-f563-4e05-b65d-4b2cc14935ef")
-		(property "Reference" "#PWR130"
-			(at 231.14 90.17 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 231.14 92.71 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Footprint" ""
-			(at 226.06 91.44 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 226.06 91.44 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 226.06 91.44 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "8f24e70f-e89c-4c47-88d8-b436c8ca5b32")
-		)
-		(instances
-			(project "susicka_filamentu"
-				(path "/202a5452-a4a8-46b1-91e1-aa7f241e9adc/8a55e67b-4afb-42aa-9beb-336bc9f063d1"
-					(reference "#PWR130")
 					(unit 1)
 				)
 			)
@@ -3527,136 +3557,6 @@
 			)
 		)
 	)
-	(wire
-		(pts
-			(xy 134.62 116.84) (xy 134.62 121.92)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "29d10d16-10f3-4b80-9e7e-24d73acdf9ce")
-	)
-	(global_label "WL_CLK"
-		(shape input)
-		(at 134.62 121.92 270)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "11813541-40ab-4f03-84d9-e8e66c593313")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 134.62 121.92 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-				(hide yes)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Connector:TestPoint")
-		(at 149.86 116.84 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "671be038-6b63-4489-8a31-8991967a0d5b")
-		(property "Reference" "TP14"
-			(at 149.86 111.76 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "WL_CS"
-			(at 153.67 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Footprint" "TestPoint:TestPoint_Pad_D1.0mm"
-			(at 149.86 116.84 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 149.86 116.84 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Testovací bod – RM2 gSPI CS (GPIO25)"
-			(at 149.86 116.84 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "20a569a4-6720-4ef0-acca-7b4c0c00046d")
-		)
-		(instances
-			(project "susicka_filamentu"
-				(path "/202a5452-a4a8-46b1-91e1-aa7f241e9adc/8a55e67b-4afb-42aa-9beb-336bc9f063d1"
-					(reference "TP14")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(wire
-		(pts
-			(xy 149.86 116.84) (xy 149.86 121.92)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "2eaf8448-f57c-4d5a-a3fa-f158b01d653d")
-	)
-	(global_label "WL_CS"
-		(shape input)
-		(at 149.86 121.92 270)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "fca3e27a-012f-4944-837f-3da1c0eb3e7b")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 149.86 121.92 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-				(hide yes)
-			)
-		)
-	)
 	(symbol
 		(lib_id "Connector:TestPoint")
 		(at 165.1 116.84 0)
@@ -3723,57 +3623,352 @@
 			)
 		)
 	)
-	(wire
-		(pts
-			(xy 165.1 116.84) (xy 165.1 121.92)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "5c606694-f72a-4d75-9783-d079f5439665")
-	)
-	(global_label "WL_DATA"
-		(shape passive)
-		(at 165.1 121.92 270)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "5b09487e-5d7d-4160-9aed-2f522b66ecf5")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 165.1 121.92 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-				(hide yes)
-			)
-		)
-	)
 	(symbol
-		(lib_id "Connector:TestPoint")
-		(at 180.34 116.84 0)
+		(lib_id "power:GND")
+		(at 73.66 55.88 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "6add9cff-7c27-4bd8-81bd-8d10bcae1f27")
-		(property "Reference" "TP16"
-			(at 180.34 111.76 0)
+		(uuid "d54911cc-8117-4b35-98a4-a58a4cce8328")
+		(property "Reference" "#PWR124"
+			(at 78.74 54.61 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 78.74 57.15 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" ""
+			(at 73.66 55.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 73.66 55.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 73.66 55.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "0dfb9b9d-bd03-408d-89e7-270b5a38c020")
+		)
+		(instances
+			(project "susicka_filamentu"
+				(path "/202a5452-a4a8-46b1-91e1-aa7f241e9adc/8a55e67b-4afb-42aa-9beb-336bc9f063d1"
+					(reference "#PWR124")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 180.34 60.96 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "da342b4a-09c4-40ae-b918-f1d0fc0724b1")
+		(property "Reference" "#PWR128"
+			(at 185.42 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 185.42 62.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" ""
+			(at 180.34 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 180.34 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 180.34 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "40aaf1ad-2ec8-4b9a-a4e4-198061d27aff")
+		)
+		(instances
+			(project "susicka_filamentu"
+				(path "/202a5452-a4a8-46b1-91e1-aa7f241e9adc/8a55e67b-4afb-42aa-9beb-336bc9f063d1"
+					(reference "#PWR128")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 226.06 86.36 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "dd551943-33db-4e53-9104-f401e9b104de")
+		(property "Reference" "TP12"
+			(at 226.06 81.28 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Value" "HEAT_PWM"
-			(at 184.15 114.3 0)
+		(property "Value" "GND"
+			(at 229.87 83.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "TestPoint:TestPoint_Loop_D2.50mm_Drill1.0mm"
+			(at 226.06 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 226.06 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Testovací bod – zem pro analyzátor"
+			(at 226.06 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "7e071c86-f643-4905-93b1-e38a3c8a98e2")
+		)
+		(instances
+			(project "susicka_filamentu"
+				(path "/202a5452-a4a8-46b1-91e1-aa7f241e9adc/8a55e67b-4afb-42aa-9beb-336bc9f063d1"
+					(reference "TP12")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 165.1 55.88 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "e6072c35-c8c1-4fdb-a07a-79e2e73aabc5")
+		(property "Reference" "TP3"
+			(at 165.1 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "+1V1"
+			(at 168.91 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm"
+			(at 165.1 55.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 165.1 55.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Testovací bod"
+			(at 165.1 55.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "152f1449-d748-4482-9f31-c14672f83b59")
+		)
+		(instances
+			(project "susicka_filamentu"
+				(path "/202a5452-a4a8-46b1-91e1-aa7f241e9adc/8a55e67b-4afb-42aa-9beb-336bc9f063d1"
+					(reference "TP3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Mechanical:MountingHole")
+		(at 63.5 114.3 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "ea2b9351-174b-4608-8154-c77d51f897dd")
+		(property "Reference" "H3"
+			(at 63.5 109.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "M3"
+			(at 63.5 119.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "MountingHole:MountingHole_3.2mm_M3"
+			(at 63.5 114.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 63.5 114.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Montážní otvor M3"
+			(at 63.5 114.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "susicka_filamentu"
+				(path "/202a5452-a4a8-46b1-91e1-aa7f241e9adc/8a55e67b-4afb-42aa-9beb-336bc9f063d1"
+					(reference "H3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 149.86 86.36 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "eb8e1521-c8ff-4f03-86d5-fbc771a14969")
+		(property "Reference" "TP7"
+			(at 149.86 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SCL"
+			(at 153.67 83.82 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3783,7 +3978,7 @@
 			)
 		)
 		(property "Footprint" "TestPoint:TestPoint_Pad_D1.0mm"
-			(at 180.34 116.84 0)
+			(at 149.86 86.36 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3792,7 +3987,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 180.34 116.84 0)
+			(at 149.86 86.36 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3800,106 +3995,8 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Testovací bod – PWM topení (GPIO14)"
-			(at 180.34 116.84 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "2488e777-eaef-4923-9afb-5b5221de4937")
-		)
-		(instances
-			(project "susicka_filamentu"
-				(path "/202a5452-a4a8-46b1-91e1-aa7f241e9adc/8a55e67b-4afb-42aa-9beb-336bc9f063d1"
-					(reference "TP16")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(wire
-		(pts
-			(xy 180.34 116.84) (xy 180.34 121.92)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "9adcd2cd-ac07-4196-861d-c732ba9d430c")
-	)
-	(global_label "HEAT_PWM"
-		(shape input)
-		(at 180.34 121.92 270)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "95f67b3c-19d4-4a45-bd02-7b15619cab6e")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 180.34 121.92 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-				(hide yes)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Connector:TestPoint")
-		(at 195.58 116.84 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "3e5a4f9f-a731-43b1-b68e-d71dd57945ea")
-		(property "Reference" "TP17"
-			(at 195.58 111.76 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "FAN_PWM"
-			(at 199.39 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Footprint" "TestPoint:TestPoint_Pad_D1.0mm"
-			(at 195.58 116.84 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 195.58 116.84 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Testovací bod – PWM ventilátor (GPIO13)"
-			(at 195.58 116.84 0)
+		(property "Description" "Testovací bod – I2C1 SCL"
+			(at 149.86 86.36 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3908,144 +4005,14 @@
 			)
 		)
 		(pin "1"
-			(uuid "92188a07-572b-4556-9dd4-72b5607c3244")
+			(uuid "60972180-eb37-46b6-b3ce-e232289c4051")
 		)
 		(instances
 			(project "susicka_filamentu"
 				(path "/202a5452-a4a8-46b1-91e1-aa7f241e9adc/8a55e67b-4afb-42aa-9beb-336bc9f063d1"
-					(reference "TP17")
+					(reference "TP7")
 					(unit 1)
 				)
-			)
-		)
-	)
-	(wire
-		(pts
-			(xy 195.58 116.84) (xy 195.58 121.92)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "cb5691c0-59ca-46a3-b3df-23c8f1091724")
-	)
-	(global_label "FAN_PWM"
-		(shape input)
-		(at 195.58 121.92 270)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "ceda54f1-b046-4208-b35b-e40e98eed7b6")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 195.58 121.92 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-				(hide yes)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Connector:TestPoint")
-		(at 210.82 116.84 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "a4f84518-4613-45e2-be33-6127b98386df")
-		(property "Reference" "TP18"
-			(at 210.82 111.76 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "EXH_PWM"
-			(at 214.63 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Footprint" "TestPoint:TestPoint_Pad_D1.0mm"
-			(at 210.82 116.84 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 210.82 116.84 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Testovací bod – PWM odtah (GPIO12)"
-			(at 210.82 116.84 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "42c9e87c-f92f-4a2c-9ece-c5be22edfee3")
-		)
-		(instances
-			(project "susicka_filamentu"
-				(path "/202a5452-a4a8-46b1-91e1-aa7f241e9adc/8a55e67b-4afb-42aa-9beb-336bc9f063d1"
-					(reference "TP18")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(wire
-		(pts
-			(xy 210.82 116.84) (xy 210.82 121.92)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "98827786-63c7-4192-b616-34fa2d564d83")
-	)
-	(global_label "EXH_PWM"
-		(shape input)
-		(at 210.82 121.92 270)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "b8892751-0cc0-49ad-ae8d-d678ea0d20b0")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 210.82 121.92 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-				(hide yes)
 			)
 		)
 	)
@@ -4115,35 +4082,68 @@
 			)
 		)
 	)
-	(wire
-		(pts
-			(xy 226.06 116.84) (xy 226.06 121.92)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "d9152bd7-7088-47dd-9e4a-8b27ca942adb")
-	)
-	(global_label "NTC_ADC"
-		(shape input)
-		(at 226.06 121.92 270)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "82d36ee9-43ba-4455-85fb-0e6dfbf886bd")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 226.06 121.92 0)
+	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 180.34 55.88 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "ff249c07-ba9e-4361-8b14-e48b7be6d5af")
+		(property "Reference" "TP4"
+			(at 180.34 50.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify right)
+			)
+		)
+		(property "Value" "GND"
+			(at 184.15 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "TestPoint:TestPoint_Loop_D2.50mm_Drill1.0mm"
+			(at 180.34 55.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
 				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 180.34 55.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Testovací bod"
+			(at 180.34 55.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "de7b4dce-272c-4e95-b22c-2e1a13391ba7")
+		)
+		(instances
+			(project "susicka_filamentu"
+				(path "/202a5452-a4a8-46b1-91e1-aa7f241e9adc/8a55e67b-4afb-42aa-9beb-336bc9f063d1"
+					(reference "TP4")
+					(unit 1)
+				)
 			)
 		)
 	)

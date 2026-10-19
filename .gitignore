@@ -8,3 +8,5 @@ _autosave-*
 
 # Wi-Fi a tajné konfigurace (patří do FIRMWARE jako config.h.example)
 config.h
+# KiCad: index automatického ukládání
+\#auto_saved_files#

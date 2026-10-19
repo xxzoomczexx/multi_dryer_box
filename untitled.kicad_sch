@@ -942,7 +942,7 @@
 			(uuid "a8b8a696-c050-498d-9406-ffac89d537f4")
 		)
 		(instances
-			(project ""
+			(project "susicka_filamentu"
 				(path "/202a5452-a4a8-46b1-91e1-aa7f241e9adc/68a89cb9-461d-4194-9613-9470dc584abb"
 					(reference "C1")
 					(unit 1)
@@ -1008,7 +1008,7 @@
 			(uuid "fa0a4719-cac0-4247-a87f-89f14559f3d5")
 		)
 		(instances
-			(project ""
+			(project "susicka_filamentu"
 				(path "/202a5452-a4a8-46b1-91e1-aa7f241e9adc/68a89cb9-461d-4194-9613-9470dc584abb"
 					(reference "#PWR01")
 					(unit 1)
@@ -1076,7 +1076,7 @@
 			(uuid "6907a331-2224-477b-b465-531f7340e714")
 		)
 		(instances
-			(project ""
+			(project "susicka_filamentu"
 				(path "/202a5452-a4a8-46b1-91e1-aa7f241e9adc/68a89cb9-461d-4194-9613-9470dc584abb"
 					(reference "R1")
 					(unit 1)
@@ -1216,7 +1216,7 @@
 			(uuid "c0573fc1-b4cc-4c08-bf16-687cfe1d1b25")
 		)
 		(instances
-			(project ""
+			(project "susicka_filamentu"
 				(path "/202a5452-a4a8-46b1-91e1-aa7f241e9adc/68a89cb9-461d-4194-9613-9470dc584abb"
 					(reference "Y1")
 					(unit 1)
@@ -1284,7 +1284,7 @@
 			(uuid "9b507b5f-3cdd-4732-908e-3e47fe37bb96")
 		)
 		(instances
-			(project ""
+			(project "susicka_filamentu"
 				(path "/202a5452-a4a8-46b1-91e1-aa7f241e9adc/68a89cb9-461d-4194-9613-9470dc584abb"
 					(reference "C2")
 					(unit 1)

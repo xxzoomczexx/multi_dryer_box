@@ -1028,16 +1028,6 @@
 	)
 	(wire
 		(pts
-			(xy 134.62 102.87) (xy 134.62 120.65)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "43630d28-5daa-44e7-a5ef-361cf22bdce5")
-	)
-	(wire
-		(pts
 			(xy 132.08 116.84) (xy 132.08 121.92)
 		)
 		(stroke
@@ -1045,6 +1035,16 @@
 			(type default)
 		)
 		(uuid "436ec735-0f5b-4715-ae59-feb7dd988918")
+	)
+	(wire
+		(pts
+			(xy 121.92 102.87) (xy 121.92 105.41)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "612f72fe-1174-4ad7-ac68-8e009b591f03")
 	)
 	(wire
 		(pts
@@ -1178,7 +1178,7 @@
 	)
 	(wire
 		(pts
-			(xy 134.62 120.65) (xy 134.62 121.92)
+			(xy 134.62 102.87) (xy 134.62 121.92)
 		)
 		(stroke
 			(width 0)
@@ -1205,6 +1205,28 @@
 			(type default)
 		)
 		(uuid "eef2cda4-ef3f-403d-8713-d689ef7d771f")
+	)
+	(global_label "WL_GPIO0"
+		(shape output)
+		(at 121.92 105.41 270)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "7a89ccb5-b43d-48a8-81fb-693e7aa464e9")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 121.92 105.41 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
 	)
 	(hierarchical_label "RM2_BT_ON"
 		(shape input)
@@ -1342,7 +1364,7 @@
 			(uuid "766a97a5-e631-4445-b03d-db5e901fa253")
 		)
 		(instances
-			(project ""
+			(project "susicka_filamentu"
 				(path "/202a5452-a4a8-46b1-91e1-aa7f241e9adc/2d41c25d-4508-4be3-abef-357e16c44385"
 					(reference "#PWR021")
 					(unit 1)
@@ -1543,7 +1565,7 @@
 			(uuid "c0f5f878-5cd9-4898-b919-3eee18b2b312")
 		)
 		(instances
-			(project ""
+			(project "susicka_filamentu"
 				(path "/202a5452-a4a8-46b1-91e1-aa7f241e9adc/2d41c25d-4508-4be3-abef-357e16c44385"
 					(reference "#PWR031")
 					(unit 1)
@@ -2068,7 +2090,7 @@
 			(uuid "35958d30-1796-4b4e-bb71-46562205867f")
 		)
 		(instances
-			(project ""
+			(project "susicka_filamentu"
 				(path "/202a5452-a4a8-46b1-91e1-aa7f241e9adc/2d41c25d-4508-4be3-abef-357e16c44385"
 					(reference "R11")
 					(unit 1)
@@ -2201,7 +2223,7 @@
 			(uuid "a34b3323-1f18-426d-bb40-a0b1c68b8899")
 		)
 		(instances
-			(project ""
+			(project "susicka_filamentu"
 				(path "/202a5452-a4a8-46b1-91e1-aa7f241e9adc/2d41c25d-4508-4be3-abef-357e16c44385"
 					(reference "#PWR028")
 					(unit 1)
@@ -2268,7 +2290,7 @@
 			(uuid "f5f531f9-172a-4aed-ab5c-e43ca5ed94fd")
 		)
 		(instances
-			(project ""
+			(project "susicka_filamentu"
 				(path "/202a5452-a4a8-46b1-91e1-aa7f241e9adc/2d41c25d-4508-4be3-abef-357e16c44385"
 					(reference "C18")
 					(unit 1)
@@ -2402,7 +2424,7 @@
 			(uuid "57f634b2-24c1-4290-bea5-22c2ead73492")
 		)
 		(instances
-			(project ""
+			(project "susicka_filamentu"
 				(path "/202a5452-a4a8-46b1-91e1-aa7f241e9adc/2d41c25d-4508-4be3-abef-357e16c44385"
 					(reference "#PWR027")
 					(unit 1)
@@ -2474,38 +2496,6 @@
 					(reference "#PWR024")
 					(unit 1)
 				)
-			)
-		)
-	)
-	(wire
-		(pts
-			(xy 121.92 102.87) (xy 121.92 105.41)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "612f72fe-1174-4ad7-ac68-8e009b591f03")
-	)
-	(global_label "WL_GPIO0"
-		(shape output)
-		(at 121.92 105.41 270)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "7a89ccb5-b43d-48a8-81fb-693e7aa464e9")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 121.92 105.41 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-				(hide yes)
 			)
 		)
 	)

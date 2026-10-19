@@ -36,7 +36,8 @@ Základ je **0402 / 0603** (pájení v peci + pinzeta). Větší pouzdro jen tam
 | Pouzdro | Součástky | Proč |
 | :--- | :--- | :--- |
 | **0402** (1005 Metric) | `C7–C18, C20` (100 nF, 10–16 V X7R), `C1, C2` (15 pF C0G) | Blokovací kondenzátory musí sedět co nejblíž pinům RP2350 / RM2 / flash, krystalové kondenzátory těsně u Y1. |
-| **0603** (1608 Metric) | všechny rezistory `R1–R15`; `C4, C5, C6` (4,7 µF, 10 V X5R), `C19` (10 µF, 10 V X5R), `C3` (4,7 nF, DNP), `C22` (100 nF, **50 V**, bootstrap) | Rezistory jsou na 3,3 V a ztrácejí ≪ 0,1 W. C22 je mezi SW a BST: napětí na něm je jen ~5 V, ale kvůli 24V uzlu SW se volí 50 V. |
+| **0402 – VREG** | `C4, C5, C6` (4,7 µF, **6,3 V X5R**; C5/C6 footprint `susicka:C_0402_1005Metric_RPi` s mezerou 0,56 mm, aby pod nimi prošlo LX), `R7` (33 Ω) | Okolí interního regulátoru RP2350 (piny 46–50) převzaté 1:1 z reference RP2350A Minimal R4 – C6 sedí ploškami přímo nad piny 49 (VIN) a 47 (PGND). Pozice vůči středu U1: C6 (+2,00; −4,61), C5 (+2,00; −5,55), L1 (+2,00; −7,20), C4 (+4,20; −5,05, svisle), R7 (+4,20; −6,90, svisle). |
+| **0603** (1608 Metric) | ostatní rezistory; `C19` (10 µF, 10 V X5R), `C3` (4,7 nF, DNP), `C22` (100 nF, **50 V**, bootstrap) | Rezistory jsou na 3,3 V a ztrácejí ≪ 0,1 W. C22 je mezi SW a BST: napětí na něm je jen ~5 V, ale kvůli 24V uzlu SW se volí 50 V. |
 | **0805** (2012 Metric) | `C23, C24` (22 µF, **16 V** X5R/X7R) | Výstup měniče 3,3 V. 22 µF v 0603 ztratí při 3,3 V DC biasu víc než polovinu kapacity. |
 | **1210** (3225 Metric) | `C21` (10 µF, **50 V** X7R) | Vstupní kondenzátor měniče na **24 V**. Napětí ≥ 2× pracovní, při 24 V zůstane ~3–4 µF. |
 | **2016** (`rp2350A_QFN60:L_Abracon_AOTA-B201610`) | `L1` (3,3 µH, Abracon AOTA-B201610S3R3-101-T) | Cívka interního VREG RP2350. Footprint převzatý z RP2350A Minimal R4. **Tečka = pin 1 = +1V1, orientace je kritická** (viz Hardware design with RP2350, kap. 2.1). |
