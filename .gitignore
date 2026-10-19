@@ -1,0 +1,5 @@
+# Build výstupy firmwaru sem nepatří
+build/
+
+# Wi-Fi a tajné konfigurace
+config.h
