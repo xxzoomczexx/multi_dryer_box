@@ -61,7 +61,7 @@ Systém je navržen pro modularitu a stabilitu komunikace. Skládá se z několi
 ## ✨ Klíčové Vlastnosti (Key Features)
 
 - 📡 **Přístup odkudkoliv:** Systém využívá MQTT a nevyžaduje žádný složitý port-forwarding na routeru ani pevnou veřejnou IP adresu.
-- ⚡ **Plug & Play Multi-Box:** Automatické generování unikátního ID sušičky z HW MAC adresy. Můžete nahrát jeden `.uf2` soubor na libovolný počet Pico desek bez ručních změn kódu.
+- ⚡ **Plug & Play Multi-Box:** Automatické generování unikátního ID sušičky z výrobního čísla čipu (`pico_get_unique_board_id`, 16 hex znaků). Můžete nahrát jeden `.uf2` soubor na libovolný počet Pico desek bez ručních změn kódu.
 - 🔒 **Bezpečné uložení údajů:** Wi-Fi credentials uložené v ignorovaném `config.h`.
 - 📊 **Integrace a API:** Architektura otevírá cesty pro integrace do systémů **Home Assistant** a API endpointů tiskových platforem, jako je **Prusa Connect**.
 
