@@ -1,1 +1,10 @@
+# KiCad: cache, zálohy, zámky a lokální nastavení zobrazení
 fp-info-cache
+*-backups/
+*.kicad_prl
+*.lck
+_autosave-*
+~*
+
+# Wi-Fi a tajné konfigurace (patří do FIRMWARE jako config.h.example)
+config.h
