@@ -1,5 +1,7 @@
 # Modulární IoT sušička filamentu – maturitní projekt
 
+@.claude/pamet.md
+
 Maturitní práce (SPŠE a VOŠ Plzeň, obor Elektrotechnika – Internet věcí). Návrh HW, FW i cloudu
 pro sušení, uchovávání a tisk z filamentových boxů s dohledem v reálném čase.
 GitHub: https://github.com/xxzoomczexx/multi_dryer_box · Web: https://xxzoomczexx.github.io/multi_dryer_box/
