@@ -19,7 +19,22 @@ set(CMAKE_C_STANDARD 11)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-# Cílová deska: pico_w = Pico W (RP2040), pico2_w = Pico 2 W (RP2350)
+# == Integrace s Raspberry Pi Pico VS Code rozšířením ==
+if(WIN32)
+    set(USERHOME $ENV{USERPROFILE})
+else()
+    set(USERHOME $ENV{HOME})
+endif()
+set(sdkVersion 2.3.1)
+set(toolchainVersion 15_2_Rel1)
+set(picotoolVersion 2.3.1)
+set(picoVscode ${USERHOME}/.pico-sdk/cmake/pico-vscode.cmake)
+if (EXISTS ${picoVscode})
+    include(${picoVscode})
+endif()
+# ====================================================
+
+# Nastavení desky na Pico 2 W (RP2350 s Wi-Fi)
 set(PICO_BOARD pico_w CACHE STRING "Board type")
 
 # Načtení Pico SDK
@@ -45,7 +60,6 @@ pico_enable_stdio_usb(drybox_firmware 1)
 # Linkování knihoven z Pico SDK pro Wi-Fi (cyw43_arch) a MQTT (lwIP)
 target_link_libraries(drybox_firmware
     pico_stdlib
-    pico_unique_id
     pico_cyw43_arch_lwip_threadsafe_background
     pico_lwip_mqtt
     pico_time

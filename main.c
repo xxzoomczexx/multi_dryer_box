@@ -18,7 +18,6 @@
 #include "pico/stdlib.h"
 #include "pico/stdio_usb.h"
 #include "pico/time.h"
-#include "pico/unique_id.h"
 #include "pico/cyw43_arch.h"
 #include "hardware/gpio.h"
 #include "hardware/sync.h"
@@ -37,9 +36,7 @@
 /* ========================================================================== */
 #define TELEMETRY_INTERVAL_MS   1000UL      /**< Perioda odesílání telemetrie v ms */
 #define JSON_BUFFER_SIZE        200         /**< Velikost bufferu pro JSON řetězec */
-
-/** Délka ID boxu: 64bitové výrobní číslo čipu jako 16 hex znaků + '\0' */
-#define DRYBOX_ID_STR_LEN       (2 * PICO_UNIQUE_BOARD_ID_SIZE_BYTES + 1)
+#define DRYBOX_ID               1           /**< Identifikátor sušicího slotu/boxu */
 
 /* Uživatelské tlačítko (externí tlačítko mezi GPIO 15 a GND) */
 #define USER_BUTTON_PIN         15          /**< Externí GPIO tlačítko s pull-up */
@@ -63,7 +60,7 @@ typedef enum {
 } drybox_state_t;
 
 typedef struct {
-    char            id[DRYBOX_ID_STR_LEN];  /**< ID boxu (výrobní číslo čipu, hex) */
+    uint32_t        id;                     /**< ID boxu */
     float           weight;                 /**< Hmotnost cívky (g) */
     float           temp;                   /**< Teplota komory (°C) */
     float           hum;                    /**< Relativní vlhkost (%) */
@@ -163,10 +160,7 @@ static bool check_toggle_request(void) {
 /* ========================================================================== */
 
 static void sim_sensors_init(drybox_telemetry_t *data) {
-    // Unikátní ID boxu z výrobního čísla (RP2350: OTP čipu, RP2040: ID flash paměti).
-    // Posílá se jako řetězec – 64bitové číslo by JavaScript na webu nepřesně zaokrouhlil.
-    pico_get_unique_board_id_string(data->id, sizeof(data->id));
-    printf("[SYSTEM] ID boxu z výrobního čísla: %s\n", data->id);
+    data->id = DRYBOX_ID;
     data->weight = SIM_INITIAL_WEIGHT_G;
     data->temp = 22.5f;
     data->hum = 58.0f;
@@ -236,8 +230,8 @@ static bool drybox_serialize_json(const drybox_telemetry_t *data, char *out_buf,
     int written = snprintf(
         out_buf,
         max_len,
-        "{\"id\": \"%s\", \"weight\": %.2f, \"temp\": %.1f, \"hum\": %.1f, \"dry_state\": %d, \"status\": \"%s\", \"type\": \"%s\"}",
-        data->id,
+        "{\"id\": %lu, \"weight\": %.2f, \"temp\": %.1f, \"hum\": %.1f, \"dry_state\": %d, \"status\": \"%s\", \"type\": \"%s\"}",
+        (unsigned long)data->id,
         data->weight,
         data->temp,
         data->hum,
@@ -264,7 +258,7 @@ static void drybox_transport_publish(const char *json_payload) {
     // 2. Publikace přes MQTT rozhraní na broker
     if (g_mqtt_client && mqtt_client_is_connected(g_mqtt_client)) {
         char status_topic[64];
-        snprintf(status_topic, sizeof(status_topic), "drybox/status/%s", g_telemetry.id);
+        snprintf(status_topic, sizeof(status_topic), "drybox/status/%lu", (unsigned long)g_telemetry.id);
 
         cyw43_arch_lwip_begin();
         err_t err = mqtt_publish(
@@ -378,6 +372,10 @@ static bool wifi_init_and_connect(void) {
     printf("[WIFI] MAC adresa vašeho Pico W: %02X:%02X:%02X:%02X:%02X:%02X\n",
            mac[0], mac[1], mac[2], mac[3], mac[4], mac[5]);
 
+    // Automatické přiřazení unikátního ID sušicího boxu podle HW MAC adresy (1 až 8)
+    g_telemetry.id = (mac[5] % 8) + 1;
+    printf("[SYSTEM] Automaticky generované ID Boxu z HW: %lu\n", (unsigned long)g_telemetry.id);
+
     printf("[WIFI] Připojování k AP: '%s' ...\n", WIFI_SSID);
 
     int req_res = -1;
@@ -461,7 +459,9 @@ static void start_mqtt_connection(void) {
         }
 
         char client_id_buf[32];
-        snprintf(client_id_buf, sizeof(client_id_buf), "drybox_%s", g_telemetry.id);
+        uint8_t mac[6];
+        cyw43_wifi_get_mac(&cyw43_state, CYW43_ITF_STA, mac);
+        snprintf(client_id_buf, sizeof(client_id_buf), "drybox_pico_%02X%02X%02X", mac[3], mac[4], mac[5]);
 
         struct mqtt_connect_client_info_t client_info = {0};
         client_info.client_id = client_id_buf;
