@@ -5749,6 +5749,28 @@
 		)
 		(uuid "ff9500ec-4d0f-4ed2-b820-bd8cab0d4169")
 	)
+	(global_label "SDA"
+		(shape bidirectional)
+		(at 227.33 95.25 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "00ade52a-2a26-46de-a1e9-98c4a71419d4")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 227.33 95.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
 	(global_label "GP22"
 		(shape bidirectional)
 		(at 203.2 119.38 0)
@@ -5833,28 +5855,6 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
-				(hide yes)
-			)
-		)
-	)
-	(global_label "SDA"
-		(shape bidirectional)
-		(at 227.33 92.71 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "1c42e3ca-8905-4aeb-91ca-b0987641b086")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 227.33 92.71 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
 				(hide yes)
 			)
 		)
@@ -6079,6 +6079,28 @@
 			)
 		)
 	)
+	(global_label "SCL"
+		(shape bidirectional)
+		(at 227.33 92.71 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "66f45245-d0e5-4db0-8308-4f5f45f78e23")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 227.33 92.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
 	(global_label "SDA0"
 		(shape bidirectional)
 		(at 203.2 83.82 0)
@@ -6255,28 +6277,6 @@
 			)
 		)
 	)
-	(global_label "HX711_SCK"
-		(shape input)
-		(at 247.65 80.01 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "94308bbe-7819-4ff8-b2ac-b2ef9b3bec35")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 247.65 80.01 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-				(hide yes)
-			)
-		)
-	)
 	(global_label "WL_CLK"
 		(shape input)
 		(at 223.52 138.43 180)
@@ -6387,6 +6387,28 @@
 			)
 		)
 	)
+	(global_label "HX711_SCK"
+		(shape input)
+		(at 247.65 77.47 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "c7484adb-77f3-466f-8bc0-9d37855d62e5")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 247.65 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
 	(global_label "DM"
 		(shape input)
 		(at 217.17 53.34 0)
@@ -6405,28 +6427,6 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
-				(hide yes)
-			)
-		)
-	)
-	(global_label "HX711_DT"
-		(shape bidirectional)
-		(at 247.65 77.47 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "d1decc22-edb3-4c21-92bf-549646d09e44")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 247.65 77.47 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
 				(hide yes)
 			)
 		)
@@ -6493,6 +6493,28 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "HX711_DT"
+		(shape bidirectional)
+		(at 247.65 80.01 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "de53baac-647a-4ac7-bc1e-cfad932b96bb")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 247.65 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
 				(hide yes)
 			)
 		)
@@ -6598,28 +6620,6 @@
 		(uuid "fa1ba6c6-60c3-4a35-823b-26edfe4926a0")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 128.3086 121.92 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-				(hide yes)
-			)
-		)
-	)
-	(global_label "SCL"
-		(shape bidirectional)
-		(at 227.33 95.25 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "fb132ce9-582a-406a-9d23-0ef59cbead68")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 227.33 95.25 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6970,7 +6970,7 @@
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
-		(on_board yes)
+		(on_board no)
 		(dnp yes)
 		(fields_autoplaced yes)
 		(uuid "148582a1-1e25-4e30-a29e-f7137af0ab4d")
@@ -7040,7 +7040,7 @@
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
-		(on_board yes)
+		(on_board no)
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "15921ee7-dc16-4b11-ac92-99817cea9085")
@@ -7240,7 +7240,7 @@
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
-		(on_board yes)
+		(on_board no)
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "27ddb2ab-a21b-4da3-a70b-7c0e072f92f6")
@@ -7306,7 +7306,7 @@
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
-		(on_board yes)
+		(on_board no)
 		(dnp yes)
 		(fields_autoplaced yes)
 		(uuid "2c173ad5-df58-4014-9903-c8fe369b80c2")
@@ -8030,7 +8030,7 @@
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
-		(on_board yes)
+		(on_board no)
 		(dnp yes)
 		(fields_autoplaced yes)
 		(uuid "57a7f04e-7b28-4109-a869-248671896757")
@@ -8169,7 +8169,7 @@
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
-		(on_board yes)
+		(on_board no)
 		(dnp no)
 		(uuid "6d221c32-945a-4011-88ce-a37a36927f26")
 		(property "Reference" "#PWR04"
@@ -8441,7 +8441,7 @@
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
-		(on_board yes)
+		(on_board no)
 		(dnp yes)
 		(uuid "772f9088-cfb2-470e-8f56-13205da7daa6")
 		(property "Reference" "R4"
@@ -8786,7 +8786,7 @@
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
-		(on_board yes)
+		(on_board no)
 		(dnp yes)
 		(uuid "90d495fc-327e-4b6e-a238-0bddcd056b44")
 		(property "Reference" "R2"
@@ -9392,7 +9392,7 @@
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
-		(on_board yes)
+		(on_board no)
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "a319a16f-8313-4f30-a43d-af8bee09ee0c")
@@ -9801,7 +9801,7 @@
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
-		(on_board yes)
+		(on_board no)
 		(dnp yes)
 		(uuid "cbae2eae-0df3-4dd2-bc32-9515306bd28e")
 		(property "Reference" "R3"
@@ -10338,7 +10338,7 @@
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
-		(on_board yes)
+		(on_board no)
 		(dnp yes)
 		(uuid "e5b14554-f3e7-4bc1-b3ed-51d840283b0e")
 		(property "Reference" "R5"
