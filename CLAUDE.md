@@ -181,8 +181,10 @@ Rozhodnuto 2026-10-26 (deska = prototyp, počítá se s další verzí):
   reálně ≈ 67 Ω, ne 94 Ω; simulaci případně přepočítat.
 - Výrobní data: `gerber/susicka_filamentu_JLCPCB_2026-10-26.zip` + návod a parametry objednávky
   `gerber/OBJEDNAVKA_JLCPCB.md` (ENIG, stencil 0,10 mm, min. díra 0,25 mm – 16 děr). Starší export z 22. 10. smazán.
-  `jlcpcb/BOM_JLCPCB.csv` = nákupní soupiska SMD dílů + J4 s MPN (ověřeno proti schématu 2026-10-26, R20 220 Ω);
-  THT lišty, svorkovnice, SW1, TP a H v ní nejsou (MPN nevybrané). `CPL_JLCPCB.csv` (osazování u JLC) není v gitu.
+  `jlcpcb/BOM_JLCPCB.csv` = nákupní soupiska s MPN (ověřeno proti schématu 2026-10-26, R20 220 Ω): svorkovnice
+  Phoenix 1715022 (MKDS 1,5/ 2, rozteč 5,0 mm – 1715721 je 5,08 mm!), lišty Würth WR-PHD 61300311121 / 61300411121 /
+  61301421121, GND očka TP4/TP5/TP12 Keystone 5001 (díra 1,0 mm). Nekupuje se: H1–H4 a ploškové TP (vyrobí JLC).
+  SW1 zatím nevybrané. `CPL_JLCPCB.csv` (osazování u JLC) není v gitu.
 
 ## Harmonogram
 

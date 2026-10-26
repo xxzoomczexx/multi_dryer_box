@@ -33,3 +33,8 @@ RC0603FR-07470RL,R14,R_0603_1608Metric,,Yageo,RC0603FR-07470RL
 RC0603FR-07100KL,"R15,R18,R24",R_0603_1608Metric,,Yageo,RC0603FR-07100KL
 RC0603FR-07100RL,"R16,R17,R23",R_0603_1608Metric,,Yageo,RC0603FR-07100RL
 RC0603FR-074K7L,"R21,R22,R26,R27",R_0603_1608Metric,,Yageo,RC0603FR-074K7L
+"MKDS 1,5/ 2 (5,0 mm)","J5,J8,J9,J13","TerminalBlock_Phoenix_MKDS-1,5-2_1x02_P5.00mm_Horizontal",,Phoenix Contact,1715022
+"Pin header 1x3 2,54 mm",J2,PinHeader_1x03_P2.54mm_Vertical,,Würth Elektronik,61300311121
+"Pin header 1x4 2,54 mm","J3,J6,J7,J11",PinHeader_1x04_P2.54mm_Vertical,,Würth Elektronik,61300411121
+"Pin header 2x7 2,54 mm",J12,PinHeader_2x07_P2.54mm_Vertical,,Würth Elektronik,61301421121
+Test point loop black,"TP4,TP5,TP12",TestPoint_Loop_D2.50mm_Drill1.0mm,,Keystone Electronics,5001
