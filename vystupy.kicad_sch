@@ -3000,16 +3000,6 @@
 	)
 	(wire
 		(pts
-			(xy 71.12 93.98) (xy 71.12 91.44)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "0c56d48b-9343-4a97-93f0-b77fc1ca5193")
-	)
-	(wire
-		(pts
 			(xy 114.3 53.34) (xy 114.3 50.8)
 		)
 		(stroke
@@ -3230,6 +3220,16 @@
 	)
 	(wire
 		(pts
+			(xy 72.39 99.06) (xy 73.66 99.06)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "57696c5a-5d3e-48d4-8d36-2cacca5c5fca")
+	)
+	(wire
+		(pts
 			(xy 142.24 110.49) (xy 139.7 110.49)
 		)
 		(stroke
@@ -3247,16 +3247,6 @@
 			(type default)
 		)
 		(uuid "5adccd47-74ad-4e3b-b5e1-0418f1c2d937")
-	)
-	(wire
-		(pts
-			(xy 73.66 93.98) (xy 71.12 93.98)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "5b0479ea-7ecc-4603-9ce0-13d187b6bfb9")
 	)
 	(wire
 		(pts
@@ -3694,28 +3684,6 @@
 			)
 		)
 	)
-	(global_label "24V"
-		(shape input)
-		(at 71.12 91.44 90)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "4c0cd752-2439-4b07-9ef9-3e919dc64687")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 71.12 91.44 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-	)
 	(global_label "SDA"
 		(shape bidirectional)
 		(at 175.26 124.46 270)
@@ -3892,6 +3860,28 @@
 			)
 		)
 	)
+	(global_label "24V"
+		(shape input)
+		(at 72.39 99.06 270)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "abde2863-68f1-4b0d-bf54-e89e9af5d208")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 72.39 105.5528 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
 	(global_label "SCL0"
 		(shape bidirectional)
 		(at 175.26 156.21 270)
@@ -4008,8 +3998,8 @@
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
-		(on_board yes)
-		(dnp no)
+		(on_board no)
+		(dnp yes)
 		(uuid "001ee670-6561-454a-94eb-3134e8ca4ccb")
 		(property "Reference" "C26"
 			(at 132.08 110.49 0)
@@ -5158,7 +5148,7 @@
 	)
 	(symbol
 		(lib_id "Connector:Screw_Terminal_01x02")
-		(at 78.74 93.98 0)
+		(at 78.74 96.52 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -5166,7 +5156,7 @@
 		(dnp no)
 		(uuid "53da2089-5ade-4555-985e-79e5f9a9d099")
 		(property "Reference" "J13"
-			(at 78.74 90.17 0)
+			(at 78.74 92.71 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5174,7 +5164,7 @@
 			)
 		)
 		(property "Value" "Tepelna pojistka"
-			(at 83.82 97.79 0)
+			(at 81.026 93.98 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5183,7 +5173,7 @@
 			)
 		)
 		(property "Footprint" "TerminalBlock_Phoenix:TerminalBlock_Phoenix_MKDS-1,5-2_1x02_P5.00mm_Horizontal"
-			(at 78.74 93.98 0)
+			(at 78.74 96.52 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5192,7 +5182,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 78.74 93.98 0)
+			(at 78.74 96.52 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5201,7 +5191,7 @@
 			)
 		)
 		(property "Description" "Tepelná pojistka (TCO) na tělese topení, v sérii s topením"
-			(at 78.74 93.98 0)
+			(at 78.74 96.52 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6560,8 +6550,8 @@
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
-		(on_board yes)
-		(dnp no)
+		(on_board no)
+		(dnp yes)
 		(uuid "9dba62b0-21de-4e19-916a-346d07ee32dc")
 		(property "Reference" "J10"
 			(at 149.86 105.41 0)
@@ -6842,7 +6832,7 @@
 				)
 			)
 		)
-		(property "Value" "1k"
+		(property "Value" "220"
 			(at 182.88 53.34 90)
 			(effects
 				(font
@@ -7237,8 +7227,8 @@
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
-		(on_board yes)
-		(dnp no)
+		(on_board no)
+		(dnp yes)
 		(uuid "e05169b0-789e-461b-a4e6-6c5e23404096")
 		(property "Reference" "R25"
 			(at 121.92 100.33 0)

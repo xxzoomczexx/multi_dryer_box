@@ -13,6 +13,13 @@
 - Desku analyzovat přes Python API KiCadu (`C:/Program Files/KiCad/9.0/bin/python.exe`, `import pcbnew`),
   jen z **uložené** desky (screenshot bývá novější než soubor – zkontrolovat čas změny).
 - U zón kontrolovat, že každá síť je po vyplnění v jednom kuse (LX zóna jednou odřízla PGND).
+- `pcbnew.LoadBoard` načítat jen ze složky, kde je **stejnojmenný `.kicad_pro`** – jinak chybí třídy sítí (Power 0,3 mm),
+  přepočet zón dá špatné mezery a `SaveBoard` přepíše `.kicad_pro` výchozím. Kopie: `X.kicad_pcb` + `X.kicad_pro`.
+- **KiCad IPC API** je zapnuté (Nastavení → Pluginy → Povolit KiCad API, od 2026-10-22 na domácím PC).
+  Knihovna `kicad-python` (`pip install kicad-python`, import `kipy`) v systémovém Pythonu, ne v KiCadím.
+  `KiCad().get_board()` = živá deska v otevřeném editoru DPS (i neuložená, změny jdou vrátit Ctrl+Z,
+  `get_selection()` = co uživatel označil). Jen editor DPS – schéma dál přes soubory při zavřeném KiCadu;
+  DRC a rendery dál přes `kicad-cli` z uloženého souboru. Na notebooku se API musí zapnout zvlášť.
 
 ## Součástky
 - Jen ověřené díly (datasheet) dostupné na **Mouseru nebo TME**; čísla dílů nevymýšlet. Do schématu pole

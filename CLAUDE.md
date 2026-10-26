@@ -39,7 +39,7 @@ součástky, výpočty a vše náročné). Uživatel chce: jednoduché hledání
   flash W25Q128JVSIQ (SOIC-8 208 mil), RM2 na GPIO23 (WL_ON+BT_ON), 24 (data; DO přes 470 Ω, nIRQ přes 10 k), 25 (CS), 29 (CLK).
 - Napájení 24 V (jack PJ-102AH) → AP63203WU-7 → 3,3 V.
 - Topení: 24V PTC 30 W (Curie ~70 °C, náběh 3–5 A), N-MOSFET Q1 na GPIO14, pomalé PWM ~1 Hz (PID), svorkovnice J5.
-- Senzory: SHT4x přes I2C (J6: 3V3, GND, GPIO2, GPIO3), HX711 + tenzometr (J7: 3V3, GND, GPIO4, GPIO5).
+- Senzory: SHT4x přes I2C (J6: 3V3, GND, SCL GPIO3, SDA GPIO2), HX711 + tenzometr (J7: 3V3, GND, SCK GPIO5, DT GPIO4).
 - Výstupy a další vstupy (list `vystupy.kicad_sch`): GPIO13 = ventilátor (J8), GPIO14 = topení (J5),
   **GPIO12 = odtahový ventilátor** (J9), **GPIO8/9 = I2C0 pro druhý SHT40** (J11: 3V3, GND, SDA, SCL),
   **GPIO26 = NTC topení** (J10: ADC, GND), GPIO15 = tlačítko, RM2 GPIO0 = stavová LED.
@@ -161,6 +161,27 @@ Profily: PLA 45–50 °C (při tisku 40–45), PETG 60–65, TPU ~45–55, ABS/P
   (0,2 mm, 16,5 mm, h 0,48 mm, FR4) → překmit 3 %, −3 dB na 901 MHz. Přeslech (vázané vedení) model nezahrnuje.
 - Kontroly desky dělat přes `kicad-cli pcb drc --format json` a Python API KiCadu
   (`C:/Program Files/KiCad/9.0/bin/python.exe`, `import pcbnew`) – jen při uložené desce a zavřeném KiCadu.
+
+## Generálka desky (2026-10-25, deska uložená 22. 10.)
+
+DRC: 0 chyb clearance, 7 nespojených (J12: GP10, 11, 16, 18, 19, 20, 27), TP3 (+1V1) chybí na desce. Zóny po přepočtu
+každá v jednom kuse, cesty bez ostrých úhlů (jen 45°), schéma zapojené správně, footprinty sedí na MPN.
+Rozhodnuto 2026-10-26 (deska = prototyp, počítá se s další verzí):
+- J12: 7 nedotažených GPIO zůstává záměrně (DRC je bude hlásit). NTC (J10, R25, C26, TP19) na prototypu není –
+  topení hlídá jen Curie PTC + TCO na J13 (musí být osazená). TP3 se nepoužije (zatím jen varování parity v DRC).
+- J6 (3V3, GND, SCL, SDA) vs J11 (3V3, GND, SDA, SCL) – opačné pořadí záměrně kvůli routingu, popisky sedí.
+- J4 přečnívá spodní hranu o ~5 mm záměrně; kolík 2,0 mm = koncovka 5,5/2,1 (pro 5,5/2,5 je PJ-102BH, stejný footprint).
+- U JLCPCB se objednává jen deska (bez osazení) → LCSC čísla ani fiduciály netřeba.
+- D6 (150060GS75000, U_F 3,2 V) → menší R20, doporučeno 220 Ω (stejný díl jako R8/R9).
+- Hotovo: značky +/− u J5, J8, J9 přesunuté do pruhu u hrany desky (0,8 mm / 0,15 mm), popisek D4 vlevo od diody.
+  R14 zůstává pod U2 (kolem není místo).
+- Hotovo 2026-10-26: TP12 posunutý (3,75 mm od keepoutu antény), popisek TP13 nad ploškou, R20 = 220 Ω, J4 o 0,67 mm výš
+  (přesah ~4,4 mm), na In2 GND zóna přes celou desku s prioritou 0 (3V3 zóny 2 a 14) → měď na vrstvách vyrovnaná.
+- Stackup v KiCadu (3 × 0,48 mm) neodpovídá JLC JLC04161H-7628 (F.Cu–In1 0,21 mm, vnitřní Cu 0,5 oz) → Z0 WL_CLK
+  reálně ≈ 67 Ω, ne 94 Ω; simulaci případně přepočítat.
+- Výrobní data: `gerber/susicka_filamentu_JLCPCB_2026-10-26.zip` + návod a parametry objednávky
+  `gerber/OBJEDNAVKA_JLCPCB.md` (ENIG, stencil 0,10 mm, min. díra 0,25 mm – 16 děr). Starší export z 22. 10. smazán.
+  `jlcpcb/` (BOM/CPL pro osazení u JLC) se nepoužívá – jen deska.
 
 ## Harmonogram
 
