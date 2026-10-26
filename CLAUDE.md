@@ -181,7 +181,8 @@ Rozhodnuto 2026-10-26 (deska = prototyp, počítá se s další verzí):
   reálně ≈ 67 Ω, ne 94 Ω; simulaci případně přepočítat.
 - Výrobní data: `gerber/susicka_filamentu_JLCPCB_2026-10-26.zip` + návod a parametry objednávky
   `gerber/OBJEDNAVKA_JLCPCB.md` (ENIG, stencil 0,10 mm, min. díra 0,25 mm – 16 děr). Starší export z 22. 10. smazán.
-  `jlcpcb/` (BOM/CPL pro osazení u JLC) se nepoužívá – jen deska.
+  `jlcpcb/BOM_JLCPCB.csv` = nákupní soupiska SMD dílů + J4 s MPN (ověřeno proti schématu 2026-10-26, R20 220 Ω);
+  THT lišty, svorkovnice, SW1, TP a H v ní nejsou (MPN nevybrané). `CPL_JLCPCB.csv` (osazování u JLC) není v gitu.
 
 ## Harmonogram
 
