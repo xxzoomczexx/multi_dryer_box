@@ -184,7 +184,8 @@ Rozhodnuto 2026-10-26 (deska = prototyp, počítá se s další verzí):
   `jlcpcb/BOM_JLCPCB.csv` = nákupní soupiska s MPN (ověřeno proti schématu 2026-10-26, R20 220 Ω): svorkovnice
   Phoenix 1715022 (MKDS 1,5/ 2, rozteč 5,0 mm – 1715721 je 5,08 mm!), lišty Würth WR-PHD 61300311121 / 61300411121 /
   61301421121, GND očka TP4/TP5/TP12 Keystone 5001 (díra 1,0 mm). Nekupuje se: H1–H4 a ploškové TP (vyrobí JLC).
-  SW1 zatím nevybrané. `CPL_JLCPCB.csv` (osazování u JLC) není v gitu.
+  SW1 má uživatel vlastní. Sloupce Qty (ks na desku) + Mouser/TME = odkazy na vyhledávání podle MPN (RP2350A a RM2
+  hledat jako „RP2350A“ / „SC1169“ – Raspberry Pi kódy; na TME je nejspíš nemají). `CPL_JLCPCB.csv` není v gitu.
 
 ## Harmonogram
 

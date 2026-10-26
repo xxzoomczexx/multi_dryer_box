@@ -1,40 +1,40 @@
-Comment,Designator,Footprint,LCSC Part #,Manufacturer,MPN
-RP2350A0A4,U1,RP2350A_QFN-60_RPi_Minimal,,Raspberry Pi,RP2350A0A4
-RM2,U2,rpi_rmc20452t,,Raspberry Pi,RM2
-W25Q128JVSIQ,U3,SOIC-8_5.3x5.3mm_P1.27mm,,Winbond,W25Q128JVSIQ
-AP63203WU-7,U4,TSOT-23-6,,Diodes Inc.,AP63203WU-7
-ABM8-272-T3,Y1,Crystal_SMD_3225-4Pin_3.2x2.5mm,,Abracon,ABM8-272-T3
-AOTA-B201610S3R3-101-T,L1,L_Abracon_AOTA-B201610,,Abracon,AOTA-B201610S3R3-101-T
-74438356047,L2,L_Wuerth_MAPI-4020,,Würth Elektronik,74438356047
-SIS434DN-T1-GE3,Q1,Vishay_PowerPAK_1212-8_Single_GSD,,Vishay,SIS434DN-T1-GE3
-AO3422,"Q2,Q4",SOT-23,,Alpha & Omega,AO3422
-AOD4185,Q3,TO-252-2,,Alpha & Omega,AOD4185
-SS14-E3/61T,D2,D_SMA,,Vishay,SS14-E3/61T
-B5819W-TP,"D3,D7",D_SOD-123,,MCC,B5819W-TP
-BZT52C15-7-F,D4,D_SOD-123,,Diodes Inc.,BZT52C15-7-F
-SMBJ24CA,D5,D_SMB,,Littelfuse,SMBJ24CA
-150060GS75000,D6,LED_0603_1608Metric,,Würth Elektronik,150060GS75000
-0454004.MR,F1,Fuse_Littelfuse-NANO2-451_453,,Littelfuse,0454004.MR
-PJ-102AH,J4,PJ-102AH,,Same Sky (CUI Devices),PJ-102AH
-CL05C150JB5NNNC,"C1,C2",C_0402_1005Metric,,Samsung,CL05C150JB5NNNC
-GRM155R60J475ME47D,C4,C_0402_1005Metric,,Murata,GRM155R60J475ME47D
-GRM155R60J475ME47D,"C5,C6",C_0402_1005Metric_RPi,,Murata,GRM155R60J475ME47D
-GRM155R71C104KA88D,"C7,C8,C9,C10,C11,C12,C13,C14,C15,C16,C17,C18,C20,C27",C_0402_1005Metric,,Murata,GRM155R71C104KA88D
-CL10A106KP8NNNC,C19,C_0603_1608Metric,,Samsung,CL10A106KP8NNNC
-C3225X7R1H106K250AC,C21,C_1210_3225Metric,,TDK,C3225X7R1H106K250AC
-CL10B104KB8NNNC,C22,C_0603_1608Metric,,Samsung,CL10B104KB8NNNC
-GRM21BR61A226ME44L,"C23,C24",C_0805_2012Metric,,Murata,GRM21BR61A226ME44L
-UUX1H101MNL1GS,C25,CP_Elec_10x10,,Nichicon,UUX1H101MNL1GS
-RC0402FR-0733RL,R7,R_0402_1005Metric,,Yageo,RC0402FR-0733RL
-RC0603FR-071KL,R1,R_0603_1608Metric,,Yageo,RC0603FR-071KL
-RC0603FR-07220RL,"R8,R9,R20",R_0603_1608Metric,,Yageo,RC0603FR-07220RL
-RC0603FR-0710KL,"R10,R11,R13,R19",R_0603_1608Metric,,Yageo,RC0603FR-0710KL
-RC0603FR-07470RL,R14,R_0603_1608Metric,,Yageo,RC0603FR-07470RL
-RC0603FR-07100KL,"R15,R18,R24",R_0603_1608Metric,,Yageo,RC0603FR-07100KL
-RC0603FR-07100RL,"R16,R17,R23",R_0603_1608Metric,,Yageo,RC0603FR-07100RL
-RC0603FR-074K7L,"R21,R22,R26,R27",R_0603_1608Metric,,Yageo,RC0603FR-074K7L
-"MKDS 1,5/ 2 (5,0 mm)","J5,J8,J9,J13","TerminalBlock_Phoenix_MKDS-1,5-2_1x02_P5.00mm_Horizontal",,Phoenix Contact,1715022
-"Pin header 1x3 2,54 mm",J2,PinHeader_1x03_P2.54mm_Vertical,,Würth Elektronik,61300311121
-"Pin header 1x4 2,54 mm","J3,J6,J7,J11",PinHeader_1x04_P2.54mm_Vertical,,Würth Elektronik,61300411121
-"Pin header 2x7 2,54 mm",J12,PinHeader_2x07_P2.54mm_Vertical,,Würth Elektronik,61301421121
-Test point loop black,"TP4,TP5,TP12",TestPoint_Loop_D2.50mm_Drill1.0mm,,Keystone Electronics,5001
+Comment,Designator,Footprint,LCSC Part #,Manufacturer,MPN,Qty,Mouser,TME
+RP2350A0A4,U1,RP2350A_QFN-60_RPi_Minimal,,Raspberry Pi,RP2350A0A4,1,https://cz.mouser.com/c/?q=RP2350A,https://www.tme.eu/cz/katalog/?search=RP2350A
+RM2,U2,rpi_rmc20452t,,Raspberry Pi,RM2,1,https://cz.mouser.com/c/?q=SC1169,https://www.tme.eu/cz/katalog/?search=SC1169
+W25Q128JVSIQ,U3,SOIC-8_5.3x5.3mm_P1.27mm,,Winbond,W25Q128JVSIQ,1,https://cz.mouser.com/c/?q=W25Q128JVSIQ,https://www.tme.eu/cz/katalog/?search=W25Q128JVSIQ
+AP63203WU-7,U4,TSOT-23-6,,Diodes Inc.,AP63203WU-7,1,https://cz.mouser.com/c/?q=AP63203WU-7,https://www.tme.eu/cz/katalog/?search=AP63203WU-7
+ABM8-272-T3,Y1,Crystal_SMD_3225-4Pin_3.2x2.5mm,,Abracon,ABM8-272-T3,1,https://cz.mouser.com/c/?q=ABM8-272-T3,https://www.tme.eu/cz/katalog/?search=ABM8-272-T3
+AOTA-B201610S3R3-101-T,L1,L_Abracon_AOTA-B201610,,Abracon,AOTA-B201610S3R3-101-T,1,https://cz.mouser.com/c/?q=AOTA-B201610S3R3-101-T,https://www.tme.eu/cz/katalog/?search=AOTA-B201610S3R3-101-T
+74438356047,L2,L_Wuerth_MAPI-4020,,Würth Elektronik,74438356047,1,https://cz.mouser.com/c/?q=74438356047,https://www.tme.eu/cz/katalog/?search=74438356047
+SIS434DN-T1-GE3,Q1,Vishay_PowerPAK_1212-8_Single_GSD,,Vishay,SIS434DN-T1-GE3,1,https://cz.mouser.com/c/?q=SIS434DN-T1-GE3,https://www.tme.eu/cz/katalog/?search=SIS434DN-T1-GE3
+AO3422,"Q2,Q4",SOT-23,,Alpha & Omega,AO3422,2,https://cz.mouser.com/c/?q=AO3422,https://www.tme.eu/cz/katalog/?search=AO3422
+AOD4185,Q3,TO-252-2,,Alpha & Omega,AOD4185,1,https://cz.mouser.com/c/?q=AOD4185,https://www.tme.eu/cz/katalog/?search=AOD4185
+SS14-E3/61T,D2,D_SMA,,Vishay,SS14-E3/61T,1,https://cz.mouser.com/c/?q=SS14-E3/61T,https://www.tme.eu/cz/katalog/?search=SS14-E3/61T
+B5819W-TP,"D3,D7",D_SOD-123,,MCC,B5819W-TP,2,https://cz.mouser.com/c/?q=B5819W-TP,https://www.tme.eu/cz/katalog/?search=B5819W-TP
+BZT52C15-7-F,D4,D_SOD-123,,Diodes Inc.,BZT52C15-7-F,1,https://cz.mouser.com/c/?q=BZT52C15-7-F,https://www.tme.eu/cz/katalog/?search=BZT52C15-7-F
+SMBJ24CA,D5,D_SMB,,Littelfuse,SMBJ24CA,1,https://cz.mouser.com/c/?q=SMBJ24CA,https://www.tme.eu/cz/katalog/?search=SMBJ24CA
+150060GS75000,D6,LED_0603_1608Metric,,Würth Elektronik,150060GS75000,1,https://cz.mouser.com/c/?q=150060GS75000,https://www.tme.eu/cz/katalog/?search=150060GS75000
+0454004.MR,F1,Fuse_Littelfuse-NANO2-451_453,,Littelfuse,0454004.MR,1,https://cz.mouser.com/c/?q=0454004.MR,https://www.tme.eu/cz/katalog/?search=0454004.MR
+PJ-102AH,J4,PJ-102AH,,Same Sky (CUI Devices),PJ-102AH,1,https://cz.mouser.com/c/?q=PJ-102AH,https://www.tme.eu/cz/katalog/?search=PJ-102AH
+CL05C150JB5NNNC,"C1,C2",C_0402_1005Metric,,Samsung,CL05C150JB5NNNC,2,https://cz.mouser.com/c/?q=CL05C150JB5NNNC,https://www.tme.eu/cz/katalog/?search=CL05C150JB5NNNC
+GRM155R60J475ME47D,C4,C_0402_1005Metric,,Murata,GRM155R60J475ME47D,1,https://cz.mouser.com/c/?q=GRM155R60J475ME47D,https://www.tme.eu/cz/katalog/?search=GRM155R60J475ME47D
+GRM155R60J475ME47D,"C5,C6",C_0402_1005Metric_RPi,,Murata,GRM155R60J475ME47D,2,https://cz.mouser.com/c/?q=GRM155R60J475ME47D,https://www.tme.eu/cz/katalog/?search=GRM155R60J475ME47D
+GRM155R71C104KA88D,"C7,C8,C9,C10,C11,C12,C13,C14,C15,C16,C17,C18,C20,C27",C_0402_1005Metric,,Murata,GRM155R71C104KA88D,14,https://cz.mouser.com/c/?q=GRM155R71C104KA88D,https://www.tme.eu/cz/katalog/?search=GRM155R71C104KA88D
+CL10A106KP8NNNC,C19,C_0603_1608Metric,,Samsung,CL10A106KP8NNNC,1,https://cz.mouser.com/c/?q=CL10A106KP8NNNC,https://www.tme.eu/cz/katalog/?search=CL10A106KP8NNNC
+C3225X7R1H106K250AC,C21,C_1210_3225Metric,,TDK,C3225X7R1H106K250AC,1,https://cz.mouser.com/c/?q=C3225X7R1H106K250AC,https://www.tme.eu/cz/katalog/?search=C3225X7R1H106K250AC
+CL10B104KB8NNNC,C22,C_0603_1608Metric,,Samsung,CL10B104KB8NNNC,1,https://cz.mouser.com/c/?q=CL10B104KB8NNNC,https://www.tme.eu/cz/katalog/?search=CL10B104KB8NNNC
+GRM21BR61A226ME44L,"C23,C24",C_0805_2012Metric,,Murata,GRM21BR61A226ME44L,2,https://cz.mouser.com/c/?q=GRM21BR61A226ME44L,https://www.tme.eu/cz/katalog/?search=GRM21BR61A226ME44L
+UUX1H101MNL1GS,C25,CP_Elec_10x10,,Nichicon,UUX1H101MNL1GS,1,https://cz.mouser.com/c/?q=UUX1H101MNL1GS,https://www.tme.eu/cz/katalog/?search=UUX1H101MNL1GS
+RC0402FR-0733RL,R7,R_0402_1005Metric,,Yageo,RC0402FR-0733RL,1,https://cz.mouser.com/c/?q=RC0402FR-0733RL,https://www.tme.eu/cz/katalog/?search=RC0402FR-0733RL
+RC0603FR-071KL,R1,R_0603_1608Metric,,Yageo,RC0603FR-071KL,1,https://cz.mouser.com/c/?q=RC0603FR-071KL,https://www.tme.eu/cz/katalog/?search=RC0603FR-071KL
+RC0603FR-07220RL,"R8,R9,R20",R_0603_1608Metric,,Yageo,RC0603FR-07220RL,3,https://cz.mouser.com/c/?q=RC0603FR-07220RL,https://www.tme.eu/cz/katalog/?search=RC0603FR-07220RL
+RC0603FR-0710KL,"R10,R11,R13,R19",R_0603_1608Metric,,Yageo,RC0603FR-0710KL,4,https://cz.mouser.com/c/?q=RC0603FR-0710KL,https://www.tme.eu/cz/katalog/?search=RC0603FR-0710KL
+RC0603FR-07470RL,R14,R_0603_1608Metric,,Yageo,RC0603FR-07470RL,1,https://cz.mouser.com/c/?q=RC0603FR-07470RL,https://www.tme.eu/cz/katalog/?search=RC0603FR-07470RL
+RC0603FR-07100KL,"R15,R18,R24",R_0603_1608Metric,,Yageo,RC0603FR-07100KL,3,https://cz.mouser.com/c/?q=RC0603FR-07100KL,https://www.tme.eu/cz/katalog/?search=RC0603FR-07100KL
+RC0603FR-07100RL,"R16,R17,R23",R_0603_1608Metric,,Yageo,RC0603FR-07100RL,3,https://cz.mouser.com/c/?q=RC0603FR-07100RL,https://www.tme.eu/cz/katalog/?search=RC0603FR-07100RL
+RC0603FR-074K7L,"R21,R22,R26,R27",R_0603_1608Metric,,Yageo,RC0603FR-074K7L,4,https://cz.mouser.com/c/?q=RC0603FR-074K7L,https://www.tme.eu/cz/katalog/?search=RC0603FR-074K7L
+"MKDS 1,5/ 2 (5,0 mm)","J5,J8,J9,J13","TerminalBlock_Phoenix_MKDS-1,5-2_1x02_P5.00mm_Horizontal",,Phoenix Contact,1715022,4,https://cz.mouser.com/c/?q=1715022,https://www.tme.eu/cz/katalog/?search=1715022
+"Pin header 1x3 2,54 mm",J2,PinHeader_1x03_P2.54mm_Vertical,,Würth Elektronik,61300311121,1,https://cz.mouser.com/c/?q=61300311121,https://www.tme.eu/cz/katalog/?search=61300311121
+"Pin header 1x4 2,54 mm","J3,J6,J7,J11",PinHeader_1x04_P2.54mm_Vertical,,Würth Elektronik,61300411121,4,https://cz.mouser.com/c/?q=61300411121,https://www.tme.eu/cz/katalog/?search=61300411121
+"Pin header 2x7 2,54 mm",J12,PinHeader_2x07_P2.54mm_Vertical,,Würth Elektronik,61301421121,1,https://cz.mouser.com/c/?q=61301421121,https://www.tme.eu/cz/katalog/?search=61301421121
+Test point loop black,"TP4,TP5,TP12",TestPoint_Loop_D2.50mm_Drill1.0mm,,Keystone Electronics,5001,3,https://cz.mouser.com/c/?q=Keystone%205001,https://www.tme.eu/cz/katalog/?search=Keystone%205001
