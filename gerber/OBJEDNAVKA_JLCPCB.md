@@ -1,18 +1,18 @@
 # Objednávka desky u JLCPCB
 
-Deska `susicka_filamentu` v1.0 (prototyp), export 2026-10-26 z KiCadu 9.0.8.
+Deska `susicka_filamentu` v1.0 (prototyp), export 2026-10-27 z KiCadu 9.0.6 (všechny díry ≥ 0,3 mm).
 Objednává se **jen deska** (bez osazení) + doporučená šablona na pastu. Součástky se osazují ručně a pájí v peci.
 
 ## 1. Co nahrát
 
-Soubor **`susicka_filamentu_JLCPCB_2026-10-26.zip`** (11 vrstev Gerber + 2 vrtací soubory Excellon).
+Soubor **`susicka_filamentu_JLCPCB_2026-10-27.zip`** (11 vrstev Gerber + 2 vrtací soubory Excellon).
 
 1. [jlcpcb.com](https://jlcpcb.com) → **Order now** → **Add gerber file** → vybrat ZIP.
 2. JLC sám načte počet vrstev (4) a rozměr (70 × 100 mm).
 3. Otevřít **Gerber Viewer** a zkontrolovat:
    - pořadí vrstev: L1 = Top (`.gtl`), L2 = In1 – GND (`.g1`), L3 = In2 – 3V3/GND (`.g2`), L4 = Bottom (`.gbl`);
    - u horní hrany pod anténou RM2 není měď v žádné vrstvě;
-   - díry: 4 montážní M3 bez mědi (NPTH), nejmenší díry 0,25 mm.
+   - díry: 4 montážní M3 bez mědi (NPTH), nejmenší díry 0,3 mm.
 
 ## 2. Parametry desky
 
@@ -29,13 +29,13 @@ Soubor **`susicka_filamentu_JLCPCB_2026-10-26.zip`** (11 vrstev Gerber + 2 vrtac
 | PCB Color | Green | nejlevnější a nejrychlejší, jiná barva nevadí |
 | Silkscreen | White | |
 | Material Type | výchozí FR-4 | elektronika je mimo sušicí komoru, vyšší Tg netřeba |
-| Surface Finish | **ENIG** | rovné plošky pro QFN-60 s roztečí 0,4 mm a plošky RM2; HASL je nerovný a hůř se na něj tiskne pasta |
+| Surface Finish | **OSP** | rovné plošky jako ENIG (QFN 0,4 mm, RM2), levnější než ENIG; nechat ve vakuovém sáčku až do osazení (cca 6 měsíců), nesahat prsty na plošky, pec jen jednou, THT ručně s tavidlem; HASL ne (nerovný) |
 | Outer Copper Weight | 1 oz | |
 | Inner Copper Weight | 0.5 oz (výchozí) | stačí |
 | Impedance Control | No | |
 | Layer Stackup | výchozí (JLC04161H-7628) | |
 | Via Covering | Tented (výchozí) | |
-| Min via hole size/diameter | 0.25 mm | 7 prokovů VREG + 9 děr v termální plošce RP2350 (oficiální footprint); případný příplatek uvidíš hned v ceně |
+| Min via hole size/diameter | **0.3mm/(0.4/0.45mm)** (výchozí) | 2026-10-27 zvětšeno 7 prokovů VREG + 9 děr v termální plošce U1 z 0,25 na 0,3 mm (kroužek 0,6 mm beze změny) → bez příplatku (0,25 mm stálo 25 $ místo 8 $) |
 | Board Outline Tolerance | ±0.2 mm (Regular) | |
 | Confirm Production File | No | Yes = před výrobou ti pošlou podklady ke schválení (zdrží) |
 | Mark on PCB | výchozí, nebo Remove Mark | JLC jinak natiskne číslo objednávky na volné místo |
