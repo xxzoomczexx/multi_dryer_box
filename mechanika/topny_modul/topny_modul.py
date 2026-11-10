@@ -156,7 +156,6 @@ def run(context):
         design = adsk.fusion.Design.cast(app.activeProduct)
         design.designType = adsk.fusion.DesignTypes.ParametricDesignType
         root = design.rootComponent
-        root.name = 'Topny modul susicky'
 
         # ---- chladic ----
         hs = new_comp(root, 'Chladic %dx%d' % (HS_L, HS_W))
