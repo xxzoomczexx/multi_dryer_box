@@ -34,8 +34,7 @@ openocd -s <openocd>/scripts -f interface/cmsis-dap.cfg -f target/rp2350.cfg -c 
 - **krystal** změřený frekvenčním čítačem (má být ~12 000 kHz) a clk_sys (150 MHz)
 - **flash JEDEC ID** (W25Q128JV = `EF 40 18`)
 - **RM2**: inicializace gSPI a MAC adresa; LED D6 bliká 1 Hz (při stisku SW1 svítí)
-- I2C scan obou sběrnic (SHT40 = `0x44`)
-- pak každé 2 s: oba SHT40, HX711, NTC na GP28 (22k pull-up mimo desku, B 3950), teplota čipu, tlačítko
+- pak každé 2 s: HX711, NTC na GP28 (22k pull-up mimo desku, B 3950), teplota čipu, tlačítko
 
 ## Příkazy (jeden znak v terminálu)
 
@@ -45,11 +44,12 @@ openocd -s <openocd>/scripts -f interface/cmsis-dap.cfg -f target/rp2350.cfg -c 
 | `i` | info o čipu znovu |
 | `s` | stav senzorů hned |
 | `p` | periodický výpis zap/vyp |
-| `c` | I2C scan |
 | `w` | Wi-Fi scan – test RM2 a antény bez hesla |
 | `f` / `e` | ventilátor J8 / odtah J9: 0 → 50 → 100 % (PWM 25 kHz) |
 | `t` | topení J5 na 10 s, pak se samo vypne (odmítne, když NTC > 100 °C) |
 | `x` | vše vypnout |
 | `r` | restart |
+
+I2C (SHT40 na J6/J11) v testu zatím není – moduly se teprve kupují.
 
 Po startu je všechno vypnuté. Watchdog 2 s – při zaseknutí reset, gate Q1 pak drží dole R15.

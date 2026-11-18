@@ -5,7 +5,7 @@
  * Debug Probe: konektor U -> J2, konektor D -> J3 (SWD).
  *
  * Po startu vypise: cip (pouzdro, revize, ID), takty (krystal 12 MHz), flash JEDEC ID,
- * inicializaci RM2 (gSPI) a pak kazde 2 s stav senzoru. Prikazy jsou jednotlive znaky (h = napoveda).
+ * inicializaci RM2 (gSPI) a pak kazde 2 s stav HX711, NTC a tlacitka (I2C/SHT40 zatim neni). Prikazy jsou jednotlive znaky (h = napoveda).
  *
  * Vsechny vystupy (ventilatory, topeni) jsou po startu VYPNUTE. Topeni se zapina jen na 10 s
  * a vypne se samo; watchdog 2 s -> pri zaseknuti reset, R15 pak drzi gate Q1 dole.
@@ -20,19 +20,14 @@
 #include "hardware/adc.h"
 #include "hardware/clocks.h"
 #include "hardware/flash.h"
-#include "hardware/i2c.h"
 #include "hardware/pwm.h"
 #include "hardware/sync.h"
 #include "hardware/watchdog.h"
 #include "hardware/structs/sysinfo.h"
 
 // ---- Piny podle schematu ----
-#define PIN_I2C1_SDA   2   // J6 SHT4x (komora)
-#define PIN_I2C1_SCL   3
 #define PIN_HX_DT      4   // J7 HX711 DOUT
 #define PIN_HX_SCK     5   // J7 HX711 SCK
-#define PIN_I2C0_SDA   8   // J11 SHT40 #2 (venku / elektronika)
-#define PIN_I2C0_SCL   9
 #define PIN_EXH        12  // J9 odtahovy ventilator (Q4)
 #define PIN_FAN        13  // J8 ventilator (Q2)
 #define PIN_HEAT       14  // J5 topeni (Q1)
@@ -40,7 +35,6 @@
 #define PIN_NTC_J10    26  // ADC0, J10 (na prototypu neosazeno)
 #define PIN_NTC        28  // ADC2, lista J12 - NTC 100k, pull-up 22k k 3V3 mimo desku
 
-#define SHT4X_ADDR     0x44
 #define NTC_PULLUP     22000.0f
 #define NTC_R25        100000.0f
 #define NTC_B          3950.0f
@@ -111,43 +105,6 @@ static void print_chip_info(void) {
     bool flash_ok = rx[1] == 0xEF && rx[2] == 0x40 && rx[3] == 0x18;
     printf("Flash:    JEDEC %02X %02X %02X %s\n", rx[1], rx[2], rx[3],
            flash_ok ? "OK (Winbond W25Q128JV, 16 MB)" : "!! neocekavane (ceka se EF 40 18)");
-}
-
-// ------------------------------------------------------------------ I2C a SHT4x
-static void i2c_scan(i2c_inst_t *bus, const char *name) {
-    printf("I2C scan %s:", name);
-    int found = 0;
-    for (uint8_t a = 0x08; a < 0x78; a++) {
-        uint8_t dummy;
-        if (i2c_read_timeout_us(bus, a, &dummy, 1, false, 2000) >= 0) {
-            printf(" 0x%02X", a);
-            found++;
-        }
-    }
-    printf(found ? "\n" : " nic\n");
-}
-
-static uint8_t sht_crc(const uint8_t *d) {
-    uint8_t crc = 0xFF;
-    for (int i = 0; i < 2; i++) {
-        crc ^= d[i];
-        for (int b = 0; b < 8; b++) crc = (crc & 0x80) ? (uint8_t)((crc << 1) ^ 0x31) : (uint8_t)(crc << 1);
-    }
-    return crc;
-}
-
-// Mereni s vysokou presnosti (0xFD). Vraci false, kdyz cidlo neodpovi nebo nesedi CRC.
-static bool sht4x_read(i2c_inst_t *bus, float *t, float *rh) {
-    uint8_t cmd = 0xFD, d[6];
-    if (i2c_write_timeout_us(bus, SHT4X_ADDR, &cmd, 1, false, 5000) != 1) return false;
-    sleep_ms(10);
-    if (i2c_read_timeout_us(bus, SHT4X_ADDR, d, 6, false, 5000) != 6) return false;
-    if (sht_crc(d) != d[2] || sht_crc(d + 3) != d[5]) return false;
-    *t  = -45.0f + 175.0f * (float)((d[0] << 8) | d[1]) / 65535.0f;
-    *rh = -6.0f + 125.0f * (float)((d[3] << 8) | d[4]) / 65535.0f;
-    if (*rh < 0) *rh = 0;
-    if (*rh > 100) *rh = 100;
-    return true;
 }
 
 // ------------------------------------------------------------------ HX711
@@ -225,12 +182,8 @@ static void wifi_scan(void) {
 
 // ------------------------------------------------------------------ vypisy
 static void print_status(void) {
-    float t, rh, r;
+    float r;
     printf("---\n");
-    if (sht4x_read(i2c1, &t, &rh)) printf("SHT J6  (I2C1): %6.2f C  %5.1f %%RH\n", t, rh);
-    else                           printf("SHT J6  (I2C1): neodpovida\n");
-    if (sht4x_read(i2c0, &t, &rh)) printf("SHT J11 (I2C0): %6.2f C  %5.1f %%RH\n", t, rh);
-    else                           printf("SHT J11 (I2C0): neodpovida\n");
 
     int32_t hx;
     if (hx711_read(&hx)) printf("HX711 J7: %ld\n", (long)hx);
@@ -249,7 +202,7 @@ static void print_status(void) {
 static void print_help(void) {
     printf("\nPrikazy:\n"
            "  h  napoveda           i  info o cipu        s  stav senzoru ted\n"
-           "  p  periodicky vypis zap/vyp (2 s)          c  I2C scan obou sbernic\n"
+           "  p  periodicky vypis zap/vyp (2 s)\n"
            "  w  Wi-Fi scan (test RM2 a anteny)\n"
            "  f  ventilator J8   0 -> 50 -> 100 %%      e  odtah J9   0 -> 50 -> 100 %%\n"
            "  t  topeni J5 na %u s (znovu t = vypnout)   x  vse vypnout\n"
@@ -281,14 +234,6 @@ int main(void) {
     gpio_init(PIN_HX_DT);
     gpio_set_dir(PIN_HX_DT, GPIO_IN);
 
-    // I2C 100 kHz, pull-upy 4k7 jsou na desce (R21/R22, R26/R27)
-    i2c_init(i2c1, 100 * 1000);
-    gpio_set_function(PIN_I2C1_SDA, GPIO_FUNC_I2C);
-    gpio_set_function(PIN_I2C1_SCL, GPIO_FUNC_I2C);
-    i2c_init(i2c0, 100 * 1000);
-    gpio_set_function(PIN_I2C0_SDA, GPIO_FUNC_I2C);
-    gpio_set_function(PIN_I2C0_SCL, GPIO_FUNC_I2C);
-
     adc_init();
     adc_gpio_init(PIN_NTC_J10);
     adc_gpio_init(PIN_NTC);
@@ -306,8 +251,6 @@ int main(void) {
         printf("RM2:      !! CHYBA inicializace (gSPI GPIO24/25/29, WL_ON GPIO23, napajeni modulu)\n");
     }
 
-    i2c_scan(i2c1, "I2C1 (J6, GPIO2/3)");
-    i2c_scan(i2c0, "I2C0 (J11, GPIO8/9)");
     print_help();
 
     watchdog_enable(2000, true);
@@ -325,7 +268,6 @@ int main(void) {
             case 'i': print_chip_info(); break;
             case 's': print_status(); break;
             case 'p': periodic = !periodic; printf("Periodicky vypis %s\n", periodic ? "ZAP" : "VYP"); break;
-            case 'c': i2c_scan(i2c1, "I2C1 (J6)"); i2c_scan(i2c0, "I2C0 (J11)"); break;
             case 'w': wifi_scan(); break;
             case 'f': fan_pct = next_duty(fan_pct); pwm_pin_set(PIN_FAN, fan_pct);
                       printf("Ventilator J8: %u %%\n", fan_pct); break;

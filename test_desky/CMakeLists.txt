@@ -47,7 +47,6 @@ target_link_libraries(test_desky
     hardware_adc
     hardware_clocks
     hardware_flash
-    hardware_i2c
     hardware_pwm
     hardware_watchdog
 )
