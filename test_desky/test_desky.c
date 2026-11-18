@@ -14,7 +14,7 @@
 // ================= PREPINACE CASTI TESTU =================
 #define TEST_VENTILATORY  1   // J8 ventilator (GPIO13) + J9 odtah (GPIO12), prikazy f / e
 #define TEST_TOPENI       0   // J5 topeni (GPIO14) na 10 s, prikaz t  - az bude topne teleso + TCO na J13
-#define TEST_NTC          0   // NTC 100k na GP28 (J12), pull-up 22k k 3V3 mimo desku
+#define TEST_NTC          1   // NTC 100k na GP28 (J12), pull-up 22k k 3V3 mimo desku
 #define TEST_HX711        0   // HX711 na J7 (GPIO4 DT, GPIO5 SCK)
 // (I2C / SHT40 se doplni, az budou moduly)
 // =========================================================
