@@ -10,3 +10,7 @@ _autosave-*
 config.h
 # KiCad: index automatického ukládání
 \#auto_saved_files#
+
+# Python cache
+__pycache__/
+*.pyc

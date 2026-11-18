@@ -1,0 +1,3 @@
+Topny modul (bez civky): 181 x 72 x 53 mm (X smer proudeni, Y, Z vcetne sloupku)
+Chladic 100 x 69 x 36, PTC 76 x 63 x 7, ventilator 5015, sloupky 15 mm
+Civka pro porovnani: D 200 x 70 mm

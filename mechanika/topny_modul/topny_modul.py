@@ -1,34 +1,55 @@
 # Topny modul susicky filamentu - skript pro Autodesk Fusion
-# Postavi v novem dokumentu: chladic s zebry, PTC (RS PRO 336-739), tepelnou pojistku,
-# prilozku na PTC, distancni sloupky, radialni ventilator 5015 a kryt (kanal) z vydechu do zeber.
+# Postavi v novem dokumentu: chladic s zebry, PTC 24 V 120 C 20-60 W (AliExpress, 76x63x7 mm, ousky
+# se 4+4 otvory), tepelnou pojistku SF129R0, NTC 100k, distancni sloupky, ventilator (radialni 5015
+# nebo axialni) a kryt (kanal) z vydechu do zeber. Pro porovnani velikosti prida pruhlednou civku.
 #
-# Souradnice: vzduch proudi ve smeru +X, zebra miri nahoru (+Z), PTC je zespodu na zakladne.
-# Rozmery v mm, upravuj v sekci PARAMETRY. Ventilator a PTC jsou zjednodusene obalove tvary
-# (pro presny tvar 5015 stahni STEP od vyrobce a vloz ho misto nej).
+# Souradnice: vzduch proudi ve smeru +X, zebra miri nahoru (+Z), PTC je zespodu na zakladne chladice
+# (rovnou stranou k chladici, prisroubovane M3 pres ousky do zavitu v zakladne). Dno boxu je
+# v z = -STANDOFF_H. Rozmery v mm, upravuj v sekci PARAMETRY. Ventilator, PTC a pojistka jsou
+# zjednodusene obalove tvary; rozmery PTC a chladice po doruceni premerit.
+#
+# Po dobehnuti ulozi vedle skriptu nahled.png (izometrie) a rozmery.txt.
 
 import adsk.core
 import adsk.fusion
+import os
 import traceback
 
 # ---------------- PARAMETRY (mm) ----------------
-HS_L = 60.0        # delka chladice ve smeru proudeni (X)
-HS_W = 60.0        # sirka chladice (Y)
-HS_BASE = 4.0      # tloustka zakladny
-FIN_H = 25.0       # vyska zeber
+# Chladic: bezny hlinikovy profil z AliExpressu 100 x 69 x 36 mm (zakladnu premerit!)
+HS_L = 100.0       # delka chladice ve smeru proudeni (X)
+HS_W = 69.0        # sirka chladice (Y)
+HS_H = 36.0        # celkova vyska chladice
+HS_BASE = 6.0      # tloustka zakladny (do ni zavity M3 pro PTC a sloupky)
 FIN_T = 1.5        # tloustka zebra
-FIN_N = 10         # pocet zeber
-HOLE_XY = 26.0     # montazni otvory M3 v rozich (+-HOLE_XY)
+FIN_N = 14         # pocet zeber
+FIN_H = HS_H - HS_BASE
 
-PTC_L, PTC_W, PTC_T = 40.0, 35.0, 7.2   # RS PRO 336-739
-TCO_L, TCO_W, TCO_T = 12.0, 4.0, 4.0     # tepelna pojistka (zjednoduseno jako kvadr)
+# PTC 24 V 120 C 20-60 W: deska 76 x 63, stredni teleso vystupuje, po stranach ousky s otvory
+PTC_L, PTC_W, PTC_T = 76.0, 63.0, 7.0
+PTC_FLANGE_T = 1.5           # tloustka ousek
+PTC_CORE_W = 45.0            # sirka vystupujiciho stredu (63 - 2x ousko)
+PTC_HOLE_X = (-30.0, -10.0, 10.0, 30.0)   # otvory v ouskach (odhad z fotky, premerit)
+PTC_HOLE_Y = PTC_W / 2 - 4.5
+PTC_HOLE_D = 3.4
+PTC_SCREW_X = (-30.0, 30.0)  # ktere otvory se pouziji na sroubky (zavity v chladici)
 
-FAN_D, FAN_H = 50.0, 15.0   # radialni ventilator 5015
-FAN_OUT_W = 20.0            # sirka vydechu ventilatoru
+TCO_L, TCO_W, TCO_T = 12.0, 4.0, 4.0     # tepelna pojistka SF129R0 (zjednoduseno jako kvadr)
+NTC_D, NTC_L = 3.0, 8.0                  # NTC 100k (sklenena kapka v trubicce)
+
+FAN_TYPE = '5015'           # '5015' = radialni, 'axial' = klasicky ctvercovy
+FAN_D, FAN_H = 50.0, 15.0   # radialni 5015
+FAN_OUT_W = 20.0            # sirka vydechu 5015
+AX_SIZE, AX_THICK = 60.0, 15.0   # axialni ventilator (60x60x15, pripadne 40/80, 10/25)
 DUCT_L = 30.0               # delka krytu mezi ventilatorem a chladicem
 WALL = 1.6                  # tloustka steny krytu (tisk)
 
-STRAP_W, STRAP_T = 10.0, 1.0   # kovova prilozka pres PTC
 STANDOFF_H, STANDOFF_D = 15.0, 6.0
+STANDOFF_X = HS_L / 2 - 5.0      # sloupky v rozich zakladny (slepe zavity M3 zespodu)
+STANDOFF_Y = HS_W / 2 - 5.0
+
+SPOOL_D, SPOOL_W = 200.0, 70.0   # civka 1 kg pro porovnani velikosti
+SPOOL_GAP = 30.0                 # mezera mezi modulem a civkou
 
 NEW = adsk.fusion.FeatureOperations.NewBodyFeatureOperation
 JOIN = adsk.fusion.FeatureOperations.JoinFeatureOperation
@@ -59,7 +80,7 @@ class Builder:
             pi.setByOffset(base, adsk.core.ValueInput.createByReal(sign * cm(dist)))
             p = self.c.constructionPlanes.add(pi)
             o = p.geometry.origin
-            got = o.z if axis == 'z' else o.x
+            got = {'x': o.x, 'y': o.y, 'z': o.z}[axis]
             if abs(got - cm(dist)) < 1e-6:
                 p.isLightBulbOn = False
                 self.planes[key] = p
@@ -72,6 +93,9 @@ class Builder:
 
     def plane_yz(self, x):
         return self._offset_plane(self.c.yZConstructionPlane, x, 'x')
+
+    def plane_xz(self, y):
+        return self._offset_plane(self.c.xZConstructionPlane, y, 'y')
 
     def _sk_point(self, sk, x, y, z):
         p = sk.modelToSketchSpace(pt(x, y, z))
@@ -98,6 +122,18 @@ class Builder:
         sk.sketchCurves.sketchCircles.addByCenterRadius(self._sk_point(sk, cx, cy, z0), cm(r))
         return self._extrude(sk, z1 - z0, op, name)
 
+    def cyl_y(self, cx, cy, cz, r, length, op=NEW, name=None):
+        """Valec s osou v Y, symetricky kolem cy (smer normaly roviny XZ je pak jedno)."""
+        sk = self.c.sketches.add(self.plane_xz(cy))
+        sk.isVisible = False
+        sk.sketchCurves.sketchCircles.addByCenterRadius(self._sk_point(sk, cx, cy, cz), cm(r))
+        ei = self.c.features.extrudeFeatures.createInput(sk.profiles.item(0), op)
+        ei.setSymmetricExtent(adsk.core.ValueInput.createByReal(cm(length)), True)
+        ext = self.c.features.extrudeFeatures.add(ei)
+        if name and op == NEW:
+            ext.bodies.item(0).name = name
+        return ext
+
     def rect_yz(self, x, y0, y1, z0, z1):
         sk = self.c.sketches.add(self.plane_yz(x))
         sk.isVisible = False
@@ -118,7 +154,7 @@ class Builder:
 def new_comp(root, name):
     occ = root.occurrences.addNewComponent(adsk.core.Matrix3D.create())
     occ.component.name = name
-    return occ.component
+    return occ
 
 
 def find_appearance(app, design, keywords):
@@ -147,6 +183,14 @@ def paint(comp, appearance, opacity=None):
             pass
 
 
+def hollow(comp, outer, inner):
+    tools = adsk.core.ObjectCollection.create()
+    tools.add(inner)
+    ci = comp.features.combineFeatures.createInput(outer, tools)
+    ci.operation = CUT
+    comp.features.combineFeatures.add(ci)
+
+
 def run(context):
     ui = None
     try:
@@ -156,98 +200,183 @@ def run(context):
         design = adsk.fusion.Design.cast(app.activeProduct)
         design.designType = adsk.fusion.DesignTypes.ParametricDesignType
         root = design.rootComponent
+        module_occs = []
 
         # ---- chladic ----
-        hs = new_comp(root, 'Chladic %dx%d' % (HS_L, HS_W))
+        occ = new_comp(root, 'Chladic %dx%dx%d' % (HS_L, HS_W, HS_H))
+        module_occs.append(occ)
+        hs = occ.component
         b = Builder(hs)
         b.box(-HS_L / 2, -HS_W / 2, 0, HS_L / 2, HS_W / 2, HS_BASE, NEW, 'Chladic')
         pitch = (HS_W - FIN_T) / (FIN_N - 1)
         for i in range(FIN_N):
             y = -HS_W / 2 + FIN_T / 2 + i * pitch
             b.box(-HS_L / 2, y - FIN_T / 2, HS_BASE, HS_L / 2, y + FIN_T / 2, HS_BASE + FIN_H, JOIN)
+        blind = min(5.0, HS_BASE - 1.0)
         for sx in (-1, 1):
             for sy in (-1, 1):
-                b.cyl(sx * HOLE_XY, sy * HOLE_XY, 1.6, 0, HS_BASE, CUT)      # M3 pruchozi
-        strap_hole_y = PTC_W / 2 + 4.5
-        for sy in (-1, 1):
-            b.cyl(0, sy * strap_hole_y, 1.25, 0, HS_BASE - 0.5, CUT)         # M3 zavit (vrtat 2,5)
+                b.cyl(sx * STANDOFF_X, sy * STANDOFF_Y, 1.25, 0, blind, CUT)   # M3 slepy zavit (vrtat 2,5)
+        for x in PTC_SCREW_X:
+            for sy in (-1, 1):
+                b.cyl(x, sy * PTC_HOLE_Y, 1.25, 0, blind, CUT)                 # M3 zavit pro PTC
 
-        # ---- PTC zespodu na zakladne ----
-        ptc = new_comp(root, 'PTC RS PRO 336-739')
+        # ---- PTC zespodu na zakladne (rovna strana nahoru k chladici) ----
+        occ = new_comp(root, 'PTC 24V 120C 76x63')
+        module_occs.append(occ)
+        ptc = occ.component
         b = Builder(ptc)
-        b.box(-PTC_L / 2, -PTC_W / 2, -PTC_T, PTC_L / 2, PTC_W / 2, 0, NEW, 'PTC 40x35x7,2')
-        for sy in (-1, 1):
-            b.box(PTC_L / 2, sy * 5 - 0.75, -PTC_T / 2 - 0.75,
-                  PTC_L / 2 + 20, sy * 5 + 0.75, -PTC_T / 2 + 0.75, NEW, 'Privod')
+        b.box(-PTC_L / 2, -PTC_W / 2, -PTC_FLANGE_T, PTC_L / 2, PTC_W / 2, 0, NEW, 'PTC deska')
+        b.box(-PTC_L / 2, -PTC_CORE_W / 2, -PTC_T, PTC_L / 2, PTC_CORE_W / 2, -PTC_FLANGE_T, JOIN)
+        for x in PTC_HOLE_X:
+            for sy in (-1, 1):
+                b.cyl(x, sy * PTC_HOLE_Y, PTC_HOLE_D / 2, -PTC_FLANGE_T, 0, CUT)
+        for sy in (-1, 1):   # privody na strane ventilatoru
+            b.box(-PTC_L / 2 - 20, sy * 5 - 0.75, -PTC_T / 2 - 0.75,
+                  -PTC_L / 2, sy * 5 + 0.75, -PTC_T / 2 + 0.75, NEW, 'Privod')
 
-        # ---- tepelna pojistka vedle PTC ----
-        tco = new_comp(root, 'Tepelna pojistka SF129R0')
+        # ---- tepelna pojistka a NTC na volnem konci zakladny (za PTC) ----
+        x_free0 = PTC_L / 2 + 1.0
+        x_free1 = HS_L / 2 - 1.0
+        occ = new_comp(root, 'Tepelna pojistka SF129R0')
+        module_occs.append(occ)
+        tco = occ.component
         b = Builder(tco)
-        ty = -(PTC_W / 2 + 4.5 + TCO_W / 2 + 0.5)
-        if ty - TCO_W / 2 < -HS_W / 2:
-            ty = -HS_W / 2 + TCO_W / 2 + 0.5
-        b.box(STRAP_W / 2 + 2, ty - TCO_W / 2, -TCO_T, STRAP_W / 2 + 2 + TCO_L, ty + TCO_W / 2, 0,
-              NEW, 'TCO (zjednoduseno)')
+        if x_free1 - x_free0 >= TCO_L:      # vejde se podelne
+            b.box(x_free0, -8 - TCO_W / 2, -TCO_T, x_free0 + TCO_L, -8 + TCO_W / 2, 0, NEW, 'TCO')
+        else:                                # jinak napric
+            tx = (x_free0 + x_free1) / 2
+            b.box(tx - TCO_W / 2, -14 - TCO_L / 2, -TCO_T, tx + TCO_W / 2, -14 + TCO_L / 2, 0,
+                  NEW, 'TCO')
+        occ = new_comp(root, 'NTC 100k')
+        module_occs.append(occ)
+        ntc = occ.component
+        b = Builder(ntc)
+        nx = (x_free0 + x_free1) / 2
+        b.box(nx - NTC_D / 2, 10, -NTC_D, nx + NTC_D / 2, 10 + NTC_L, 0, NEW, 'NTC')
 
-        # ---- prilozka pres PTC ----
-        st = new_comp(root, 'Prilozka')
-        b = Builder(st)
-        leg_y0, leg_y1 = PTC_W / 2 + 2.5, PTC_W / 2 + 6.5
-        b.box(-STRAP_W / 2, -leg_y1, -PTC_T - STRAP_T, STRAP_W / 2, leg_y1, -PTC_T, NEW, 'Prilozka')
-        b.box(-STRAP_W / 2, leg_y0, -PTC_T, STRAP_W / 2, leg_y1, 0, JOIN)
-        b.box(-STRAP_W / 2, -leg_y1, -PTC_T, STRAP_W / 2, -leg_y0, 0, JOIN)
-        for sy in (-1, 1):
-            b.cyl(0, sy * strap_hole_y, 1.6, -PTC_T - STRAP_T, 0, CUT)
-
-        # ---- distancni sloupky ----
-        so = new_comp(root, 'Sloupky M3')
+        # ---- distancni sloupky ke dnu boxu ----
+        occ = new_comp(root, 'Sloupky M3')
+        module_occs.append(occ)
+        so = occ.component
         b = Builder(so)
         for sx in (-1, 1):
             for sy in (-1, 1):
-                b.cyl(sx * HOLE_XY, sy * HOLE_XY, STANDOFF_D / 2, -STANDOFF_H, 0, NEW, 'Sloupek')
-                b.cyl(sx * HOLE_XY, sy * HOLE_XY, 1.25, -STANDOFF_H, 0, CUT)
+                b.cyl(sx * STANDOFF_X, sy * STANDOFF_Y, STANDOFF_D / 2, -STANDOFF_H, 0, NEW, 'Sloupek')
+                b.cyl(sx * STANDOFF_X, sy * STANDOFF_Y, 1.25, -STANDOFF_H, 0, CUT)
 
-        # ---- ventilator 5015 ----
-        fan = new_comp(root, 'Ventilator 5015 24V')
-        b = Builder(fan)
-        r = FAN_D / 2
-        z0 = HS_BASE + FIN_H / 2 - FAN_H / 2          # vydech na stred zeber
-        x_out = -HS_L / 2 - DUCT_L
-        cx = x_out - r - 1.0
-        y_out0, y_out1 = r - FAN_OUT_W, r                # tangencialni vydech
-        b.cyl(cx, 0, r, z0, z0 + FAN_H, NEW, 'Ventilator 5015')
-        b.box(cx, y_out0, z0, x_out, y_out1, z0 + FAN_H, JOIN)
-        b.cyl(cx, 0, 14, z0 + FAN_H - 1, z0 + FAN_H, CUT)                     # sani
-        b.cyl(cx, 0, 8, z0 + FAN_H - 1, z0 + FAN_H, JOIN)                     # naboj
-        b.box(x_out - 8, y_out0 + 1.2, z0 + 1.2, x_out, y_out1 - 1.2, z0 + FAN_H - 1.2, CUT)
+        # ---- ventilator ----
+        x1 = -HS_L / 2
+        x_out = x1 - DUCT_L
+        fin_box = (-HS_W / 2, HS_W / 2, HS_BASE, HS_BASE + FIN_H)
+        if FAN_TYPE == 'axial':
+            occ = new_comp(root, 'Ventilator %dx%dx%d 24V' % (AX_SIZE, AX_SIZE, AX_THICK))
+            module_occs.append(occ)
+            fan = occ.component
+            b = Builder(fan)
+            s = AX_SIZE / 2
+            zc = HS_BASE + FIN_H / 2
+            fb = b.loft(x_out - AX_THICK, (-s, s, zc - s, zc + s), x_out, (-s, s, zc - s, zc + s),
+                        'Ventilator')
+            hole = b.loft(x_out - AX_THICK, (-s + 2, s - 2, zc - s + 2, zc + s - 2),
+                          x_out, (-s + 2, s - 2, zc - s + 2, zc + s - 2), 'tmp')
+            hollow(fan, fb, hole)
+            out_box = (-s, s, zc - s, zc + s)
+        else:
+            occ = new_comp(root, 'Ventilator 5015 24V')
+            module_occs.append(occ)
+            fan = occ.component
+            b = Builder(fan)
+            r = FAN_D / 2
+            z0 = HS_BASE + FIN_H / 2 - FAN_H / 2          # vydech na stred zeber
+            cx = x_out - r - 1.0
+            y_out0, y_out1 = r - FAN_OUT_W, r                # tangencialni vydech
+            b.cyl(cx, 0, r, z0, z0 + FAN_H, NEW, 'Ventilator 5015')
+            b.box(cx, y_out0, z0, x_out, y_out1, z0 + FAN_H, JOIN)
+            b.cyl(cx, 0, 14, z0 + FAN_H - 1, z0 + FAN_H, CUT)                     # sani
+            b.cyl(cx, 0, 8, z0 + FAN_H - 1, z0 + FAN_H, JOIN)                     # naboj
+            b.box(x_out - 8, y_out0 + 1.2, z0 + 1.2, x_out, y_out1 - 1.2, z0 + FAN_H - 1.2, CUT)
+            out_box = (y_out0, y_out1, z0, z0 + FAN_H)
 
         # ---- kryt z vydechu do zeber ----
-        du = new_comp(root, 'Kryt (tisk)')
+        occ = new_comp(root, 'Kryt (tisk)')
+        module_occs.append(occ)
+        du = occ.component
         b = Builder(du)
-        x1 = -HS_L / 2
-        outer = b.loft(x_out, (y_out0 - WALL, y_out1 + WALL, z0 - WALL, z0 + FAN_H + WALL),
-                       x1, (-HS_W / 2 - WALL, HS_W / 2 + WALL, HS_BASE - WALL, HS_BASE + FIN_H + WALL),
-                       'Kryt')
-        inner = b.loft(x_out, (y_out0, y_out1, z0, z0 + FAN_H),
-                       x1, (-HS_W / 2, HS_W / 2, HS_BASE, HS_BASE + FIN_H), 'tmp')
-        tools = adsk.core.ObjectCollection.create()
-        tools.add(inner)
-        ci = du.features.combineFeatures.createInput(outer, tools)
-        ci.operation = CUT
-        du.features.combineFeatures.add(ci)
+
+        def grow(r4, w):
+            return (r4[0] - w, r4[1] + w, r4[2] - w, r4[3] + w)
+
+        outer = b.loft(x_out, grow(out_box, WALL), x1, grow(fin_box, WALL), 'Kryt')
+        inner = b.loft(x_out, out_box, x1, fin_box, 'tmp')
+        hollow(du, outer, inner)
+
+        # ---- rozmery modulu (bez civky) ----
+        bb = None
+        for o in module_occs:
+            for body in o.component.bRepBodies:   # komponenty maji jednotkovou transformaci
+                ob = body.boundingBox
+                if bb is None:
+                    bb = adsk.core.BoundingBox3D.create(ob.minPoint.copy(), ob.maxPoint.copy())
+                else:
+                    bb.combine(ob)
+        mod_x = (bb.maxPoint.x - bb.minPoint.x) * 10
+        mod_y = (bb.maxPoint.y - bb.minPoint.y) * 10
+        mod_z = (bb.maxPoint.z - bb.minPoint.z) * 10
+
+        # ---- civka pro porovnani (stoji na dne boxu, osa v Y) ----
+        occ = new_comp(root, 'Civka 1 kg (pro porovnani)')
+        sp = occ.component
+        b = Builder(sp)
+        spool_y = bb.maxPoint.y * 10 + SPOOL_GAP + SPOOL_W / 2
+        spool_z = -STANDOFF_H + SPOOL_D / 2
+        b.cyl_y(0, spool_y, spool_z, SPOOL_D / 2, SPOOL_W, NEW, 'Civka')
+        b.cyl_y(0, spool_y, spool_z, 27.0, SPOOL_W, CUT)   # otvor ~54 mm
 
         # ---- vzhled ----
         paint(hs, find_appearance(app, design, ['aluminum', 'satin']))
         paint(ptc, find_appearance(app, design, ['paint', 'red']))
         paint(tco, find_appearance(app, design, ['brass']))
-        paint(st, find_appearance(app, design, ['steel', 'satin']))
+        paint(ntc, find_appearance(app, design, ['plastic', 'black']))
         paint(so, find_appearance(app, design, ['brass']))
         paint(fan, find_appearance(app, design, ['plastic', 'black']))
         paint(du, find_appearance(app, design, ['plastic', 'white']), opacity=0.45)
+        paint(sp, find_appearance(app, design, ['plastic', 'blue']), opacity=0.25)
 
-        app.activeViewport.fit()
-        ui.messageBox('Hotovo: topny modul je v novem dokumentu.\n'
-                      'Kryt je pruhledny, aby byla videt zebra. Rozmery zmenis v sekci PARAMETRY skriptu.')
+        # ---- nahled a rozmery do souboru ----
+        here = os.path.dirname(os.path.realpath(__file__))
+        txt = ('Topny modul (bez civky): %.0f x %.0f x %.0f mm (X smer proudeni, Y, Z vcetne sloupku)\n'
+               'Chladic %.0f x %.0f x %.0f, PTC %.0f x %.0f x %.0f, ventilator %s, sloupky %.0f mm\n'
+               'Civka pro porovnani: D %.0f x %.0f mm\n'
+               % (mod_x, mod_y, mod_z, HS_L, HS_W, HS_H, PTC_L, PTC_W, PTC_T,
+                  FAN_TYPE, STANDOFF_H, SPOOL_D, SPOOL_W))
+        saved = ''
+        try:
+            with open(os.path.join(here, 'rozmery.txt'), 'w') as f:
+                f.write(txt)
+            vp = app.activeViewport
+            cam = vp.camera
+            cam.viewOrientation = adsk.core.ViewOrientations.IsoTopRightViewOrientation
+            cam.isSmoothTransition = False
+            vp.camera = cam
+            vp.fit()
+            vp.saveAsImageFile(os.path.join(here, 'nahled.png'), 1600, 1000)
+            cam = vp.camera
+            cam.viewOrientation = adsk.core.ViewOrientations.FrontViewOrientation
+            cam.isSmoothTransition = False
+            vp.camera = cam
+            vp.fit()
+            vp.saveAsImageFile(os.path.join(here, 'nahled_zepredu.png'), 1600, 1000)
+            cam = vp.camera
+            cam.viewOrientation = adsk.core.ViewOrientations.IsoTopRightViewOrientation
+            cam.isSmoothTransition = False
+            vp.camera = cam
+            vp.fit()
+            saved = '\nNahled a rozmery ulozeny vedle skriptu.'
+        except Exception:
+            saved = '\nNahled se nepodarilo ulozit:\n' + traceback.format_exc()
+
+        ui.messageBox('Hotovo: topny modul je v novem dokumentu.\n\n' + txt +
+                      '\nKryt a civka jsou pruhledne. Rozmery zmenis v sekci PARAMETRY skriptu.' + saved)
     except Exception:
         if ui:
             ui.messageBox('Chyba skriptu:\n{}'.format(traceback.format_exc()))

@@ -21,6 +21,15 @@
   `get_selection()` = co uživatel označil). Jen editor DPS – schéma dál přes soubory při zavřeném KiCadu;
   DRC a rendery dál přes `kicad-cli` z uloženého souboru. Na notebooku se API musí zapnout zvlášť.
 
+## Fusion (mechanika)
+- Oficiální místní **Fusion MCP server**: ve Fusionu Preferences → General → API → „Fusion MCP Server (runs locally
+  on this device)“, endpoint `http://127.0.0.1:27182/mcp` (Streamable HTTP, bez přihlášení, jen když Fusion běží).
+  V repu je `.mcp.json` → po restartu Claude Code schválit server `autodesk-fusion`. Na každém PC zapnout zvlášť.
+- Model celé sušičky je v cloudu Fusionu: projekt **Default Project** → `susicka_celek_proto` (obal 272×116×292,
+  cívka, kolébka, tenzometr, přepážka, elektronika s deskou z KiCadu, topný modul, 5015, odtah 4010, SHT40),
+  dále `deska` a `cirkulace_teploty`. Otevírá se z Data Panelu (stejný účet na každém PC).
+- Bez MCP: skripty v `mechanika/` (Shift+S → Scripts → + → složka → Run); topny_modul ukládá `nahled*.png` a `rozmery.txt`.
+
 ## Součástky
 - Jen ověřené díly (datasheet) dostupné na **Mouseru nebo TME**; čísla dílů nevymýšlet. Do schématu pole
   Manufacturer + MPN, rozpis do `PCB/README.md`. Pasiva 0402/0603, větší jen kvůli napětí/DC biasu.
