@@ -201,6 +201,13 @@ Rozhodnuto 2026-10-26 (deska = prototyp, počítá se s další verzí):
   SW1 má uživatel vlastní. Sloupce Qty (ks na desku) + Mouser/TME = odkazy na vyhledávání podle MPN (RP2350A a RM2
   hledat jako „RP2350A“ / „SC1169“ – Raspberry Pi kódy; na TME je nejspíš nemají). `CPL_JLCPCB.csv` není v gitu.
 
+## Osazení (2026-11-18)
+
+- Deska osazená v peci Puhui T-937 (sdílená) profilem v pozici 6 / recept `TS391_SAC305` – postup, profil, grafy a fotky
+  v `osazeni/README.md`. Zkušební deska OK. Další krok: vizuální kontrola + měření podle `OZIVENI.md`.
+- Testovací firmware pro oživení: větev FIRMWARE, `test_desky/` (přepínače částí `TEST_*` v `test_desky.c`).
+- Program pece: `C:\Users\mirac\T937\Pb-Free.exe` (VB6, nezadávat desetinná čísla), pec = CH340 COM7 na domácím PC.
+
 ## Harmonogram
 
 Říjen 2026 schválení konceptu · listopad–prosinec KiCad + 3D model · leden 2027 osazení a oživení ·
