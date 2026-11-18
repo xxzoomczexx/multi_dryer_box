@@ -208,8 +208,8 @@ Rozhodnuto 2026-10-26 (deska = prototyp, počítá se s další verzí):
   0 Ω (holá deska OK, opraveno).
 - Oživení 2026-11-18 (testovací firmware přes SWD, UART J2 → probe COM6): SWD DPIDR 0x4c013477, RP2350A rev 3,
   krystal 12 000 kHz, flash JEDEC EF 40 18 (16 MB), RM2 init OK + LED D6 bliká, Wi-Fi scan OK (−52 dBm nejbližší AP),
-  teplota čipu ~29 °C, ventilátory 24 V na J8 i J9 (PWM přes Q2/Q4) OK. **Box ID desky: `92F9A8974326FCBF`.**
-  Zbývá: SW1, odběr ze zdroje, NTC (GP28), topení (J5 + TCO), HX711, I2C/SHT40 (moduly se kupují).
+  teplota čipu ~29 °C, ventilátory 24 V na J8 i J9 (PWM přes Q2/Q4) OK, SW1 OK, odběr s oběma ventilátory ~0,18 A @ 24 V. **Box ID desky: `92F9A8974326FCBF`.**
+  Zbývá: NTC (GP28), topení (J5 + TCO), HX711, I2C/SHT40 (moduly se kupují).
 - Testovací firmware pro oživení: větev FIRMWARE, `test_desky/` (přepínače částí `TEST_*` v `test_desky.c`).
 - Program pece: `C:\Users\mirac\T937\Pb-Free.exe` (VB6, nezadávat desetinná čísla), pec = CH340 COM7 na domácím PC.
 
