@@ -5,6 +5,9 @@
   diakritiky), odpovídat česky. Má za sebou jednu ročníkovou práci s PCB, v KiCadu se orientuje.
 - Pracuje na dvou počítačích (domácí PC, školní notebook) → na konci práce commit + push, na začátku `git pull`.
   Důležité nové poznatky zapisovat sem nebo do `CLAUDE.md`, ne jen do lokální paměti.
+- Složky se na PC liší: na jednom je `multi_dryer_box_PCB` bare repo se třemi worktree (PCB/FIRMWARE/WEB, viz `CLAUDE.md`),
+  na druhém je `multi_dryer_box_PCB` obyčejný klon jen větve PCB (fetch refspec jen PCB) a FIRMWARE je vedle
+  v `../multi_dryer_box`. Před pullem/pushem ověřit `git worktree list` a `git branch -vv`.
 
 ## Jak pracovat s KiCadem
 - KiCad soubory upravovat jen když KiCad **neběží**; nejdřív na kopii, pak zkontrolovat, že se originál nezměnil.
