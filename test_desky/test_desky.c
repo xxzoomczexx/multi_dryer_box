@@ -4,12 +4,21 @@
  * Vystup a ovladani: UART0 na liste J2 (GPIO0 TX, GPIO1 RX), 115200 8N1.
  * Debug Probe: konektor U -> J2, konektor D -> J3 (SWD).
  *
- * Po startu vypise: cip (pouzdro, revize, ID), takty (krystal 12 MHz), flash JEDEC ID,
- * inicializaci RM2 (gSPI) a pak kazde 2 s stav HX711, NTC a tlacitka (I2C/SHT40 zatim neni). Prikazy jsou jednotlive znaky (h = napoveda).
+ * Testuje se po castech - kazdou cast zapnes prepinacem nize (1 = zapnuto, 0 = vypnuto)
+ * a firmware znovu prelozis. Zaklad (cip, krystal, flash, RM2 + LED, tlacitko) bezi vzdy.
  *
- * Vsechny vystupy (ventilatory, topeni) jsou po startu VYPNUTE. Topeni se zapina jen na 10 s
- * a vypne se samo; watchdog 2 s -> pri zaseknuti reset, R15 pak drzi gate Q1 dole.
+ * Vsechny vystupy (ventilatory, topeni) jsou po startu VYPNUTE a vypnute cast drzi svuj pin v 0.
+ * Watchdog 2 s -> pri zaseknuti reset, gate tranzistoru pak drzi dole R15/R18/R24.
  */
+
+// ================= PREPINACE CASTI TESTU =================
+#define TEST_VENTILATORY  1   // J8 ventilator (GPIO13) + J9 odtah (GPIO12), prikazy f / e
+#define TEST_TOPENI       0   // J5 topeni (GPIO14) na 10 s, prikaz t  - az bude topne teleso + TCO na J13
+#define TEST_NTC          0   // NTC 100k na GP28 (J12), pull-up 22k k 3V3 mimo desku
+#define TEST_HX711        0   // HX711 na J7 (GPIO4 DT, GPIO5 SCK)
+// (I2C / SHT40 se doplni, az budou moduly)
+// =========================================================
+
 #include <stdio.h>
 #include <string.h>
 #include <math.h>
@@ -32,8 +41,8 @@
 #define PIN_FAN        13  // J8 ventilator (Q2)
 #define PIN_HEAT       14  // J5 topeni (Q1)
 #define PIN_BTN        15  // SW1 proti GND, interni pull-up
-#define PIN_NTC_J10    26  // ADC0, J10 (na prototypu neosazeno)
-#define PIN_NTC        28  // ADC2, lista J12 - NTC 100k, pull-up 22k k 3V3 mimo desku
+#define PIN_NTC        28  // ADC2, lista J12
+#define ADC_CH_NTC     2
 
 #define NTC_PULLUP     22000.0f
 #define NTC_R25        100000.0f
@@ -45,42 +54,14 @@
 
 static bool wifi_ok = false;
 static bool periodic = true;
-static uint8_t fan_pct = 0, exh_pct = 0;
-static bool heat_on = false;
-static absolute_time_t heat_off_at;
 
-// ------------------------------------------------------------------ vystupy
-static void pwm_pin_init(uint pin) {
-    gpio_set_function(pin, GPIO_FUNC_PWM);
-    uint slice = pwm_gpio_to_slice_num(pin);
-    pwm_set_wrap(slice, FAN_PWM_WRAP);
-    pwm_set_clkdiv(slice, 1.0f);
-    pwm_set_gpio_level(pin, 0);
-    pwm_set_enabled(slice, true);
+static void out_low(uint pin) {
+    gpio_init(pin);
+    gpio_set_dir(pin, GPIO_OUT);
+    gpio_put(pin, 0);
 }
 
-static void pwm_pin_set(uint pin, uint8_t pct) {
-    pwm_set_gpio_level(pin, (uint32_t)(FAN_PWM_WRAP + 1) * pct / 100u);
-}
-
-static void heat_set(bool on) {
-    heat_on = on;
-    gpio_put(PIN_HEAT, on);
-    if (on) heat_off_at = make_timeout_time_ms(HEAT_LIMIT_MS);
-}
-
-static void all_off(void) {
-    fan_pct = exh_pct = 0;
-    pwm_pin_set(PIN_FAN, 0);
-    pwm_pin_set(PIN_EXH, 0);
-    heat_set(false);
-}
-
-static uint8_t next_duty(uint8_t pct) {
-    return pct == 0 ? 50 : (pct == 50 ? 100 : 0);
-}
-
-// ------------------------------------------------------------------ informace o cipu
+// ================================================================== ZAKLAD: cip, takty, flash
 static void print_chip_info(void) {
     char id[2 * PICO_UNIQUE_BOARD_ID_SIZE_BYTES + 1];
     pico_get_unique_board_id_string(id, sizeof id);
@@ -107,50 +88,15 @@ static void print_chip_info(void) {
            flash_ok ? "OK (Winbond W25Q128JV, 16 MB)" : "!! neocekavane (ceka se EF 40 18)");
 }
 
-// ------------------------------------------------------------------ HX711
-// Vraci false, kdyz HX711 neni pripraveny (DT v 1 = chybi modul nebo jeste meri).
-static bool hx711_read(int32_t *val) {
-    if (gpio_get(PIN_HX_DT)) return false;
-    uint32_t v = 0;
-    uint32_t irq = save_and_disable_interrupts();   // SCK nesmi byt v 1 dele nez 60 us
-    for (int i = 0; i < 24; i++) {
-        gpio_put(PIN_HX_SCK, 1);
-        busy_wait_us_32(1);
-        v = (v << 1) | gpio_get(PIN_HX_DT);
-        gpio_put(PIN_HX_SCK, 0);
-        busy_wait_us_32(1);
-    }
-    gpio_put(PIN_HX_SCK, 1);   // 25. puls = kanal A, zisk 128
-    busy_wait_us_32(1);
-    gpio_put(PIN_HX_SCK, 0);
-    restore_interrupts(irq);
-    if (v & 0x800000) v |= 0xFF000000;   // znamenkove rozsireni 24 -> 32 bitu
-    *val = (int32_t)v;
-    return true;
-}
-
-// ------------------------------------------------------------------ ADC
-static uint16_t adc_avg(uint ch) {
-    adc_select_input(ch);
+static float chip_temp_c(void) {
+    adc_select_input(ADC_TEMPERATURE_CHANNEL_NUM);
     uint32_t s = 0;
     for (int i = 0; i < 16; i++) s += adc_read();
-    return (uint16_t)(s / 16);
-}
-
-// NTC proti GND, pull-up k 3V3. Vraci NAN pri rozpojeni / zkratu.
-static float ntc_temp_c(uint16_t raw, float *r_out) {
-    if (raw >= 4080 || raw <= 15) { *r_out = NAN; return NAN; }
-    float r = NTC_PULLUP * (float)raw / (4095.0f - (float)raw);
-    *r_out = r;
-    return 1.0f / (1.0f / 298.15f + logf(r / NTC_R25) / NTC_B) - 273.15f;
-}
-
-static float chip_temp_c(void) {
-    float v = adc_avg(ADC_TEMPERATURE_CHANNEL_NUM) * 3.3f / 4096.0f;
+    float v = (s / 16.0f) * 3.3f / 4096.0f;
     return 27.0f - (v - 0.706f) / 0.001721f;
 }
 
-// ------------------------------------------------------------------ Wi-Fi scan
+// ================================================================== ZAKLAD: Wi-Fi scan (RM2)
 static int scan_cb(void *env, const cyw43_ev_scan_result_t *r) {
     (void)env;
     if (r) {
@@ -180,43 +126,162 @@ static void wifi_scan(void) {
     printf("Wi-Fi scan hotovo\n");
 }
 
-// ------------------------------------------------------------------ vypisy
-static void print_status(void) {
-    float r;
-    printf("---\n");
+// ================================================================== CAST: ventilatory
+#if TEST_VENTILATORY
+static uint8_t fan_pct = 0, exh_pct = 0;
 
+static void pwm_pin_init(uint pin) {
+    gpio_set_function(pin, GPIO_FUNC_PWM);
+    uint slice = pwm_gpio_to_slice_num(pin);
+    pwm_set_wrap(slice, FAN_PWM_WRAP);
+    pwm_set_clkdiv(slice, 1.0f);
+    pwm_set_gpio_level(pin, 0);
+    pwm_set_enabled(slice, true);
+}
+
+static void pwm_pin_set(uint pin, uint8_t pct) {
+    pwm_set_gpio_level(pin, (uint32_t)(FAN_PWM_WRAP + 1) * pct / 100u);
+}
+
+static uint8_t next_duty(uint8_t pct) {
+    return pct == 0 ? 50 : (pct == 50 ? 100 : 0);
+}
+
+static void fans_init(void) {
+    pwm_pin_init(PIN_FAN);
+    pwm_pin_init(PIN_EXH);
+}
+
+static void fans_off(void) {
+    fan_pct = exh_pct = 0;
+    pwm_pin_set(PIN_FAN, 0);
+    pwm_pin_set(PIN_EXH, 0);
+}
+#endif
+
+// ================================================================== CAST: NTC
+#if TEST_NTC
+// NTC proti GND, pull-up k 3V3. Vraci NAN pri rozpojeni / zkratu.
+static float ntc_temp_c(uint16_t *raw_out, float *r_out) {
+    adc_select_input(ADC_CH_NTC);
+    uint32_t s = 0;
+    for (int i = 0; i < 16; i++) s += adc_read();
+    uint16_t raw = (uint16_t)(s / 16);
+    *raw_out = raw;
+    if (raw >= 4080 || raw <= 15) { *r_out = NAN; return NAN; }
+    float r = NTC_PULLUP * (float)raw / (4095.0f - (float)raw);
+    *r_out = r;
+    return 1.0f / (1.0f / 298.15f + logf(r / NTC_R25) / NTC_B) - 273.15f;
+}
+#endif
+
+// ================================================================== CAST: topeni
+#if TEST_TOPENI
+static bool heat_on = false;
+static absolute_time_t heat_off_at;
+
+static void heat_set(bool on) {
+    heat_on = on;
+    gpio_put(PIN_HEAT, on);
+    if (on) heat_off_at = make_timeout_time_ms(HEAT_LIMIT_MS);
+}
+
+static void heat_command(void) {
+    if (heat_on) { heat_set(false); printf("Topeni VYP\n"); return; }
+#if TEST_NTC
+    uint16_t raw; float r, tn = ntc_temp_c(&raw, &r);
+    if (!isnan(tn) && tn > HEAT_MAX_NTC_C) {
+        printf("Topeni odmitnuto: NTC %.1f C > %.0f C\n", tn, HEAT_MAX_NTC_C);
+        return;
+    }
+#endif
+    heat_set(true);
+    printf("Topeni ZAP na %u s (jisti F1 4 A, TCO na J13 musi byt zapojena)\n", HEAT_LIMIT_MS / 1000);
+}
+#endif
+
+// ================================================================== CAST: HX711
+#if TEST_HX711
+// Vraci false, kdyz HX711 neni pripraveny (DT v 1 = chybi modul nebo jeste meri).
+static bool hx711_read(int32_t *val) {
+    if (gpio_get(PIN_HX_DT)) return false;
+    uint32_t v = 0;
+    uint32_t irq = save_and_disable_interrupts();   // SCK nesmi byt v 1 dele nez 60 us
+    for (int i = 0; i < 24; i++) {
+        gpio_put(PIN_HX_SCK, 1);
+        busy_wait_us_32(1);
+        v = (v << 1) | gpio_get(PIN_HX_DT);
+        gpio_put(PIN_HX_SCK, 0);
+        busy_wait_us_32(1);
+    }
+    gpio_put(PIN_HX_SCK, 1);   // 25. puls = kanal A, zisk 128
+    busy_wait_us_32(1);
+    gpio_put(PIN_HX_SCK, 0);
+    restore_interrupts(irq);
+    if (v & 0x800000) v |= 0xFF000000;   // znamenkove rozsireni 24 -> 32 bitu
+    *val = (int32_t)v;
+    return true;
+}
+#endif
+
+// ================================================================== vypisy
+static void all_off(void) {
+#if TEST_VENTILATORY
+    fans_off();
+#endif
+#if TEST_TOPENI
+    heat_set(false);
+#endif
+}
+
+static void print_status(void) {
+    printf("---\n");
+#if TEST_HX711
     int32_t hx;
     if (hx711_read(&hx)) printf("HX711 J7: %ld\n", (long)hx);
     else                 printf("HX711 J7: neni pripraveny (DT=1)\n");
-
-    uint16_t raw = adc_avg(2);
-    float tn = ntc_temp_c(raw, &r);
+#endif
+#if TEST_NTC
+    uint16_t raw; float r, tn = ntc_temp_c(&raw, &r);
     if (isnan(tn)) printf("NTC GP28: ADC %4u -> %s\n", raw, raw >= 4080 ? "rozpojeno" : "zkrat");
     else           printf("NTC GP28: ADC %4u -> %.0f ohm -> %.1f C\n", raw, r, tn);
-    printf("ADC0 GP26 (J10, neosazeno): %u   cip: %.1f C\n", adc_avg(0), chip_temp_c());
-
-    printf("Vystupy: ventilator J8 %u %%, odtah J9 %u %%, topeni J5 %s   tlacitko %s\n",
-           fan_pct, exh_pct, heat_on ? "ZAP" : "vyp", gpio_get(PIN_BTN) ? "pusteno" : "STISKNUTO");
+#endif
+#if TEST_VENTILATORY
+    printf("Ventilator J8 %u %%, odtah J9 %u %%\n", fan_pct, exh_pct);
+#endif
+#if TEST_TOPENI
+    printf("Topeni J5 %s\n", heat_on ? "ZAP" : "vyp");
+#endif
+    printf("Cip %.1f C, tlacitko SW1 %s, RM2 %s\n", chip_temp_c(),
+           gpio_get(PIN_BTN) ? "pusteno" : "STISKNUTO", wifi_ok ? "OK" : "CHYBA");
 }
 
 static void print_help(void) {
-    printf("\nPrikazy:\n"
-           "  h  napoveda           i  info o cipu        s  stav senzoru ted\n"
+    printf("\nZapnute casti testu: zaklad%s%s%s%s\n",
+           TEST_VENTILATORY ? ", ventilatory" : "", TEST_TOPENI ? ", topeni" : "",
+           TEST_NTC ? ", NTC" : "", TEST_HX711 ? ", HX711" : "");
+    printf("Prikazy:\n"
+           "  h  napoveda           i  info o cipu        s  stav ted\n"
            "  p  periodicky vypis zap/vyp (2 s)\n"
-           "  w  Wi-Fi scan (test RM2 a anteny)\n"
-           "  f  ventilator J8   0 -> 50 -> 100 %%      e  odtah J9   0 -> 50 -> 100 %%\n"
-           "  t  topeni J5 na %u s (znovu t = vypnout)   x  vse vypnout\n"
-           "  r  restart (watchdog)\n\n", HEAT_LIMIT_MS / 1000);
+           "  w  Wi-Fi scan (test RM2 a anteny)\n");
+#if TEST_VENTILATORY
+    printf("  f  ventilator J8   0 -> 50 -> 100 %%      e  odtah J9   0 -> 50 -> 100 %%\n");
+#endif
+#if TEST_TOPENI
+    printf("  t  topeni J5 na %u s (znovu t = vypnout)\n", HEAT_LIMIT_MS / 1000);
+#endif
+    printf("  x  vse vypnout        r  restart (watchdog)\n\n");
 }
 
-// ------------------------------------------------------------------ main
+// ================================================================== main
 int main(void) {
-    // Vystupy co nejdriv do 0 (gate drzi R15/R18/R24, ale at je to jiste)
-    gpio_init(PIN_HEAT);
-    gpio_set_dir(PIN_HEAT, GPIO_OUT);
-    gpio_put(PIN_HEAT, 0);
-    pwm_pin_init(PIN_FAN);
-    pwm_pin_init(PIN_EXH);
+    // Vystupy co nejdriv do 0 (gate drzi i pull-downy na desce, ale at je to jiste)
+    out_low(PIN_HEAT);
+    out_low(PIN_FAN);
+    out_low(PIN_EXH);
+#if TEST_VENTILATORY
+    fans_init();
+#endif
 
     stdio_init_all();
     sleep_ms(1500);   // cas na otevreni terminalu
@@ -228,16 +293,16 @@ int main(void) {
     gpio_set_dir(PIN_BTN, GPIO_IN);
     gpio_pull_up(PIN_BTN);
 
-    gpio_init(PIN_HX_SCK);
-    gpio_set_dir(PIN_HX_SCK, GPIO_OUT);
-    gpio_put(PIN_HX_SCK, 0);
+    adc_init();
+    adc_set_temp_sensor_enabled(true);
+#if TEST_NTC
+    adc_gpio_init(PIN_NTC);
+#endif
+#if TEST_HX711
+    out_low(PIN_HX_SCK);
     gpio_init(PIN_HX_DT);
     gpio_set_dir(PIN_HX_DT, GPIO_IN);
-
-    adc_init();
-    adc_gpio_init(PIN_NTC_J10);
-    adc_gpio_init(PIN_NTC);
-    adc_set_temp_sensor_enabled(true);
+#endif
 
     printf("RM2:      inicializace gSPI...\n");
     if (cyw43_arch_init() == 0) {
@@ -252,7 +317,6 @@ int main(void) {
     }
 
     print_help();
-
     watchdog_enable(2000, true);
 
     absolute_time_t next_print = get_absolute_time();
@@ -269,31 +333,26 @@ int main(void) {
             case 's': print_status(); break;
             case 'p': periodic = !periodic; printf("Periodicky vypis %s\n", periodic ? "ZAP" : "VYP"); break;
             case 'w': wifi_scan(); break;
+#if TEST_VENTILATORY
             case 'f': fan_pct = next_duty(fan_pct); pwm_pin_set(PIN_FAN, fan_pct);
                       printf("Ventilator J8: %u %%\n", fan_pct); break;
             case 'e': exh_pct = next_duty(exh_pct); pwm_pin_set(PIN_EXH, exh_pct);
                       printf("Odtah J9: %u %%\n", exh_pct); break;
-            case 't':
-                if (heat_on) { heat_set(false); printf("Topeni VYP\n"); break; }
-                {
-                    float r, tn = ntc_temp_c(adc_avg(2), &r);
-                    if (!isnan(tn) && tn > HEAT_MAX_NTC_C) {
-                        printf("Topeni odmitnuto: NTC %.1f C > %.0f C\n", tn, HEAT_MAX_NTC_C);
-                        break;
-                    }
-                }
-                heat_set(true);
-                printf("Topeni ZAP na %u s (jisti F1 4 A, TCO na J13 musi byt zapojena)\n", HEAT_LIMIT_MS / 1000);
-                break;
+#endif
+#if TEST_TOPENI
+            case 't': heat_command(); break;
+#endif
             case 'x': all_off(); printf("Vse vypnuto\n"); break;
             case 'r': printf("Restart...\n"); all_off(); watchdog_reboot(0, 0, 10); while (1) tight_loop_contents();
             default: break;
         }
 
+#if TEST_TOPENI
         if (heat_on && time_reached(heat_off_at)) {
             heat_set(false);
             printf("Topeni VYP (casovy limit)\n");
         }
+#endif
 
         bool btn = gpio_get(PIN_BTN);
         if (btn != btn_prev) {
