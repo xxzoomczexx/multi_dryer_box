@@ -204,7 +204,11 @@ Rozhodnuto 2026-10-26 (deska = prototyp, počítá se s další verzí):
 ## Osazení (2026-11-18)
 
 - Deska osazená v peci Puhui T-937 (sdílená) profilem v pozici 6 / recept `TS391_SAC305` – postup, profil, grafy a fotky
-  v `osazeni/README.md`. Zkušební deska OK. Další krok: vizuální kontrola + měření podle `OZIVENI.md`.
+  v `osazeni/README.md`. Zkušební deska OK. Po pečení můstky na U1 (opraveno ručně tavidlem) a zkrat 3V3–GND
+  0 Ω (holá deska OK, opraveno).
+- Oživení 2026-11-18 (testovací firmware přes SWD, UART J2 → probe COM6): SWD DPIDR 0x4c013477, RP2350A rev 3,
+  krystal 12 000 kHz, flash JEDEC EF 40 18 (16 MB), RM2 init OK + LED D6 bliká, Wi-Fi scan OK (−52 dBm nejbližší AP),
+  teplota čipu ~29 °C. **Box ID desky: `92F9A8974326FCBF`.** Zbývá: SW1, ventilátory J8/J9, odběr, NTC, topení, HX711.
 - Testovací firmware pro oživení: větev FIRMWARE, `test_desky/` (přepínače částí `TEST_*` v `test_desky.c`).
 - Program pece: `C:\Users\mirac\T937\Pb-Free.exe` (VB6, nezadávat desetinná čísla), pec = CH340 COM7 na domácím PC.
 
