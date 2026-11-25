@@ -9,11 +9,12 @@ Zbývá dokoupit mechaniku (železářství), izolaci a filament.
 
 | Díl | Parametry | Ks | Kam |
 |---|---|---|---|
-| Šrouby | **M3×8, imbus (DIN 912), nerez A2** | ~60 | HS50 → chladič (2), sloupky zespodu (4), svorka TCO (1–2), box do zalisovacích matic (~40) |
+| Šrouby | **M3×8, imbus (DIN 912), nerez A2** | ~60 | HS50 → chladič (2), sloupky chladiče přes stěnu rukávu (4), rukáv → pravá stěna boxu (4), svorka TCO (1–2), box do zalisovacích matic (~40) |
 | Matice | M3 (DIN 934), nerez | ~10 | rezerva |
 | Podložky | M3 (DIN 125), nerez | ~20 | pod hlavy šroubů |
-| Distanční sloupky | **M3, 15 mm, vnější + vnitřní závit** | 4 | chladič → podstavec z **ASA** (ne přímo do PETG dna – sloupek vede teplo ~100 °C) |
+| Distanční sloupky | **M3, 15 mm, vnější + vnitřní závit** | 4 | základna chladiče → zadní stěna rukávu z **ASA** (+ podložka PTFE; ne přímo do PETG – sloupek vede teplo ~100 °C) |
 | Zalisovací matice | M3 do plastu (heat-set inserts) | ~40 | box je větší než tisk A1 (256³) → díly se šroubují k sobě |
+| Podložky PTFE | M3, tl. 1 mm | 8 | 4× pod sloupky chladiče (u rukávu), 4× mezi bloky rukávu a pravou stěnu boxu – tepelná izolace ASA → PETG |
 | Vrták 2,5 mm + závitník M3 | | | 6 slepých závitů v chladiči (2× HS50, 4× sloupky), vrtat ~7 mm, závit ~6 mm – nebo ve školní dílně |
 | Pásek plechu (Al / Cu) | | 1 | svorka přitlačující TCO k chladiči (plast by u ~100 °C měkl) |
 | Ložiska | **608** | 2 | kolébka cívky |

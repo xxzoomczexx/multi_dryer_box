@@ -134,13 +134,15 @@ Značení: ✅ rozhodnuto · 💡 návrh (zatím nerozhodnuto).
   – chladič svisle (žebra po proudu, z 76–176, žebra k −Y), HS50 na základně v proudu vzduchu, TCO + NTC nad rezistorem,
   4× sloupek M3×15 + PTFE do stěny rukávu (+Y), nový kryt 5015 → rukáv. Rukáv rozšířen (náčrty 1–4): vnitřek x 108,5–151,
   y −34,8…16,5 (42,5 × 51,3 mm), od cívky 6,9 mm, od stěny boxu 3,9 mm; staré díry pro montáž ke stěně (rukáv Extrude5–8)
-  potlačené, průchodka posunutá na novou stěnu. Otevřené: uchycení rukávu k boxu, simulace je ještě pro PTC sendvič.
+  potlačené, průchodka posunutá na novou stěnu. Otevřené: simulace je ještě pro PTC sendvič.
 - **`susicka_celek_v3`** (2026-11-25, Default Project, uloženo): v2 s modulem HS50 + **hloubka boxu 116 → 100 mm**
   (obal 272 × 100 × 292, vnitřek y ±47, cívka 12 mm od stěn; přepážka ±47; kolébka ±44, bloky 6 mm, hřídelky 88 mm; nožičky
   y ±41; odtah 4010 + žaluzie + zpětný ventil y +8; venkovní SHT40 +8, SHT40 v komoře −8; otvor + záslepka v zadní stěně,
   díry staré montáže sendviče a rozbité díry žaluzie potlačené, nové 4 díry rámečku žaluzie). Topný blok natočený rezistorem
   dozadu (do volného prostoru, ne na cívku), mezera rukáv–cívka 6,9 mm ponechaná kvůli ohřevu cívky. v2 zůstává uložená s PTC.
   Ležaté topení dole (úspora šířky) zamítnuto: chladič 100 mm + 5015 se do hloubky 94 mm nevejde (řezat chladič uživatel nechce).
+  Uchycení rukávu (v3): 4 bloky ASA 10 × 9 × 12 mm na bocích rukávu u pravé stěny (y −40,9 / 22,6; z 101 / 188), zalisovací
+  matice M3 (otvor Ø 4,0 × 7), podložka PTFE 1 mm ke stěně, šrouby M3×8 zvenku přes pravou stěnu (4 díry Ø 3,4 v obalu).
 
 ### Odvod vlhkosti
 Ohřátý vzduch vlhkost z filamentu přijme, ale v uzavřené komoře se absolutní vlhkost zvyšuje a sušení
