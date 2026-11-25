@@ -19,7 +19,7 @@ Stav k 2026-11-25. Deska osazená a oživená (2026-11-18), zbývá dokoupit dí
 
 | Díl | Parametry | Ks | Poznámka |
 |---|---|---|---|
-| **Chladič k topení** | **Fischer Elektronik SK 100 100 AL** (přírodní hliník) nebo **SK 100 100 SA** (černě eloxovaný) – TME; 100 × 64–66 × 40 mm, základna 10 mm | 1 | profil se žebry podél délky → proudění z 5015 po délce; základna 10 mm = slepé závity M3 pro HS50 a sloupky. Pasivně 1,5–3 K/W (RS / TME se liší), s ventilátorem výrazně míň. Model `mechanika/topny_modul` upravený na tyto rozměry. |
+| **Chladič k topení** | **Fischer Elektronik SK 189 100 AL** (TME) – 100 × 41,5 × 34 mm, základna 8 mm, 6 žeber, přírodní hliník | 1 | SK 100 100 není skladem. Žebra podél délky, průřez mezi žebry ~41,5 × 26 mm dobře sedí na výfuk 5015. Pasivně ~2,4 K/W, s 5015 odhad ~1 K/W → při 49 W a komoře 65 °C chladič ~110–120 °C → firmware podle NTC stáhne výkon; na udržení 65 °C (~28 W s izolací) ~95 °C. **Izolace XPS nutná.** TCO a NTC za rezistorem (vedle se nevejdou). |
 | Ložiska | **608** | 2 | kolébka cívky |
 | Hřídelky | k ložiskům 608 (Ø 8 mm) | 2 | |
 | Sloupek váhy | ocel nebo karbon | 1 | **ne PETG** (creep při 65 °C) |

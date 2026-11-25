@@ -18,14 +18,14 @@ import os
 import traceback
 
 # ---------------- PARAMETRY (mm) ----------------
-# Chladic: Fischer Elektronik SK 100 100 AL/SA (TME) - 100 mm, sirka 64 (TME) / 66 (RS), vyska 40,
-# zakladna 10 mm. Pocet a tloustka zeber zjednodusene, po doruceni premerit.
+# Chladic: Fischer Elektronik SK 189 100 AL (TME) - profil 41,5 x 34 mm, zakladna 8 mm, 6 zeber,
+# delka 100 mm, prirodni hlinik, Rth bez ventilatoru ~2,4 K/W (graf Fischer pro 100 mm).
 HS_L = 100.0       # delka chladice ve smeru proudeni (X)
-HS_W = 66.0        # sirka chladice (Y)
-HS_H = 40.0        # celkova vyska chladice
-HS_BASE = 10.0     # tloustka zakladny (do ni zavity M3 pro rezistor a sloupky)
-FIN_T = 1.5        # tloustka zebra
-FIN_N = 14         # pocet zeber
+HS_W = 41.5        # sirka chladice (Y)
+HS_H = 34.0        # celkova vyska chladice
+HS_BASE = 8.0      # tloustka zakladny (do ni zavity M3 pro rezistor a sloupky)
+FIN_T = 2.0        # tloustka zebra (odhad z vykresu)
+FIN_N = 6          # pocet zeber
 FIN_H = HS_H - HS_BASE
 
 # Rezistor Arcol HS50 - datasheet Arcol HS10-HS300, radek HS50 (max. rozmery, F a G +-0,3).
@@ -242,18 +242,19 @@ def run(context):
         for sx in (-1, 1):   # axialni vyvody na koncich (zjednodusene na ctverec)
             b.box(sx * core_l / 2, -r, -RES_H - r, sx * RES_B / 2, r, -RES_H + r, NEW, 'Vyvod')
 
-        # ---- tepelna pojistka a NTC hned vedle rezistoru (po stranach, na zakladne) ----
-        side = RES_A / 2 + 3.0
+        # ---- tepelna pojistka a NTC hned za rezistorem (po proudu, napric, na zakladne) ----
+        # Vedle rezistoru se na 41,5 mm siroky chladic nevejdou -> volny konec za patkou.
+        tx0 = RES_E / 2 + 1.0
         occ = new_comp(root, 'Tepelna pojistka SF129R0')
         module_occs.append(occ)
         tco = occ.component
         b = Builder(tco)
-        b.box(-TCO_L / 2, -side - TCO_W, -TCO_T, TCO_L / 2, -side, 0, NEW, 'TCO')
+        b.box(tx0, -0.5 - TCO_L, -TCO_T, tx0 + TCO_W, -0.5, 0, NEW, 'TCO')
         occ = new_comp(root, 'NTC 100k')
         module_occs.append(occ)
         ntc = occ.component
         b = Builder(ntc)
-        b.box(-NTC_L / 2, side, -NTC_D, NTC_L / 2, side + NTC_D, 0, NEW, 'NTC')
+        b.box(tx0, 0.5, -NTC_D, tx0 + NTC_D, 0.5 + NTC_L, 0, NEW, 'NTC')
 
         # ---- distancni sloupky ke dnu boxu ----
         occ = new_comp(root, 'Sloupky M3')
