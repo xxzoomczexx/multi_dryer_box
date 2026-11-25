@@ -8,7 +8,7 @@
 # Souradnice: vzduch proudi ve smeru +X, zebra miri nahoru (+Z), rezistor je zespodu na zakladne
 # chladice (rovnou stranou k chladici, s teplovodivou pastou, M3 do zavitu v zakladne). Dno boxu je
 # v z = -STANDOFF_H. Rozmery v mm, upravuj v sekci PARAMETRY. Ventilator, rezistor a pojistka jsou
-# zjednodusene obalove tvary; rozmery rezistoru (otvory!) a chladice po doruceni premerit.
+# zjednodusene obalove tvary; rezistor podle datasheetu Arcol HS50, chladic po doruceni premerit.
 #
 # Po dobehnuti ulozi vedle skriptu nahled.png (izometrie) a rozmery.txt.
 
@@ -27,14 +27,19 @@ FIN_T = 1.5        # tloustka zebra
 FIN_N = 14         # pocet zeber
 FIN_H = HS_H - HS_BASE
 
-# Rezistor Arcol HS50: obalove rozmery 72,5 x 29,7 x 14,8 mm (RS), patka se 4 otvory v rozich
-RES_L, RES_W, RES_T = 72.5, 29.7, 14.8
-RES_FLANGE_T = 2.5           # tloustka patky (odhad)
-RES_CORE_W = 16.0            # sirka zebrovaneho tela nad patkou (odhad)
-RES_HOLE_X = (-24.0, 24.0)   # rozteč otvoru - ODHAD, premerit podle datasheetu / kusu
-RES_HOLE_Y = 9.5             # ODHAD, premerit
-RES_HOLE_D = 3.4             # M3
-RES_TAG_L = 8.0              # pajeci ousko na kazdem konci (v RES_L uz zapocitane - odhad)
+# Rezistor Arcol HS50 - datasheet Arcol HS10-HS300, radek HS50 (max. rozmery, F a G +-0,3).
+# HS10-HS50 maji jen 2 otvory v patce, uhloprickou (+F/2, +G/2) a (-F/2, -G/2).
+RES_B = 72.5                 # B: celkova delka vcetne vyvodu
+RES_E = 49.1                 # E: delka pouzdra vcetne patek
+RES_A = 29.7                 # A: sirka pres patky
+RES_C = 14.8                 # C: celkova vyska
+RES_D = 14.2                 # D: sirka zebrovaneho tela
+RES_K = 2.6                  # K: tloustka patky
+RES_J = 5.2                  # J: delka patky s otvorem
+RES_H = 8.5                  # H: vyska osy vyvodu nad dosedaci plochou
+RES_F, RES_G = 39.7, 21.4    # F, G: roztec otvoru (podelne, napric)
+RES_HOLE_D = 3.2             # L: prumer otvoru -> sroub M3
+RES_LEAD_D = 2.0             # vyvod Ø 2,0
 
 TCO_L, TCO_W, TCO_T = 12.0, 4.0, 4.0     # tepelna pojistka SF129R0 (zjednoduseno jako kvadr)
 NTC_D, NTC_L = 3.0, 8.0                  # NTC 100k (sklenena kapka v trubicce)
@@ -218,27 +223,26 @@ def run(context):
         for sx in (-1, 1):
             for sy in (-1, 1):
                 b.cyl(sx * STANDOFF_X, sy * STANDOFF_Y, 1.25, 0, blind, CUT)   # M3 slepy zavit (vrtat 2,5)
-        for x in RES_HOLE_X:
-            for sy in (-1, 1):
-                b.cyl(x, sy * RES_HOLE_Y, 1.25, 0, blind, CUT)                 # M3 zavit pro rezistor
+        res_holes = ((RES_F / 2, RES_G / 2), (-RES_F / 2, -RES_G / 2))   # uhlopricne (datasheet)
+        for hx, hy in res_holes:
+            b.cyl(hx, hy, 1.25, 0, blind, CUT)                                # M3 zavit pro rezistor
 
-        # ---- rezistor zespodu na zakladne (patka nahoru k chladici) ----
+        # ---- rezistor zespodu na zakladne (dosedaci plocha nahoru k chladici) ----
         occ = new_comp(root, 'Rezistor Arcol HS50 10R')
         module_occs.append(occ)
         res = occ.component
         b = Builder(res)
-        body_l = RES_L - 2 * RES_TAG_L
-        b.box(-body_l / 2, -RES_W / 2, -RES_FLANGE_T, body_l / 2, RES_W / 2, 0, NEW, 'Rezistor patka')
-        b.box(-body_l / 2, -RES_CORE_W / 2, -RES_T, body_l / 2, RES_CORE_W / 2, -RES_FLANGE_T, JOIN)
-        for x in RES_HOLE_X:
-            for sy in (-1, 1):
-                b.cyl(x, sy * RES_HOLE_Y, RES_HOLE_D / 2, -RES_FLANGE_T, 0, CUT)
-        for sx in (-1, 1):   # pajeci ouska na koncich
-            b.box(sx * body_l / 2, -2.5, -RES_T / 2 - 0.4,
-                  sx * RES_L / 2, 2.5, -RES_T / 2 + 0.4, NEW, 'Ousko')
+        core_l = RES_E - 2 * RES_J
+        b.box(-RES_E / 2, -RES_A / 2, -RES_K, RES_E / 2, RES_A / 2, 0, NEW, 'Rezistor patka')
+        b.box(-core_l / 2, -RES_D / 2, -RES_C, core_l / 2, RES_D / 2, -RES_K, JOIN)
+        for hx, hy in res_holes:
+            b.cyl(hx, hy, RES_HOLE_D / 2, -RES_K, 0, CUT)
+        r = RES_LEAD_D / 2
+        for sx in (-1, 1):   # axialni vyvody na koncich (zjednodusene na ctverec)
+            b.box(sx * core_l / 2, -r, -RES_H - r, sx * RES_B / 2, r, -RES_H + r, NEW, 'Vyvod')
 
         # ---- tepelna pojistka a NTC hned vedle rezistoru (po stranach, na zakladne) ----
-        side = RES_W / 2 + 3.0
+        side = RES_A / 2 + 3.0
         occ = new_comp(root, 'Tepelna pojistka SF129R0')
         module_occs.append(occ)
         tco = occ.component
@@ -343,7 +347,7 @@ def run(context):
         txt = ('Topny modul (bez civky): %.0f x %.0f x %.0f mm (X smer proudeni, Y, Z vcetne sloupku)\n'
                'Chladic %.0f x %.0f x %.0f, rezistor HS50 %.1f x %.1f x %.1f, ventilator %s, sloupky %.0f mm\n'
                'Civka pro porovnani: D %.0f x %.0f mm\n'
-               % (mod_x, mod_y, mod_z, HS_L, HS_W, HS_H, RES_L, RES_W, RES_T,
+               % (mod_x, mod_y, mod_z, HS_L, HS_W, HS_H, RES_B, RES_A, RES_C,
                   FAN_TYPE, STANDOFF_H, SPOOL_D, SPOOL_W))
         saved = ''
         try:

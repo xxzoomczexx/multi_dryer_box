@@ -39,7 +39,7 @@ součástky, výpočty a vše náročné). Uživatel chce: jednoduché hledání
   flash W25Q128JVSIQ (SOIC-8 208 mil), RM2 na GPIO23 (WL_ON+BT_ON), 24 (data; DO přes 470 Ω, nIRQ přes 10 k), 25 (CS), 29 (CLK).
 - Napájení 24 V (jack PJ-102AH) → AP63203WU-7 → 3,3 V.
 - Topení (rozhodnuto 2026-11-25): **výkonový rezistor Arcol HS50 10R J** (TME, 10 Ω, 50 W, hliníkové pouzdro 72,5 × 29,7 × 14,8 mm)
-  na chladiči s ventilátorem 5015 – model `mechanika/topny_modul/topny_modul.py` (rozteč děr HS50 v modelu je odhad, přeměřit).
+  na chladiči s ventilátorem 5015 – model `mechanika/topny_modul/topny_modul.py` (rozměry z datasheetu Arcol HS: 2 díry Ø 3,2 úhlopříčně, rozteč 39,7 × 21,4 mm → šrouby M3).
   Při 24 V 2,4 A / 57,6 W bez náběhového rázu → firmware omezí střídu na max. ~85 % (≈ 49 W). Nahrazuje PTC
   (RS 336-739 drahá doprava, AliExpress PTC nejisté parametry); zapojení desky beze změny (J5, Q1 na GPIO14, pomalé PWM ~1 Hz, PID).
 - Senzory: SHT4x přes I2C (J6: 3V3, GND, SCL GPIO3, SDA GPIO2), HX711 + tenzometr (J7: 3V3, GND, SCK GPIO5, DT GPIO4).
