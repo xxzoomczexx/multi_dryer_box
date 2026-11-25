@@ -1,36 +1,43 @@
 # Nákup – prototyp sušičky
 
-Stav k 2026-11-25. Deska osazená a oživená (2026-11-18), zbývá dokoupit díly mimo desku a mechaniku.
+Stav k 2026-11-25. Deska osazená a oživená (2026-11-18), objednané topení, chladič a adaptér (TME).
+Zbývá dokoupit senzory, mechaniku a materiál na box.
 
 ## Zbývá koupit
 
-### Elektronika
-
-| Díl | Parametry | Ks | Kde | Poznámka |
-|---|---|---|---|---|
-| **Topení** (J5) | výkonový rezistor **Arcol HS50 10R J** (10 Ω, 50 W, hliníkové pouzdro, 72,5 × 29,7 × 14,8 mm) | 2 | **TME** | místo PTC (RS 336-739 = drahá doprava). Při 24 V 2,4 A / 57,6 W → firmware omezí střídu na ~85 % (≈ 49 W). Není samoomezující → **TCO na J13 povinná**, NTC na chladiči. Na desce se nic nemění. |
-| Teplovodivá pasta | na rezistor, TCO a NTC (do ~150 °C) | 1 | TME / Laskakit | HS50 má 50 W jen na chladiči |
-| **Čidlo T/RH** (J6, J11) | modul **SHT40** (I2C, 3,3 V) | 2 (+1) | Laskakit / Adafruit 4885 | J6 v komoře, J11 venku; pull-upy jsou na desce. Bez nich nejde test I2C. |
-| **Převodník váhy** (J7) | modul **HX711** | 1–2 | Laskakit / AliExpress | zelený modul s RATE na GND = 10 Hz |
-| **Pull-up NTC** | odpor **22 kΩ** (vývodový stačí) | 1 | TME / cokoli | mezi J12 pin 1 (3V3) a pin 13 (GP28); R25 na desce se nekupoval (DNP) |
-| **Napájecí adaptér** | **24 V DC, 4 A (96 W)**, koncovka 5,5/2,1 mm, + uprostřed | 1 | TME / Alza | zatím stačí laboratorní zdroj → koupit později. PTC 50 W ≈ 2,1 A trvale + ventilátory ≈ 0,2 A + náběh PTC |
-
-### Mechanika
+### Laskakit (nebo jiný e-shop s moduly)
 
 | Díl | Parametry | Ks | Poznámka |
 |---|---|---|---|
-| **Chladič k topení** | **Fischer Elektronik SK 189 100 AL** (TME) – 100 × 41,5 × 34 mm, základna 8 mm, 6 žeber, přírodní hliník | 1 | SK 100 100 není skladem. Žebra podél délky, průřez mezi žebry ~41,5 × 26 mm dobře sedí na výfuk 5015. Pasivně ~2,4 K/W, s 5015 odhad ~1 K/W → při 49 W a komoře 65 °C chladič ~110–120 °C → firmware podle NTC stáhne výkon; na udržení 65 °C (~28 W s izolací) ~95 °C. **Izolace XPS nutná.** TCO a NTC za rezistorem (vedle se nevejdou). |
+| **Čidlo T/RH** (J6, J11) | modul **SHT40** (I2C, 3,3 V) | 2 (+1) | J6 v komoře (měřit vzduch u cívky, ne proud z topení), J11 venku; pull-upy jsou na desce. Alternativa Adafruit 4885. TME má jen holé čipy. |
+| **Převodník váhy** (J7) | modul **HX711** | 1–2 | zelený modul s RATE na GND = 10 Hz |
+| Tenzometr (jen když ten vlastní nemá 2–5 kg) | hliníkový nosník 5 kg, např. TAL220B | 1 | 1 kg nestačí (plná cívka ~1,25 kg) |
+
+### Železářství / kamenný obchod
+
+| Díl | Parametry | Ks | Kam |
+|---|---|---|---|
+| Šrouby | **M3×8, imbus (DIN 912), nerez A2** | ~60 | HS50 → chladič (2), sloupky zespodu (4), svorka TCO (1–2), box do zalisovacích matic (~40) |
+| Matice | M3 (DIN 934), nerez | ~10 | rezerva |
+| Podložky | M3 (DIN 125), nerez | ~20 | pod hlavy šroubů |
+| Distanční sloupky | **M3, 15 mm, vnější + vnitřní závit** | 4 | chladič → podstavec z **ASA** (ne přímo do PETG dna – sloupek vede teplo ~100 °C) |
+| Zalisovací matice | M3 do plastu (heat-set inserts) | ~40 | box je větší než tisk A1 (256³) → díly se šroubují k sobě |
+| Vrták 2,5 mm + závitník M3 | | | 6 slepých závitů v chladiči (2× HS50, 4× sloupky), vrtat ~7 mm, závit ~6 mm – nebo ve školní dílně |
+| Pásek plechu (Al / Cu) | | 1 | svorka přitlačující TCO k chladiči (plast by u ~100 °C měkl) |
 | Ložiska | **608** | 2 | kolébka cívky |
-| Hřídelky | k ložiskům 608 (Ø 8 mm) | 2 | |
+| Hřídelky | Ø 8 mm k ložiskům 608 | 2 | |
 | Sloupek váhy | ocel nebo karbon | 1 | **ne PETG** (creep při 65 °C) |
 | Tepelný izolant | FR4 nebo PTFE, kousek | 1 | na konec sloupku u tenzometru |
-| Šrouby | M3 (+ matice, podložky) | | |
-| Zalisovací matice | M3 do plastu (heat-set inserts) | ~40 | box je větší než tisk A1 (256³) → díly se šroubují k sobě |
-| Izolace boxu | XPS/EPS **10 mm** | | podle simulace max. ~63 °C → ~76 °C |
-| Větrání | drát Ø 1,5 mm (čepy žaluzie), fólie 0,6 mm (kotouček zpětného ventilu) | | |
-| Filament | **PETG** (ideálně PETG FR, UL94 V-0) na box, přepážku a kolébku; **ASA** na kanál/rukáv kolem topení a držák rezistoru | | tisk na Bambu Lab A1: ABS/ASA na A1 výrobce nedoporučuje (otevřená tiskárna, kroucení) → ASA jen malé díly, větrat. Vzduch u topení ~90 °C, PETG by měklo. |
+| Drát | Ø 1,5 mm | | čepy žaluzie odtahu |
+| Fólie | 0,6 mm | | kotouček zpětného ventilu |
 
-**Tenzometr** uživatel má – ověřit rozsah **2–5 kg** (1 kg nestačí, plná cívka ~1,25 kg). Když ne → TAL220B.
+### Jinde
+
+| Díl | Parametry | Kde | Poznámka |
+|---|---|---|---|
+| **Izolace boxu** | XPS/EPS **10 mm** | hobby market (OBI, Hornbach…) | **nutná** – s malým chladičem a ~49 W by bez ní byl ohřev pomalý; podle simulace max. ~63 → ~76 °C |
+| Filament | **PETG** (ideálně PETG FR, UL94 V-0) na box, přepážku a kolébku; **ASA** na kanál/rukáv kolem topení, držák rezistoru a podstavec chladiče | e-shop s filamenty | tisk na Bambu Lab A1: ABS/ASA výrobce na A1 nedoporučuje → ASA jen malé díly, větrat. Vzduch u topení ~90 °C, PETG by měklo. |
+| Síťový kabel **IEC C13** | běžný kabel od PC | doma / kdekoli | adaptér E90P má vstup C14, kabel v balení podle datasheetu není |
 
 ## Už koupeno
 
@@ -42,9 +49,14 @@ Stav k 2026-11-25. Deska osazená a oživená (2026-11-18), zbývá dokoupit dí
 | Raspberry Pi Debug Probe | 2026-11-03 | otestovaná 2026-11-18 |
 | Ventilátory 24 V (J8 cirkulace, J9 odtah) | do 2026-11-14 | odzkoušené na desce |
 | NTC 100k (B 3950) | do 2026-11-14 | na GP28 (J12), ne na J10 |
-| Tepelná pojistka (J13) | 3× SCHOTT SF129R0 (Tf 133 °C, Th 118 °C), 3× AUPO A2-5A-F (115 °C) | použít **SF129R0** na chladiči, ne přímo na PTC |
-| Kabelová zástrčka 5,5/2,1 | RS 487-820 (5 A) | |
+| Tepelná pojistka (J13) | 3× SCHOTT SF129R0 (Tf 133 °C, Th 118 °C), 3× AUPO A2-5A-F (115 °C) | použít **SF129R0** na chladiči hned u rezistoru (A2-5A-F by vybavovala v provozu) |
+| **Topení** – Arcol **HS50 10R J** (10 Ω, 50 W), 2 ks | **TME, objednáno 2026-11-25** | 24 V → 2,4 A / 57,6 W, firmware omezí střídu na ~85 % (≈ 49 W). Není samoomezující → TCO na J13 povinná, NTC na chladiči. Díry 2× Ø 3,2 úhlopříčně, rozteč 39,7 × 21,4 mm. |
+| **Chladič** – Fischer **SK 189 100 AL** | **TME, objednáno 2026-11-25** | 100 × 41,5 × 34 mm, základna 8 mm, 6 žeber. TCO a NTC za rezistorem. Odhad ~1 K/W s 5015 → při plném výkonu ~110–120 °C, firmware stáhne výkon podle NTC. |
+| **Teplovodivá pasta** AG Termopasty **ART.AGT-057** | **TME, objednáno 2026-11-25** | silikonová, nevodivá, ~0,88 W/mK, −50 až 200 °C, 100 g |
+| **Pull-up NTC** 22 kΩ | **TME, objednáno 2026-11-25** | mezi J12 pin 1 (3V3) a pin 13 (GP28) |
+| **Napájecí adaptér** ESPE **E90P-9024-211** | **TME, objednáno 2026-11-25** | 24 V / 3,75 A / 90 W, jack 2,1 × 5,5 mm **plus uprostřed**, vstup IEC C14, ochrany zkrat / nadproud / přepětí 38 V, CE, provoz −5 až 40 °C → **nechat mimo box**. Špička spotřeby ~2,6 A. |
+| Kabelová zástrčka 5,5/2,1 | RS 487-820 (5 A) | pro laboratorní zdroj |
 | Kabely | | lanko k topení, dupont/JST k lištám |
-| Tenzometr | | viz výše – ověřit rozsah |
+| Tenzometr | | ověřit rozsah 2–5 kg |
 
 Nekupuje se: H1–H4, ploškové TP (vyrobí JLC), SW1 (vlastní), USB (J1, D1, R2–R6, C3 – DNP), J10, R25, C26 (NTC jde na J12).
