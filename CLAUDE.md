@@ -143,11 +143,13 @@ Značení: ✅ rozhodnuto · 💡 návrh (zatím nerozhodnuto).
   Ležaté topení dole (úspora šířky) zamítnuto: chladič 100 mm + 5015 se do hloubky 94 mm nevejde (řezat chladič uživatel nechce).
   Uchycení rukávu (v3): 4 bloky ASA 10 × 9 × 12 mm na bocích rukávu u pravé stěny (y −40,9 / 22,6; z 101 / 188), zalisovací
   matice M3 (otvor Ø 4,0 × 7), podložka PTFE 1 mm ke stěně, šrouby M3×8 zvenku přes pravou stěnu (4 díry Ø 3,4 v obalu).
-  Vkládání cívky (v3): **odnímatelná přední dvířka** (jeden kus PETG FR 253 × 244 × 4 mm + lem 3 mm přes horní hranu boxu,
-  úchyt vpravo), otvor v přední stěně 210 × 216 mm (x −104…106, z 8…224) – cívka po nadzvednutí o 5 mm z ložisek projde
-  dopředu, kolébka a váha zůstávají. Drží 6 párů magnetů Ø 6 × 2 (3 dole z −5, 3 vpravo x 125) v kapsách 2,2 mm; vlevo a
-  nahoře na magnety není místo (cívka skoro stejně široká jako box) → dvířka tam drží zavěšení. Těsnění pěnová páska 6 × 2 mm
-  kolem otvoru. Zamítnuto: vysouvací komora (kolejnice by nesly váhu mimo tenzometr), víko nahoře (kanál pod stropem).
+  Vkládání cívky (v3): **víko nahoře** – otvor ve stropu 212 × 80 mm (x −104…108, y ±40), víko 229 × 100 × 4 mm (vejde se na A1)
+  s límcem 5 mm do otvoru a úchytem, drží vlastní vahou na těsnicí pásce 6 × 2 kolem otvoru (bez magnetů). Kanál pod stropem
+  rozdělen na hraně rukávu (x 106,9): pevná část nad rukávem, část s tryskou (x 65…106,6) visí pod víkem a zvedá se s ním
+  (tupý spoj, netěsnost jde jen do komory). Cívka ven **svisle nahoru** (nad ní nic není), kolébka a váha zůstávají.
+  Tryskový kanál vede vzduch ~80–90 °C → tisknout z ASA zvlášť a přišroubovat k víku (2× M3 + zalisovací matice), víko z PETG FR.
+  Přední dvířka s magnety (předchozí varianta) jsou v modelu potlačená/skrytá. Zamítnuto: vysouvací komora (kolejnice by nesly
+  váhu mimo tenzometr), dělení boxu v půlce výšky (zbytečně dlouhé těsnění, dělený rukáv, 272 mm se nevejde na A1).
   Přívod čerstvého vzduchu = drážky ve dně oddílu elektroniky → oddíl → zpětný ventil → 5015; izolovat jen komoru, drážky nezakrýt.
 
 ### Odvod vlhkosti

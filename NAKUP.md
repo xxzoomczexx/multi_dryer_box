@@ -15,8 +15,7 @@ Zbývá dokoupit mechaniku (železářství), izolaci a filament.
 | Distanční sloupky | **M3, 15 mm, vnější + vnitřní závit** | 4 | základna chladiče → zadní stěna rukávu z **ASA** (+ podložka PTFE; ne přímo do PETG – sloupek vede teplo ~100 °C) |
 | Zalisovací matice | M3 do plastu (heat-set inserts) | ~40 | box je větší než tisk A1 (256³) → díly se šroubují k sobě |
 | Podložky PTFE | M3, tl. 1 mm | 8 | 4× pod sloupky chladiče (u rukávu), 4× mezi bloky rukávu a pravou stěnu boxu – tepelná izolace ASA → PETG |
-| Magnety | neodym **Ø 6 × 2 mm** (N35–N52) | 12 (+2) | 6 párů pro přední dvířka (3 dole, 3 vpravo), vlepit do kapes (vteřinové lepidlo / epoxid) – **pozor na polaritu párů** |
-| Těsnicí páska | samolepicí pěnová, silikon nebo EPDM, **6 × 2 mm** (stlačená) | ~1 m | kolem otvoru dvířek (obvod ~0,9 m); silikon vydrží teplotu komory líp |
+| Těsnicí páska | samolepicí pěnová, silikon nebo EPDM, **6 × 2 mm** (stlačená) | ~1 m | kolem otvoru pro víko ve stropu (obvod ~0,6 m) + spoj kanálu u víka; silikon vydrží teplotu líp |
 | Vrták 2,5 mm + závitník M3 | | | 6 slepých závitů v chladiči (2× HS50, 4× sloupky), vrtat ~7 mm, závit ~6 mm – nebo ve školní dílně |
 | Pásek plechu (Al / Cu) | | 1 | svorka přitlačující TCO k chladiči (plast by u ~100 °C měkl) |
 | Ložiska | **608** | 2 | kolébka cívky |
