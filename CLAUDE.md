@@ -130,6 +130,11 @@ Značení: ✅ rozhodnuto · 💡 návrh (zatím nerozhodnuto).
   o ~25 K chladněji než u stropu (2D, přehání) → zvážit izolaci, usměrnění proudu a polohu SHT40.
   V `susicka_celek_v2` přidané vedení vzduchu (rukáv kolem sendviče + šachta + kanál pod strop s tryskou u X 65,
   ASA/ABS) a SHT40 u vstupu 5015 → rozptyl teplot kolem cívky 36 → 23 K, celý průtok jde žebry, pravá stěna 85 → 34 °C.
+- 2026-11-25 v `susicka_celek_v2` (přes Fusion MCP): sendvič s PTC **skrytý** (nesmazaný), nový komponent `Topny modul HS50 + SK 189 100`
+  – chladič svisle (žebra po proudu, z 76–176, žebra k −Y), HS50 na základně v proudu vzduchu, TCO + NTC nad rezistorem,
+  4× sloupek M3×15 + PTFE do stěny rukávu (+Y), nový kryt 5015 → rukáv. Rukáv rozšířen (náčrty 1–4): vnitřek x 108,5–151,
+  y −34,8…16,5 (42,5 × 51,3 mm), od cívky 6,9 mm, od stěny boxu 3,9 mm; staré díry pro montáž ke stěně (rukáv Extrude5–8)
+  potlačené, průchodka posunutá na novou stěnu. Otevřené: uchycení rukávu k boxu, simulace je ještě pro PTC sendvič.
 
 ### Odvod vlhkosti
 Ohřátý vzduch vlhkost z filamentu přijme, ale v uzavřené komoře se absolutní vlhkost zvyšuje a sušení
