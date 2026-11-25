@@ -18,11 +18,12 @@ import os
 import traceback
 
 # ---------------- PARAMETRY (mm) ----------------
-# Chladic: bezny hlinikovy profil z AliExpressu 100 x 69 x 36 mm (zakladnu premerit!)
+# Chladic: Fischer Elektronik SK 100 100 AL/SA (TME) - 100 mm, sirka 64 (TME) / 66 (RS), vyska 40,
+# zakladna 10 mm. Pocet a tloustka zeber zjednodusene, po doruceni premerit.
 HS_L = 100.0       # delka chladice ve smeru proudeni (X)
-HS_W = 69.0        # sirka chladice (Y)
-HS_H = 36.0        # celkova vyska chladice
-HS_BASE = 6.0      # tloustka zakladny (do ni zavity M3 pro rezistor a sloupky)
+HS_W = 66.0        # sirka chladice (Y)
+HS_H = 40.0        # celkova vyska chladice
+HS_BASE = 10.0     # tloustka zakladny (do ni zavity M3 pro rezistor a sloupky)
 FIN_T = 1.5        # tloustka zebra
 FIN_N = 14         # pocet zeber
 FIN_H = HS_H - HS_BASE

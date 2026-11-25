@@ -19,7 +19,7 @@ Stav k 2026-11-25. Deska osazená a oživená (2026-11-18), zbývá dokoupit dí
 
 | Díl | Parametry | Ks | Poznámka |
 |---|---|---|---|
-| **Chladič k PTC** | podle finální verze modelu | | simulace: 2× 60×60×10 v sendviči; skript `mechanika/topny_modul`: 100×69×36 |
+| **Chladič k topení** | **Fischer Elektronik SK 100 100 AL** (přírodní hliník) nebo **SK 100 100 SA** (černě eloxovaný) – TME; 100 × 64–66 × 40 mm, základna 10 mm | 1 | profil se žebry podél délky → proudění z 5015 po délce; základna 10 mm = slepé závity M3 pro HS50 a sloupky. Pasivně 1,5–3 K/W (RS / TME se liší), s ventilátorem výrazně míň. Model `mechanika/topny_modul` upravený na tyto rozměry. |
 | Ložiska | **608** | 2 | kolébka cívky |
 | Hřídelky | k ložiskům 608 (Ø 8 mm) | 2 | |
 | Sloupek váhy | ocel nebo karbon | 1 | **ne PETG** (creep při 65 °C) |
