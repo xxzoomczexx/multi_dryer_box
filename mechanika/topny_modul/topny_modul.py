@@ -1,12 +1,14 @@
 # Topny modul susicky filamentu - skript pro Autodesk Fusion
-# Postavi v novem dokumentu: chladic s zebry, PTC 24 V 120 C 20-60 W (AliExpress, 76x63x7 mm, ousky
-# se 4+4 otvory), tepelnou pojistku SF129R0, NTC 100k, distancni sloupky, ventilator (radialni 5015
-# nebo axialni) a kryt (kanal) z vydechu do zeber. Pro porovnani velikosti prida pruhlednou civku.
+# Postavi v novem dokumentu: chladic s zebry, topny vykonovy rezistor Arcol HS50 10R J (TME, 10 ohm,
+# 50 W, hlinikove pouzdro; pri 24 V 57,6 W -> firmware omezi stridu na ~85 %), tepelnou pojistku
+# SF129R0 a NTC 100k hned vedle rezistoru, distancni sloupky, ventilator (radialni 5015 nebo axialni)
+# a kryt (kanal) z vydechu do zeber. Pro porovnani velikosti prida pruhlednou civku.
+# (Puvodne PTC 24 V 120 C 76x63x7 z AliExpressu - nahrazeno 2026-11-25.)
 #
-# Souradnice: vzduch proudi ve smeru +X, zebra miri nahoru (+Z), PTC je zespodu na zakladne chladice
-# (rovnou stranou k chladici, prisroubovane M3 pres ousky do zavitu v zakladne). Dno boxu je
-# v z = -STANDOFF_H. Rozmery v mm, upravuj v sekci PARAMETRY. Ventilator, PTC a pojistka jsou
-# zjednodusene obalove tvary; rozmery PTC a chladice po doruceni premerit.
+# Souradnice: vzduch proudi ve smeru +X, zebra miri nahoru (+Z), rezistor je zespodu na zakladne
+# chladice (rovnou stranou k chladici, s teplovodivou pastou, M3 do zavitu v zakladne). Dno boxu je
+# v z = -STANDOFF_H. Rozmery v mm, upravuj v sekci PARAMETRY. Ventilator, rezistor a pojistka jsou
+# zjednodusene obalove tvary; rozmery rezistoru (otvory!) a chladice po doruceni premerit.
 #
 # Po dobehnuti ulozi vedle skriptu nahled.png (izometrie) a rozmery.txt.
 
@@ -20,19 +22,19 @@ import traceback
 HS_L = 100.0       # delka chladice ve smeru proudeni (X)
 HS_W = 69.0        # sirka chladice (Y)
 HS_H = 36.0        # celkova vyska chladice
-HS_BASE = 6.0      # tloustka zakladny (do ni zavity M3 pro PTC a sloupky)
+HS_BASE = 6.0      # tloustka zakladny (do ni zavity M3 pro rezistor a sloupky)
 FIN_T = 1.5        # tloustka zebra
 FIN_N = 14         # pocet zeber
 FIN_H = HS_H - HS_BASE
 
-# PTC 24 V 120 C 20-60 W: deska 76 x 63, stredni teleso vystupuje, po stranach ousky s otvory
-PTC_L, PTC_W, PTC_T = 76.0, 63.0, 7.0
-PTC_FLANGE_T = 1.5           # tloustka ousek
-PTC_CORE_W = 45.0            # sirka vystupujiciho stredu (63 - 2x ousko)
-PTC_HOLE_X = (-30.0, -10.0, 10.0, 30.0)   # otvory v ouskach (odhad z fotky, premerit)
-PTC_HOLE_Y = PTC_W / 2 - 4.5
-PTC_HOLE_D = 3.4
-PTC_SCREW_X = (-30.0, 30.0)  # ktere otvory se pouziji na sroubky (zavity v chladici)
+# Rezistor Arcol HS50: obalove rozmery 72,5 x 29,7 x 14,8 mm (RS), patka se 4 otvory v rozich
+RES_L, RES_W, RES_T = 72.5, 29.7, 14.8
+RES_FLANGE_T = 2.5           # tloustka patky (odhad)
+RES_CORE_W = 16.0            # sirka zebrovaneho tela nad patkou (odhad)
+RES_HOLE_X = (-24.0, 24.0)   # rozteč otvoru - ODHAD, premerit podle datasheetu / kusu
+RES_HOLE_Y = 9.5             # ODHAD, premerit
+RES_HOLE_D = 3.4             # M3
+RES_TAG_L = 8.0              # pajeci ousko na kazdem konci (v RES_L uz zapocitane - odhad)
 
 TCO_L, TCO_W, TCO_T = 12.0, 4.0, 4.0     # tepelna pojistka SF129R0 (zjednoduseno jako kvadr)
 NTC_D, NTC_L = 3.0, 8.0                  # NTC 100k (sklenena kapka v trubicce)
@@ -216,43 +218,37 @@ def run(context):
         for sx in (-1, 1):
             for sy in (-1, 1):
                 b.cyl(sx * STANDOFF_X, sy * STANDOFF_Y, 1.25, 0, blind, CUT)   # M3 slepy zavit (vrtat 2,5)
-        for x in PTC_SCREW_X:
+        for x in RES_HOLE_X:
             for sy in (-1, 1):
-                b.cyl(x, sy * PTC_HOLE_Y, 1.25, 0, blind, CUT)                 # M3 zavit pro PTC
+                b.cyl(x, sy * RES_HOLE_Y, 1.25, 0, blind, CUT)                 # M3 zavit pro rezistor
 
-        # ---- PTC zespodu na zakladne (rovna strana nahoru k chladici) ----
-        occ = new_comp(root, 'PTC 24V 120C 76x63')
+        # ---- rezistor zespodu na zakladne (patka nahoru k chladici) ----
+        occ = new_comp(root, 'Rezistor Arcol HS50 10R')
         module_occs.append(occ)
-        ptc = occ.component
-        b = Builder(ptc)
-        b.box(-PTC_L / 2, -PTC_W / 2, -PTC_FLANGE_T, PTC_L / 2, PTC_W / 2, 0, NEW, 'PTC deska')
-        b.box(-PTC_L / 2, -PTC_CORE_W / 2, -PTC_T, PTC_L / 2, PTC_CORE_W / 2, -PTC_FLANGE_T, JOIN)
-        for x in PTC_HOLE_X:
+        res = occ.component
+        b = Builder(res)
+        body_l = RES_L - 2 * RES_TAG_L
+        b.box(-body_l / 2, -RES_W / 2, -RES_FLANGE_T, body_l / 2, RES_W / 2, 0, NEW, 'Rezistor patka')
+        b.box(-body_l / 2, -RES_CORE_W / 2, -RES_T, body_l / 2, RES_CORE_W / 2, -RES_FLANGE_T, JOIN)
+        for x in RES_HOLE_X:
             for sy in (-1, 1):
-                b.cyl(x, sy * PTC_HOLE_Y, PTC_HOLE_D / 2, -PTC_FLANGE_T, 0, CUT)
-        for sy in (-1, 1):   # privody na strane ventilatoru
-            b.box(-PTC_L / 2 - 20, sy * 5 - 0.75, -PTC_T / 2 - 0.75,
-                  -PTC_L / 2, sy * 5 + 0.75, -PTC_T / 2 + 0.75, NEW, 'Privod')
+                b.cyl(x, sy * RES_HOLE_Y, RES_HOLE_D / 2, -RES_FLANGE_T, 0, CUT)
+        for sx in (-1, 1):   # pajeci ouska na koncich
+            b.box(sx * body_l / 2, -2.5, -RES_T / 2 - 0.4,
+                  sx * RES_L / 2, 2.5, -RES_T / 2 + 0.4, NEW, 'Ousko')
 
-        # ---- tepelna pojistka a NTC na volnem konci zakladny (za PTC) ----
-        x_free0 = PTC_L / 2 + 1.0
-        x_free1 = HS_L / 2 - 1.0
+        # ---- tepelna pojistka a NTC hned vedle rezistoru (po stranach, na zakladne) ----
+        side = RES_W / 2 + 3.0
         occ = new_comp(root, 'Tepelna pojistka SF129R0')
         module_occs.append(occ)
         tco = occ.component
         b = Builder(tco)
-        if x_free1 - x_free0 >= TCO_L:      # vejde se podelne
-            b.box(x_free0, -8 - TCO_W / 2, -TCO_T, x_free0 + TCO_L, -8 + TCO_W / 2, 0, NEW, 'TCO')
-        else:                                # jinak napric
-            tx = (x_free0 + x_free1) / 2
-            b.box(tx - TCO_W / 2, -14 - TCO_L / 2, -TCO_T, tx + TCO_W / 2, -14 + TCO_L / 2, 0,
-                  NEW, 'TCO')
+        b.box(-TCO_L / 2, -side - TCO_W, -TCO_T, TCO_L / 2, -side, 0, NEW, 'TCO')
         occ = new_comp(root, 'NTC 100k')
         module_occs.append(occ)
         ntc = occ.component
         b = Builder(ntc)
-        nx = (x_free0 + x_free1) / 2
-        b.box(nx - NTC_D / 2, 10, -NTC_D, nx + NTC_D / 2, 10 + NTC_L, 0, NEW, 'NTC')
+        b.box(-NTC_L / 2, side, -NTC_D, NTC_L / 2, side + NTC_D, 0, NEW, 'NTC')
 
         # ---- distancni sloupky ke dnu boxu ----
         occ = new_comp(root, 'Sloupky M3')
@@ -334,7 +330,7 @@ def run(context):
 
         # ---- vzhled ----
         paint(hs, find_appearance(app, design, ['aluminum', 'satin']))
-        paint(ptc, find_appearance(app, design, ['paint', 'red']))
+        paint(res, find_appearance(app, design, ['aluminum', 'anodized']))
         paint(tco, find_appearance(app, design, ['brass']))
         paint(ntc, find_appearance(app, design, ['plastic', 'black']))
         paint(so, find_appearance(app, design, ['brass']))
@@ -345,9 +341,9 @@ def run(context):
         # ---- nahled a rozmery do souboru ----
         here = os.path.dirname(os.path.realpath(__file__))
         txt = ('Topny modul (bez civky): %.0f x %.0f x %.0f mm (X smer proudeni, Y, Z vcetne sloupku)\n'
-               'Chladic %.0f x %.0f x %.0f, PTC %.0f x %.0f x %.0f, ventilator %s, sloupky %.0f mm\n'
+               'Chladic %.0f x %.0f x %.0f, rezistor HS50 %.1f x %.1f x %.1f, ventilator %s, sloupky %.0f mm\n'
                'Civka pro porovnani: D %.0f x %.0f mm\n'
-               % (mod_x, mod_y, mod_z, HS_L, HS_W, HS_H, PTC_L, PTC_W, PTC_T,
+               % (mod_x, mod_y, mod_z, HS_L, HS_W, HS_H, RES_L, RES_W, RES_T,
                   FAN_TYPE, STANDOFF_H, SPOOL_D, SPOOL_W))
         saved = ''
         try:

@@ -38,8 +38,10 @@ součástky, výpočty a vše náročné). Uživatel chce: jednoduché hledání
 - RP2350A0A4 QFN-60 7×7, interní VREG + AOTA-B201610S3R3-101-T (0806), krystal 12 MHz ABM8-272-T3,
   flash W25Q128JVSIQ (SOIC-8 208 mil), RM2 na GPIO23 (WL_ON+BT_ON), 24 (data; DO přes 470 Ω, nIRQ přes 10 k), 25 (CS), 29 (CLK).
 - Napájení 24 V (jack PJ-102AH) → AP63203WU-7 → 3,3 V.
-- Topení: 24V PTC RS PRO 336-739 (50 W, hliníkové pouzdro, ~100 °C, na chladiči s ventilátorem 5015 – model
-  `mechanika/topny_modul/topny_modul.py`; původně plánované 30 W / 70 °C), N-MOSFET Q1 na GPIO14, pomalé PWM ~1 Hz (PID), svorkovnice J5.
+- Topení (rozhodnuto 2026-11-25): **výkonový rezistor Arcol HS50 10R J** (TME, 10 Ω, 50 W, hliníkové pouzdro 72,5 × 29,7 × 14,8 mm)
+  na chladiči s ventilátorem 5015 – model `mechanika/topny_modul/topny_modul.py` (rozteč děr HS50 v modelu je odhad, přeměřit).
+  Při 24 V 2,4 A / 57,6 W bez náběhového rázu → firmware omezí střídu na max. ~85 % (≈ 49 W). Nahrazuje PTC
+  (RS 336-739 drahá doprava, AliExpress PTC nejisté parametry); zapojení desky beze změny (J5, Q1 na GPIO14, pomalé PWM ~1 Hz, PID).
 - Senzory: SHT4x přes I2C (J6: 3V3, GND, SCL GPIO3, SDA GPIO2), HX711 + tenzometr (J7: 3V3, GND, SCK GPIO5, DT GPIO4).
 - Výstupy a další vstupy (list `vystupy.kicad_sch`): GPIO13 = ventilátor (J8), GPIO14 = topení (J5),
   **GPIO12 = odtahový ventilátor** (J9), **GPIO8/9 = I2C0 pro druhý SHT40** (J11: 3V3, GND, SDA, SCL),
@@ -93,6 +95,10 @@ Značení: ✅ rozhodnuto · 💡 návrh (zatím nerozhodnuto).
 
 ### Konstrukce boxu
 - ✅ Box z PETG FR (UL94 V-0), později ABS FR. Hliník topení nesmí přímo na plast (izolační podložky).
+  Tisk na Bambu Lab A1 (2026-11-25): box 272 × 116 × 292 se nevejde (A1 256³) → díly spojené šrouby M3 do zalisovacích matic;
+  ABS/ASA výrobce na A1 nedoporučuje (otevřená tiskárna, kroucení velkých stěn) → stěny, přepážka, kolébka z PETG,
+  jen malé horké díly (kanál/rukáv kolem topení, držák rezistoru) z ASA. Zvenku XPS/EPS 10 mm.
+  V PETG boxu komora max. ~65 °C (PLA, PETG, TPU); ABS 70–80 °C až v boxu z ABS/ASA (tiskárna s krytem).
 - ✅ Dva oddíly oddělené izolovanou přepážkou: **sušicí komora** (cívka, PTC, ventilátor, SHT40)
   a **oddíl elektroniky** (deska, tenzometr) – teplo se k elektronice a tenzometru nedostane.
 - 💡 Komora nad elektronikou; přepážka dvojitá se vzduchovou mezerou nebo s pěnou/korkem,
@@ -114,7 +120,7 @@ Značení: ✅ rozhodnuto · 💡 návrh (zatím nerozhodnuto).
   tára s prázdnou kolébkou, odečet hmotnosti prázdné cívky.
 
 ### Ohřev a cirkulace
-- ✅ PTC 24 V ohřívá vzduch, ventilátor (24 V, PWM na GPIO13) ho rozhání po komoře a cirkuluje.
+- ✅ Topný rezistor HS50 (dříve PTC) na chladiči ohřívá vzduch, ventilátor (24 V, PWM na GPIO13) ho rozhání po komoře a cirkuluje.
 - 💡 Ventilátor radiální 5015 (lépe překoná odpor tělesa) nebo axiální 4010.
 - 💡 PTC 30 W / Curie 70 °C je bezpečné, ale vzduch nejspíš jen ~55–60 °C (PETG na hraně, ABS ne);
   případně PTC s ventilátorem 50–100 W s vyšší povrchovou teplotou a regulací ve firmwaru.
@@ -153,7 +159,10 @@ se zpomalí – vlhkost musí z komory pryč. Uživatel zvažuje silikagel nebo 
 Profily: PLA 45–50 °C (při tisku 40–45), PETG 60–65, TPU ~45–55, ABS/PA 70–80+.
 
 ### Bezpečnost
-- ✅ Curie teplota PTC jako fyzický strop, R15 pull-down na gate (topení vypnuté při resetu).
+- ✅ R15 pull-down na gate (topení vypnuté při resetu). Rezistor HS50 **není samoomezující** (dřív strop Curie teplota PTC)
+  → při zkratu Q1 nebo zamrzlém firmwaru topí naplno. Vrstvy ochrany: firmware (NTC na chladiči, vypnout nad ~110 °C
+  a při chybě čidla, watchdog, strop teploty komory podle materiálu boxu) + **TCO SF129R0 na J13 povinná**, na chladiči
+  hned u rezistoru s teplovodivou pastou (hardwarová pojistka nezávislá na SW).
 - ✅ NTC 100k (jako v 3D tiskárnách) přímo u topení na ADC GPIO26 + 4,7 k pull-up: vypnout topení při
   přehřátí tělesa nebo když SHT40 přestane odpovídat. 💡 Watchdog ve firmwaru. ✅ Tepelná pojistka v obvodu topení (svorkovnice J13, TCO na tělese topení;
   vybavovací teplota musí být s rezervou nad provozní teplotou tělesa, protože holding temperature bývá jen ~75–85 °C u 98°C typů).
@@ -192,7 +201,7 @@ Rozhodnuto 2026-10-26 (deska = prototyp, počítá se s další verzí):
   reálně ≈ 67 Ω, ne 94 Ω; simulaci případně přepočítat.
 - Výrobní data: `gerber/susicka_filamentu_JLCPCB_2026-10-26.zip` + návod a parametry objednávky
   `gerber/OBJEDNAVKA_JLCPCB.md`. 2026-10-27: 16 děr 0,25 mm (7 prokovů VREG + 9 v termální plošce U1) zvětšeno na 0,3 mm (kroužek 0,6 mm, DRC i zóny beze změny) kvůli ceně u JLC → nový ZIP `susicka_filamentu_JLCPCB_2026-10-27.zip`, povrch OSP místo ENIG, stencil 0,10 mm. **Deska OBJEDNÁNA 2026-10-27** u JLCPCB (5 ks, OSP, via plugged, stencil 0,1 mm, apertury 1:1 podle F.Paste, EuroPacket DDP, 5–9 prac. dnů). **Součástky OBJEDNÁNY 2026-10-27 na Mouseru** (38 položek, FedEx DDP; podle `jlcpcb/MOUSER_IMPORT.csv`, počty rezerv v košíku ručně snížené) + pasta Chip Quik TS391SNL50 (SAC305 T4, kelímek 50 g, bez lednice, peak ~245 °C) a tavidlo SMD291NL-5M. Náhrady proti původnímu BOM (stejná hodnota i pouzdro, zapsané jen v `BOM_JLCPCB.csv`, schéma beze změny): D3/D7 1N5819HW-7-F (B5819W-TP jen po cívce), C19 CL10A106KP8NQSC, C22 KEMET C0603C104K5RACTU, C23/C24 Taiyo Yuden MLASL21GBB5226MTNA01, U3 W25Q128JVSIQ TR, D5 SMBJ24CA od Semtech; U1 na Mouseru jako SC1509(13)-A4 (358-SC150913). Koupeno na TME: AO3422 + AOD4185 (Mouser je nevede). Debug Probe (SWD) uživatel už má (2026-11-03); otestovaná 2026-11-18 bez cíle (OpenOCD `interface/cmsis-dap.cfg` +
-`target/rp2350.cfg` → „Interface ready“, UART smyčka OK na COM6), firmware aktualizovaný z 1.0.1 (USB REV 0231). Stav 2026-11-14: deska od JLCPCB už dorazila; koupené 2× ventilátor 24 V (J8, J9) a NTC 100k (B 3950 jako v 3D tiskárnách, ověřit; na chladič topení) – připojí se na **GPIO28 (ADC2) na liště J12** místo neosazené J10 (pull-up 22k k 3V3 mimo desku, firmware ADC kanál 2). Topení: RS PRO 033-6739 (PTC v hliníkovém pouzdře, 24 V, 50 W, peak ~100 °C, sáček 2 ks) – víc než plánovaných 30 W (~2,1 A trvale; PJ-102AH 5 A, F1 4 A, Q1 OK); TCO na J13 musí mít vybavovací teplotu nad ~100 °C a těleso nesmí sahat na PETG. Napájení zatím z laboratorního zdroje přes kabelovou zástrčku 5,5/2,1 (RS 487-820, 5 A; Lumberg 1636 06 je 6,5/4,1 JEITA = nesedí). Zbývá koupit (aktuální seznam v `NAKUP.md`, 2026-11-25; kabely má): PTC topení (RS 336-739 nekoupené – drahá doprava z RS → AliExpress PTC 24 V / 40–60 W / ~120 °C), 2× modul SHT40, modul HX711 (tenzometr má), 22k pull-up NTC, později adaptér 24 V / 4 A (5,5/2,1), mechanika; TCO: uživatel má 3× SCHOTT SF129R0 (Tf 133 °C, Th 118 °C, 15 A) a 3× AUPO A2-5A-F (115 °C, 5 A) → k PTC 120 °C
+`target/rp2350.cfg` → „Interface ready“, UART smyčka OK na COM6), firmware aktualizovaný z 1.0.1 (USB REV 0231). Stav 2026-11-14: deska od JLCPCB už dorazila; koupené 2× ventilátor 24 V (J8, J9) a NTC 100k (B 3950 jako v 3D tiskárnách, ověřit; na chladič topení) – připojí se na **GPIO28 (ADC2) na liště J12** místo neosazené J10 (pull-up 22k k 3V3 mimo desku, firmware ADC kanál 2). Topení: RS PRO 033-6739 (PTC v hliníkovém pouzdře, 24 V, 50 W, peak ~100 °C, sáček 2 ks) – víc než plánovaných 30 W (~2,1 A trvale; PJ-102AH 5 A, F1 4 A, Q1 OK); TCO na J13 musí mít vybavovací teplotu nad ~100 °C a těleso nesmí sahat na PETG. Napájení zatím z laboratorního zdroje přes kabelovou zástrčku 5,5/2,1 (RS 487-820, 5 A; Lumberg 1636 06 je 6,5/4,1 JEITA = nesedí). Zbývá koupit (aktuální seznam v `NAKUP.md`, 2026-11-25; kabely má): topení Arcol HS50 10R J (TME; RS PTC 336-739 nekoupené), 2× modul SHT40, modul HX711 (tenzometr má), 22k pull-up NTC, později adaptér 24 V / 4 A (5,5/2,1), mechanika; TCO: uživatel má 3× SCHOTT SF129R0 (Tf 133 °C, Th 118 °C, 15 A) a 3× AUPO A2-5A-F (115 °C, 5 A) → k PTC 120 °C
   použít SF129R0 na chladiči (ne přímo na PTC), A2-5A-F by vybavovala v běžném provozu; teplotu chladiče na místě TCO
   změřit (cíl < ~110 °C), vývody TCO nepájet těsně u těla (krimp nebo pájet s odvodem tepla).
   `jlcpcb/BOM_JLCPCB.csv` = nákupní soupiska s MPN (ověřeno proti schématu 2026-10-26, R20 220 Ω): svorkovnice

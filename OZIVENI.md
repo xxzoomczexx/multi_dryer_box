@@ -123,15 +123,17 @@ Pull-up **22 kΩ mezi J12 pin 1 (3V3) a pin 13 (GP28)**, NTC mezi **pin 13 (GP28
 - [ ] S NTC při pokojové teplotě ~100 kΩ a teplota odpovídá teploměru (±2 °C): ______ °C
 - [ ] Zahřátí prsty / horkou vodou → teplota roste
 
-## 9. Topení (až bude PTC a TCO)
+## 9. Topení (až bude rezistor HS50 a TCO)
 
-`TEST_TOPENI 1` (+ ideálně `TEST_NTC 1`). PTC na chladiči s ventilátorem, TCO SF129R0 na J13.
-Zdroj: limit **5 A**. Zapojení J5: pin 2 = +24 V (přes J13), pin 1 = spínaná zem.
+`TEST_TOPENI 1` (+ ideálně `TEST_NTC 1`). Rezistor Arcol HS50 10R **přišroubovaný na chladiči s pastou**
+(bez chladiče ho nezapínat), ventilátor, TCO SF129R0 na J13 na chladiči hned u rezistoru.
+Zdroj: limit **3 A**. Zapojení J5: pin 2 = +24 V (přes J13), pin 1 = spínaná zem.
 
+- [ ] Odpor rezistoru multimetrem (na J5, bez napájení): ______ Ω (čeká se ~10 Ω)
 - [ ] Bez TCO na J13 topení nejde (obvod rozpojený) – ověřit, že to tak je
 - [ ] Před zapnutím zdroje topení vypnuté (R15)
 - [ ] `t` → topí 10 s a samo se vypne (`Topeni VYP (casovy limit)`)
-- [ ] Proud při náběhu ______ A, po pár s ______ A (čeká se 3–5 A → ~2 A)
+- [ ] Proud během topení ______ A (čeká se stálých ~2,4 A, bez náběhového rázu)
 - [ ] **U_DS Q1** během topení (měřit mezi J5 pin 1 a GND): ______ V (< ~0,2 V = OK, Q1 je při 3,3 V na hraně)
 - [ ] Q1 po několika pulzech jen vlažný
 - [ ] Teplota chladiče u TCO po delším provozu (cíl < ~110 °C) – změří se později s reálným firmwarem

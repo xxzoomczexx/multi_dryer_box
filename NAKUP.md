@@ -8,7 +8,8 @@ Stav k 2026-11-25. Deska osazená a oživená (2026-11-18), zbývá dokoupit dí
 
 | Díl | Parametry | Ks | Kde | Poznámka |
 |---|---|---|---|---|
-| **PTC topení** (J5) | **24 V, 40–60 W, konstantní teplota ~120 °C**, hliníkové pouzdro s ouškem na šrouby | 2 | AliExpress | místo RS PRO 336-739 (drahá doprava z RS). Model `mechanika/topny_modul` počítá s 76×63×7 mm. **Ne nad ~60 W** (F1 = 4 A, náběh PTC 2–3× jmenovitého proudu), **ne 70 °C** (slabé) ani 220 °C (TCO SF129R0 by vypínala v provozu). Po doručení změřit proud na laboratorním zdroji. |
+| **Topení** (J5) | výkonový rezistor **Arcol HS50 10R J** (10 Ω, 50 W, hliníkové pouzdro, 72,5 × 29,7 × 14,8 mm) | 2 | **TME** | místo PTC (RS 336-739 = drahá doprava). Při 24 V 2,4 A / 57,6 W → firmware omezí střídu na ~85 % (≈ 49 W). Není samoomezující → **TCO na J13 povinná**, NTC na chladiči. Na desce se nic nemění. |
+| Teplovodivá pasta | na rezistor, TCO a NTC (do ~150 °C) | 1 | TME / Laskakit | HS50 má 50 W jen na chladiči |
 | **Čidlo T/RH** (J6, J11) | modul **SHT40** (I2C, 3,3 V) | 2 (+1) | Laskakit / Adafruit 4885 | J6 v komoře, J11 venku; pull-upy jsou na desce. Bez nich nejde test I2C. |
 | **Převodník váhy** (J7) | modul **HX711** | 1–2 | Laskakit / AliExpress | zelený modul s RATE na GND = 10 Hz |
 | **Pull-up NTC** | odpor **22 kΩ** (vývodový stačí) | 1 | TME / cokoli | mezi J12 pin 1 (3V3) a pin 13 (GP28); R25 na desce se nekupoval (DNP) |
@@ -24,9 +25,10 @@ Stav k 2026-11-25. Deska osazená a oživená (2026-11-18), zbývá dokoupit dí
 | Sloupek váhy | ocel nebo karbon | 1 | **ne PETG** (creep při 65 °C) |
 | Tepelný izolant | FR4 nebo PTFE, kousek | 1 | na konec sloupku u tenzometru |
 | Šrouby | M3 (+ matice, podložky) | | |
+| Zalisovací matice | M3 do plastu (heat-set inserts) | ~40 | box je větší než tisk A1 (256³) → díly se šroubují k sobě |
 | Izolace boxu | XPS/EPS **10 mm** | | podle simulace max. ~63 °C → ~76 °C |
 | Větrání | drát Ø 1,5 mm (čepy žaluzie), fólie 0,6 mm (kotouček zpětného ventilu) | | |
-| Filament | **ASA/ABS** na topný modul a kanál, **PETG FR** (UL94 V-0) na box | | vzduch u topení ~90 °C, PETG by měklo |
+| Filament | **PETG** (ideálně PETG FR, UL94 V-0) na box, přepážku a kolébku; **ASA** na kanál/rukáv kolem topení a držák rezistoru | | tisk na Bambu Lab A1: ABS/ASA na A1 výrobce nedoporučuje (otevřená tiskárna, kroucení) → ASA jen malé díly, větrat. Vzduch u topení ~90 °C, PETG by měklo. |
 
 **Tenzometr** uživatel má – ověřit rozsah **2–5 kg** (1 kg nestačí, plná cívka ~1,25 kg). Když ne → TAL220B.
 
