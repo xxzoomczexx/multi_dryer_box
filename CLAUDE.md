@@ -143,6 +143,12 @@ Značení: ✅ rozhodnuto · 💡 návrh (zatím nerozhodnuto).
   Ležaté topení dole (úspora šířky) zamítnuto: chladič 100 mm + 5015 se do hloubky 94 mm nevejde (řezat chladič uživatel nechce).
   Uchycení rukávu (v3): 4 bloky ASA 10 × 9 × 12 mm na bocích rukávu u pravé stěny (y −40,9 / 22,6; z 101 / 188), zalisovací
   matice M3 (otvor Ø 4,0 × 7), podložka PTFE 1 mm ke stěně, šrouby M3×8 zvenku přes pravou stěnu (4 díry Ø 3,4 v obalu).
+  Vkládání cívky (v3): **odnímatelná přední dvířka** (jeden kus PETG FR 253 × 244 × 4 mm + lem 3 mm přes horní hranu boxu,
+  úchyt vpravo), otvor v přední stěně 210 × 216 mm (x −104…106, z 8…224) – cívka po nadzvednutí o 5 mm z ložisek projde
+  dopředu, kolébka a váha zůstávají. Drží 6 párů magnetů Ø 6 × 2 (3 dole z −5, 3 vpravo x 125) v kapsách 2,2 mm; vlevo a
+  nahoře na magnety není místo (cívka skoro stejně široká jako box) → dvířka tam drží zavěšení. Těsnění pěnová páska 6 × 2 mm
+  kolem otvoru. Zamítnuto: vysouvací komora (kolejnice by nesly váhu mimo tenzometr), víko nahoře (kanál pod stropem).
+  Přívod čerstvého vzduchu = drážky ve dně oddílu elektroniky → oddíl → zpětný ventil → 5015; izolovat jen komoru, drážky nezakrýt.
 
 ### Odvod vlhkosti
 Ohřátý vzduch vlhkost z filamentu přijme, ale v uzavřené komoře se absolutní vlhkost zvyšuje a sušení
