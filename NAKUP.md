@@ -1,17 +1,9 @@
 # Nákup – prototyp sušičky
 
-Stav k 2026-11-25. Deska osazená a oživená (2026-11-18), objednané topení, chladič a adaptér (TME).
-Zbývá dokoupit senzory, mechaniku a materiál na box.
+Stav k 2026-11-25. Deska osazená a oživená (2026-11-18), objednané topení, chladič a adaptér (TME) a senzory (Laskakit).
+Zbývá dokoupit mechaniku (železářství), izolaci a filament.
 
 ## Zbývá koupit
-
-### Laskakit (nebo jiný e-shop s moduly)
-
-| Díl | Parametry | Ks | Poznámka |
-|---|---|---|---|
-| **Čidlo T/RH** (J6, J11) | modul **SHT40** (I2C, 3,3 V) | 2 (+1) | J6 v komoře (měřit vzduch u cívky, ne proud z topení), J11 venku; pull-upy jsou na desce. Alternativa Adafruit 4885. TME má jen holé čipy. |
-| **Převodník váhy** (J7) | modul **HX711** | 1–2 | zelený modul s RATE na GND = 10 Hz |
-| Tenzometr (jen když ten vlastní nemá 2–5 kg) | hliníkový nosník 5 kg, např. TAL220B | 1 | 1 kg nestačí (plná cívka ~1,25 kg) |
 
 ### Železářství / kamenný obchod
 
@@ -37,7 +29,6 @@ Zbývá dokoupit senzory, mechaniku a materiál na box.
 |---|---|---|---|
 | **Izolace boxu** | XPS/EPS **10 mm** | hobby market (OBI, Hornbach…) | **nutná** – s malým chladičem a ~49 W by bez ní byl ohřev pomalý; podle simulace max. ~63 → ~76 °C |
 | Filament | **PETG** (ideálně PETG FR, UL94 V-0) na box, přepážku a kolébku; **ASA** na kanál/rukáv kolem topení, držák rezistoru a podstavec chladiče | e-shop s filamenty | tisk na Bambu Lab A1: ABS/ASA výrobce na A1 nedoporučuje → ASA jen malé díly, větrat. Vzduch u topení ~90 °C, PETG by měklo. |
-| Síťový kabel **IEC C13** | běžný kabel od PC | doma / kdekoli | adaptér E90P má vstup C14, kabel v balení podle datasheetu není |
 
 ## Už koupeno
 
@@ -57,6 +48,10 @@ Zbývá dokoupit senzory, mechaniku a materiál na box.
 | **Napájecí adaptér** ESPE **E90P-9024-211** | **TME, objednáno 2026-11-25** | 24 V / 3,75 A / 90 W, jack 2,1 × 5,5 mm **plus uprostřed**, vstup IEC C14, ochrany zkrat / nadproud / přepětí 38 V, CE, provoz −5 až 40 °C → **nechat mimo box**. Špička spotřeby ~2,6 A. |
 | Kabelová zástrčka 5,5/2,1 | RS 487-820 (5 A) | pro laboratorní zdroj |
 | Kabely | | lanko k topení, dupont/JST k lištám |
-| Tenzometr | | ověřit rozsah 2–5 kg |
+| **Čidlo T/RH** – LaskaKit **SHT40** (LA131037), 2 ks | **Laskakit, objednáno 2026-11-25** | J6 v komoře (vzduch u cívky, ne proud z topení), J11 venku. Zapojit podle popisků: J6 = 3V3, GND, SCL, SDA; J11 = 3V3, GND, SDA, SCL. |
+| **Převodník váhy** – HX711 zelený modul (LA161036), 1 ks | **Laskakit, objednáno 2026-11-25** | J7 = 3V3, GND, SCK, DT (modul: GND, DT, SCK, VCC) – zapojit podle popisků |
+| **Tenzometr** – GUANG CE **YZC-131, 5 kg** (LA131068B) | **Laskakit, objednáno 2026-11-25** | straight bar; rozměr závitů v koncích (M4/M5?) změřit a dokoupit šrouby |
+| Síťový kabel IEC C13 | vlastní | k adaptéru E90P (vstup C14) |
+| Tenzometr (původní) | vlastní | rozsah neznámý – záloha |
 
 Nekupuje se: H1–H4, ploškové TP (vyrobí JLC), SW1 (vlastní), USB (J1, D1, R2–R6, C3 – DNP), J10, R25, C26 (NTC jde na J12).
